@@ -94,7 +94,7 @@
                                     Inserisci la tua password corrente:
                                     <input type="password" name="oldPassword" class="form-control my-3" placeholder="Vecchia password" value="" required="" oninvalid="this.setCustomValidity('Inserire la password')" oninput="this.setCustomValidity('')">
                                     Scegli la tua nuova password:
-                                    <input type="password" name="newPassword" class="form-control my-3" placeholder="Nuova password" required="" oninvalid="this.setCustomValidity('Inserire la nuovapassword')" oninput="this.setCustomValidity('')">
+                                    <input type="password" name="newPassword" class="form-control my-3" placeholder="Nuova password" required="" oninvalid="this.setCustomValidity('Inserire la nuova password')" oninput="this.setCustomValidity('')">
                                     Ripeti la tua nuova password:
                                     <input type="password" name="repeatPassword" class="form-control my-3" placeholder="Ripeti la nuova password" required="" oninvalid="this.setCustomValidity('Ripetere la password')" oninput="this.setCustomValidity('')">
                                 </div>

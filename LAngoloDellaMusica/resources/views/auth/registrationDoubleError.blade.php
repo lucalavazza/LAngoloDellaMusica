@@ -83,7 +83,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="tab-pane" id="register-form">
+                        <div class="tab-pane active" id="register-form">
                             <form class="text-center form-signin" id="register-form" action="{{ route('user.registration') }}" method="post">
                                 @csrf
                                 <img src="{{ url('/') }}/pics/logoHD.png" width="100" height="100">
