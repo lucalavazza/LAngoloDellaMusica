@@ -60,3 +60,7 @@ Route::post('/wishlist/eliminaSearch',['as' => 'wishlist.deletePostSearch', 'use
 Route::get('/wishlist/{id}/aggiungi',['as' => 'wishlist.add', 'uses' => 'WishController@add']); // ---> FATTO
 Route::post('/wishlist/aggiungi',['as' => 'wishlist.addPost', 'uses' => 'WishController@addPost']); // ---> FATTO
 Route::post('/wishlist/aggiungiSearch',['as' => 'wishlist.addPostSearch', 'uses' => 'WishController@addPostSearch']); // ---> FATTO
+
+
+//Pagina del gestore
+Route::post('/paginaGestione',['as' => 'paginaGestione.add', 'uses' => 'GateController@store']);

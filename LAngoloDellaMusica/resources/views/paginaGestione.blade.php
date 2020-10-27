@@ -74,21 +74,21 @@
 @stop
 
 @section('corpo')
-<script type="text/javascript">
-    function abilitareCategoria() {
-        if (document.getElementById("seleziona-categoria").value === 0) {
-            document.getElementById("nuova-categoria").disable = "true";
-        } else {
-            document.getElementById("nuova-categoria").disable = "false";
+<script>
+    function Categoria() {
+        document.getElementById("seleziona-categoria-esistente");
+        var valore = document.getElementById("seleziona-categoria-esistente").value;
+        if (valore == 1) {
+            document.getElementById("Chitarre").style.display = "block";
+            document.getElementById("Bassi").style.display = "none";
+        } else if (valore == 2) {
+            document.getElementById("Chitarre").style.display = "none";
+            document.getElementById("Bassi").style.display = "block";
+        } else if (valore == 5) {
+            document.getElementById("Chitarre").style.display = "none";
+            document.getElementById("Bassi").style.display = "none";
         }
-    }
-    function abilitareSottoCategoria() {
-        if (document.getElementById("seleziona-sottocategoria").value === 0) {
-            document.getElementById("nuova-sottocategoria").disable = "true";
-        } else {
-            document.getElementById("nuova-sottocategoria").disable = "false";
-        }
-    }
+    } //così salvo in valore il value che sarà già quello giusto
 </script>
 <div class="container">
     <div class="row centra">
@@ -100,19 +100,30 @@
                         <div class="container">
 
                             <h3 class="my-3" style="font-weight: bold; color: #458045"> Aggiungi un nuovo prodotto </h3>
-                            <form>
+                            <form enctype="multipart/form-data" class="form-cgroup" id="form-aggiunta" action="{{route('paginaGestione.add')}}" method="post" name="add">
                                 @csrf
                                 <div class="form-group">
-                                    <select style="border-color: #458045" class="browser-default custom-select my-3" id="seleziona-categoria" onChange="abilitareCategoria();">
-                                        <option selected value="0">Categoria già esistente</option>
-                                        <option value="1">Nuova Categoria</option>
+                                    <select style="border-color: #458045" class="browser-default custom-select my-3" id="seleziona-categoria-esistente" onChange="Categoria();">
+                                        @foreach($macro_categories_list as $macro_category)
+                                        <option value="{{$macro_category->id}}">{{$macro_category->macro_cat}}</option>
+                                        @endforeach
                                     </select>
-                                    <input id="nuova-categoria" style="border-color: lightgray" type="text" class="form-control" placeholder="Nuova Categoria" required="">
-                                    <select style="border-color: #458045" class="browser-default custom-select my-3" id="seleziona-sottocategoria" onChange="abilitareSottoCategoria();">
-                                        <option selected value="0">Sottocategoria già esistente</option>
-                                        <option value="1">Nuova sottocategoria</option>
+                                    <!--SOTTOCATEGORIE-->
+                                    <select style="border-color: #458045" class="browser-default custom-select my-3" id="Chitarre">
+                                        @foreach($categories_list as $category)
+                                        @if($category->macro_categories_id == 1)
+                                        <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
+                                        @endif
+                                        @endforeach
                                     </select>
-                                    <input id="nuova-sottocategoria" style="border-color: lightgray" type="text" class="form-control my-3" placeholder="Nuova Sottocategoria" required="">
+                                    <select style="border-color: #458045" class="browser-default custom-select my-3" id="Bassi">
+                                        @foreach($categories_list as $category)
+                                        @if($category->macro_categories_id == 2)
+                                        <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
+
                                     <input style="border-color: #458045" type="text" class="form-control my-3" placeholder="Marca" required="">
                                     <input style="border-color: #458045" type="text" class="form-control my-3" placeholder="Modello" required="">
                                     <input style="border-color: #458045" type="text" class="form-control my-3" placeholder="Colore" required="">
@@ -125,7 +136,8 @@
                                     <input style="border-color: #458045" type="file" name="upload1" id="upload1" class="upload" multiple="multiple" placeholder="Sito Web" required="">
                                 </div>
                                 <div class="form-group">
-                                    <input class="bottone bottone_wishlist bold mt-3" type="submit" name="login-submit" value="Inserisci il prodotto">
+                                    <label for="mySubmit" class="bottone bottone_wishlist bold mt-3"><i class="fa fa-save"></i> Inserisci il prodotto</label>
+                                    <input type="submit" id="mySubmit" value="save" class="invisible"/>
                                 </div>
                             </form>
                         </div>

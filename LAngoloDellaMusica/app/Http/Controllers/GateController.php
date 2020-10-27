@@ -371,5 +371,34 @@ class GateController extends Controller {
         session_destroy();
         return Redirect::to(route('home'));
     }
-
+    
+    public function store(Request $request) {
+        session_start();
+        $dl = new DataLayer;
+        $master = $dl->isMaster($_SESSION['loggedName']);
+        $modello = $request->input('modello');
+        //$modelExisting = $dl->list($modello);
+        if (is_null($modelExisting)) {
+            if ($request->hasFile('path')) {
+                $file = $request->file('path');
+                $filename = $file->getClientOriginalName();
+                $fileext = $file->getClientOriginalExtension();
+                $modello=str_replace(":", "-",$modello);
+                $newfilename=$modello.".".$fileext;
+                $file->storeAs('pics/categoria/', $newfilename);
+            } else {
+                $newfilename = "image-na.jpg";
+            }
+            $dl->addMovie($request->input('categoria'), $request->input('sottocategoria'),
+                    $request->input('marca'), $request->input('modello'),
+                    $request->input('colore'), $request->input('prezzo'),
+                    $request->input('condizione'), $request->input('sitoweb'),
+                    $newfilename);
+            return Redirect::to(route('paginaGestione'))->with('logged', true)
+                            ->with('loggedName', $_SESSION["loggedName"])
+                            ->with('master', $master);
+        }
+        return view('movie.errorPage')->with('logged', true)->with('loggedName', $_SESSION['loggedName'])
+                        ->with('privileges', $privileges);
+    }
 }
