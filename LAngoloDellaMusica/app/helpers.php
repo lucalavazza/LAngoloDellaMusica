@@ -10,9 +10,9 @@ if (! function_exists('isInWish')) {
 }
 
 if (! function_exists('hasSubCats')) {
-    function hasSubCats($macro_category_name) {
+    function hasSubCats($macro_category_id) {
         $dl=new DataLayer;
-        $lista=$dl->listProductsByMacroCat($macro_category_name);
+        $lista=$dl->listSpecificCategoriesByMacroId($macro_category_id);
         if(count($lista)==0) {
             return false;
         } else {

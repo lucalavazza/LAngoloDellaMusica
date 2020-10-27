@@ -228,16 +228,24 @@ class GateController extends Controller {
         $macro_name = $dl->getMacroCategoryNameById($id);
         $products_list = $dl->listProductsByMacroCat($macro_name);
         $macrosspec = $dl->listSpecificCategoriesByMacroId($id);
+        $anyproducts = $dl->listProductsByMacroCat($macro_name);
 
-        if (empty($macrosspec)) {
+//        if (empty($macrosspec)) {
+//            $vuoto = true;
+//        } else {
+//            $vuoto = false;
+//        }
+        
+        if (empty($anyproducts)) {
             $vuoto = true;
         } else {
             $vuoto = false;
         }
+        
         return view('lists.macro')->with('logged', $logged)->with('loggedName', $loggedName)
                         ->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list)
                         ->with('iden', $id)->with('products', $products_list)->with('macro_name', $macro_name)
-                        ->with('macrosspec', $macrosspec)->with('wish', $wish)->with('userid', $userid);
+                        ->with('macrosspec', $macrosspec)->with('wish', $wish)->with('userid', $userid)->with('anyproducts',$anyproducts);
     }
 
     public function getSpec(Request $request, $id) {

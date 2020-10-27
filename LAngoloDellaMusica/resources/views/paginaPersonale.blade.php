@@ -17,7 +17,7 @@
     </a>
     <ul class="dropdown-menu multi-level" aria-labelledby="navbarDropdown">
         @foreach($macro_categories_list as $macro_category)
-        @if(hasSubCats($macro_category->macro_cat))
+            @if(hasSubCats($macro_category->id))
         <li class="dropdown-submenu">
             <a class="dropdown-item" href="{{ route('macro', ['id' => $macro_category->id]) }}">{{ $macro_category->macro_cat }}</a>
             <ul class="dropdown-menu">

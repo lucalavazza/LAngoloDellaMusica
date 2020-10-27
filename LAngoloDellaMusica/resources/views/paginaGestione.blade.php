@@ -1,7 +1,15 @@
 @extends('layouts.master')
 
 @section('bodyType')
-<body>
+<body onload="document.getElementById('Chitarre').style.display = 'none';
+        document.getElementById('Bassi').style.display = 'none';
+        document.getElementById('Fiati').style.display = 'none';
+        document.getElementById('Batterie e Percussioni').style.display = 'none';
+        document.getElementById('Tastiere').style.display = 'none';
+        document.getElementById('Studio e Registrazione').style.display = 'none';
+        document.getElementById('Audio Pro e Luci').style.display = 'none';
+        document.getElementById('Strumenti Tradizionali').style.display = 'none';
+        document.getElementById('Tradizionali').style.display = 'none';">
     @stop
 
     @section('menu_nav')
@@ -17,7 +25,7 @@
     </a>
     <ul class="dropdown-menu multi-level" aria-labelledby="navbarDropdown">
         @foreach($macro_categories_list as $macro_category)
-        @if(hasSubCats($macro_category->macro_cat))
+        @if(hasSubCats($macro_category->id))
         <li class="dropdown-submenu">
             <a class="dropdown-item" href="{{ route('macro', ['id' => $macro_category->id]) }}">{{ $macro_category->macro_cat }}</a>
             <ul class="dropdown-menu">
@@ -81,12 +89,93 @@
         if (valore == 1) {
             document.getElementById("Chitarre").style.display = "block";
             document.getElementById("Bassi").style.display = "none";
+            document.getElementById("Fiati").style.display = "none";
+            document.getElementById("Batterie e Percussioni").style.display = "none";
+            document.getElementById("Tastiere").style.display = "none";
+            document.getElementById("Studio e Registrazione").style.display = "none";
+            document.getElementById("Audio Pro e Luci").style.display = "none";
+            document.getElementById("Strumenti Tradizionali").style.display = "none";
+            document.getElementById("Accessori").style.display = "none";
         } else if (valore == 2) {
-            document.getElementById("Chitarre").style.display = "none";
-            document.getElementById("Bassi").style.display = "block";
+            document.getElementById("Chitarre").style.display = "block";
+            document.getElementById("Bassi").style.display = "none";
+            document.getElementById("Fiati").style.display = "none";
+            document.getElementById("Batterie e Percussioni").style.display = "none";
+            document.getElementById("Tastiere").style.display = "none";
+            document.getElementById("Studio e Registrazione").style.display = "none";
+            document.getElementById("Audio Pro e Luci").style.display = "none";
+            document.getElementById("Strumenti Tradizionali").style.display = "none";
+            document.getElementById("Accessori").style.display = "none";
         } else if (valore == 5) {
             document.getElementById("Chitarre").style.display = "none";
             document.getElementById("Bassi").style.display = "none";
+            document.getElementById("Fiati").style.display = "block";
+            document.getElementById("Batterie e Percussioni").style.display = "none";
+            document.getElementById("Tastiere").style.display = "none";
+            document.getElementById("Studio e Registrazione").style.display = "none";
+            document.getElementById("Audio Pro e Luci").style.display = "none";
+            document.getElementById("Strumenti Tradizionali").style.display = "none";
+            document.getElementById("Accessori").style.display = "none";
+        } else if (valore == 6) {
+            document.getElementById("Chitarre").style.display = "none";
+            document.getElementById("Bassi").style.display = "none";
+            document.getElementById("Fiati").style.display = "none";
+            document.getElementById("Batterie e Percussioni").style.display = "block";
+            document.getElementById("Tastiere").style.display = "none";
+            document.getElementById("Studio e Registrazione").style.display = "none";
+            document.getElementById("Audio Pro e Luci").style.display = "none";
+            document.getElementById("Strumenti Tradizionali").style.display = "none";
+            document.getElementById("Accessori").style.display = "none";
+        } else if (valore == 7) {
+            document.getElementById("Chitarre").style.display = "none";
+            document.getElementById("Bassi").style.display = "none";
+            document.getElementById("Fiati").style.display = "none";
+            document.getElementById("Batterie e Percussioni").style.display = "none";
+            document.getElementById("Tastiere").style.display = "block";
+            document.getElementById("Studio e Registrazione").style.display = "none";
+            document.getElementById("Audio Pro e Luci").style.display = "none";
+            document.getElementById("Strumenti Tradizionali").style.display = "none";
+            document.getElementById("Accessori").style.display = "none";
+        } else if (valore == 8) {
+            document.getElementById("Chitarre").style.display = "none";
+            document.getElementById("Bassi").style.display = "none";
+            document.getElementById("Fiati").style.display = "none";
+            document.getElementById("Batterie e Percussioni").style.display = "none";
+            document.getElementById("Tastiere").style.display = "none";
+            document.getElementById("Studio e Registrazione").style.display = "block";
+            document.getElementById("Audio Pro e Luci").style.display = "none";
+            document.getElementById("Strumenti Tradizionali").style.display = "none";
+            document.getElementById("Accessori").style.display = "none";
+        } else if (valore == 9) {
+            document.getElementById("Chitarre").style.display = "none";
+            document.getElementById("Bassi").style.display = "none";
+            document.getElementById("Fiati").style.display = "none";
+            document.getElementById("Batterie e Percussioni").style.display = "none";
+            document.getElementById("Tastiere").style.display = "none";
+            document.getElementById("Studio e Registrazione").style.display = "none";
+            document.getElementById("Audio Pro e Luci").style.display = "block";
+            document.getElementById("Strumenti Tradizionali").style.display = "none";
+            document.getElementById("Accessori").style.display = "none";
+        } else if (valore == 10) {
+            document.getElementById("Chitarre").style.display = "none";
+            document.getElementById("Bassi").style.display = "none";
+            document.getElementById("Fiati").style.display = "none";
+            document.getElementById("Batterie e Percussioni").style.display = "none";
+            document.getElementById("Tastiere").style.display = "none";
+            document.getElementById("Studio e Registrazione").style.display = "none";
+            document.getElementById("Audio Pro e Luci").style.display = "none";
+            document.getElementById("Strumenti Tradizionali").style.display = "block";
+            document.getElementById("Accessori").style.display = "none";
+        } else if (valore == 11) {
+            document.getElementById("Chitarre").style.display = "none";
+            document.getElementById("Bassi").style.display = "none";
+            document.getElementById("Fiati").style.display = "none";
+            document.getElementById("Batterie e Percussioni").style.display = "none";
+            document.getElementById("Tastiere").style.display = "none";
+            document.getElementById("Studio e Registrazione").style.display = "none";
+            document.getElementById("Audio Pro e Luci").style.display = "none";
+            document.getElementById("Strumenti Tradizionali").style.display = "none";
+            document.getElementById("Accessori").style.display = "block";
         }
     } //così salvo in valore il value che sarà già quello giusto
 </script>
@@ -119,6 +208,55 @@
                                     <select style="border-color: #458045" class="browser-default custom-select my-3" id="Bassi">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 2)
+                                        <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                    <select style="border-color: #458045" class="browser-default custom-select my-3" id="Fiati">
+                                        @foreach($categories_list as $category)
+                                        @if($category->macro_categories_id == 5)
+                                        <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                    <select style="border-color: #458045" class="browser-default custom-select my-3" id="Batterie e Percussioni">
+                                        @foreach($categories_list as $category)
+                                        @if($category->macro_categories_id == 6)
+                                        <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                    <select style="border-color: #458045" class="browser-default custom-select my-3" id="Tastiere">
+                                        @foreach($categories_list as $category)
+                                        @if($category->macro_categories_id == 7)
+                                        <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                    <select style="border-color: #458045" class="browser-default custom-select my-3" id="Studio e Registrazione">
+                                        @foreach($categories_list as $category)
+                                        @if($category->macro_categories_id == 8)
+                                        <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                    <select style="border-color: #458045" class="browser-default custom-select my-3" id="Audio Pro e Luci">
+                                        @foreach($categories_list as $category)
+                                        @if($category->macro_categories_id == 9)
+                                        <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                    <select style="border-color: #458045" class="browser-default custom-select my-3" id="Strumenti Tradizionali">
+                                        @foreach($categories_list as $category)
+                                        @if($category->macro_categories_id == 10)
+                                        <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                    <select style="border-color: #458045" class="browser-default custom-select my-3" id="Accessori">
+                                        @foreach($categories_list as $category)
+                                        @if($category->macro_categories_id == 11)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
