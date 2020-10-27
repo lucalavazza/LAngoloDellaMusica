@@ -74,6 +74,22 @@
 @stop
 
 @section('corpo')
+<script type="text/javascript">
+    function abilitareCategoria() {
+        if (document.getElementById("seleziona-categoria").value === 0) {
+            document.getElementById("nuova-categoria").disable = "true";
+        } else {
+            document.getElementById("nuova-categoria").disable = "false";
+        }
+    }
+    function abilitareSottoCategoria() {
+        if (document.getElementById("seleziona-sottocategoria").value === 0) {
+            document.getElementById("nuova-sottocategoria").disable = "true";
+        } else {
+            document.getElementById("nuova-sottocategoria").disable = "false";
+        }
+    }
+</script>
 <div class="container">
     <div class="row centra">
         <div class="col-sm-12">
@@ -87,20 +103,16 @@
                             <form>
                                 @csrf
                                 <div class="form-group">
-                                    <select style="border-color: #458045" class="browser-default custom-select my-3">
-                                        <option selected>Categoria già esistente</option>
-                                        <option value="1">Poi</option>
-                                        <option value="2">Qui</option>
-                                        <option value="3">Sistemo</option>
+                                    <select style="border-color: #458045" class="browser-default custom-select my-3" id="seleziona-categoria" onChange="abilitareCategoria();">
+                                        <option selected value="0">Categoria già esistente</option>
+                                        <option value="1">Nuova Categoria</option>
                                     </select>
-                                    <input style="border-color: lightgray" type="text" class="form-control" placeholder="Nuova Categoria" required="">
-                                    <select style="border-color: #458045" class="browser-default custom-select my-3">
-                                        <option selected>Sottocategoria già esistente</option>
-                                        <option value="1">Poi</option>
-                                        <option value="2">Qui</option>
-                                        <option value="3">Sistemo</option>
+                                    <input id="nuova-categoria" style="border-color: lightgray" type="text" class="form-control" placeholder="Nuova Categoria" required="">
+                                    <select style="border-color: #458045" class="browser-default custom-select my-3" id="seleziona-sottocategoria" onChange="abilitareSottoCategoria();">
+                                        <option selected value="0">Sottocategoria già esistente</option>
+                                        <option value="1">Nuova sottocategoria</option>
                                     </select>
-                                    <input style="border-color: lightgray" type="text" class="form-control my-3" placeholder="Nuova Sottocategoria" required="">
+                                    <input id="nuova-sottocategoria" style="border-color: lightgray" type="text" class="form-control my-3" placeholder="Nuova Sottocategoria" required="">
                                     <input style="border-color: #458045" type="text" class="form-control my-3" placeholder="Marca" required="">
                                     <input style="border-color: #458045" type="text" class="form-control my-3" placeholder="Modello" required="">
                                     <input style="border-color: #458045" type="text" class="form-control my-3" placeholder="Colore" required="">
