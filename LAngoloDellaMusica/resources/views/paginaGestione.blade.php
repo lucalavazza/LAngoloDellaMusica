@@ -97,8 +97,8 @@
             document.getElementById("Strumenti Tradizionali").style.display = "none";
             document.getElementById("Accessori").style.display = "none";
         } else if (valore == 2) {
-            document.getElementById("Chitarre").style.display = "block";
-            document.getElementById("Bassi").style.display = "none";
+            document.getElementById("Chitarre").style.display = "none";
+            document.getElementById("Bassi").style.display = "block";
             document.getElementById("Fiati").style.display = "none";
             document.getElementById("Batterie e Percussioni").style.display = "none";
             document.getElementById("Tastiere").style.display = "none";
