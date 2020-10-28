@@ -192,69 +192,69 @@
                             <form enctype="multipart/form-data" class="form-cgroup" id="form-aggiunta" action="{{route('paginaGestione.add')}}" method="post" name="add">
                                 @csrf
                                 <div class="form-group">
-                                    <select style="border-color: #458045" class="browser-default custom-select my-3" id="seleziona-categoria-esistente" onChange="Categoria();">
+                                    <select style="border-color: #458045" class="browser-default custom-select my-3" id="seleziona-categoria-esistente" name="categoria" onChange="Categoria();">
                                         @foreach($macro_categories_list as $macro_category)
                                         <option value="{{$macro_category->id}}">{{$macro_category->macro_cat}}</option>
                                         @endforeach
                                     </select>
                                     <!--SOTTOCATEGORIE-->
-                                    <select style="border-color: #458045" class="browser-default custom-select my-3" id="Chitarre">
+                                    <select style="border-color: #458045" class="browser-default custom-select my-3" name="Chitarre" id="Chitarre">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 1)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #458045" class="browser-default custom-select my-3" id="Bassi">
+                                    <select style="border-color: #458045" class="browser-default custom-select my-3" name="Bassi" id="Bassi">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 2)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #458045" class="browser-default custom-select my-3" id="Fiati">
+                                    <select style="border-color: #458045" class="browser-default custom-select my-3" name="Fiati" id="Fiati">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 5)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #458045" class="browser-default custom-select my-3" id="Batterie e Percussioni">
+                                    <select style="border-color: #458045" class="browser-default custom-select my-3" name="Batterie e Percussioni" id="Batterie e Percussioni">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 6)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #458045" class="browser-default custom-select my-3" id="Tastiere">
+                                    <select style="border-color: #458045" class="browser-default custom-select my-3" name="Tastiere" id="Tastiere">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 7)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #458045" class="browser-default custom-select my-3" id="Studio e Registrazione">
+                                    <select style="border-color: #458045" class="browser-default custom-select my-3" name="Studio e Registrazione" id="Studio e Registrazione">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 8)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #458045" class="browser-default custom-select my-3" id="Audio Pro e Luci">
+                                    <select style="border-color: #458045" class="browser-default custom-select my-3" name="sottocategoria" id="Audio Pro e Luci">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 9)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #458045" class="browser-default custom-select my-3" id="Strumenti Tradizionali">
+                                    <select style="border-color: #458045" class="browser-default custom-select my-3" name="Strumenti Tradizionali" id="Strumenti Tradizionali">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 10)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #458045" class="browser-default custom-select my-3" id="Accessori">
+                                    <select style="border-color: #458045" class="browser-default custom-select my-3" name="Accessori" id="Accessori">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 11)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
@@ -262,16 +262,19 @@
                                         @endforeach
                                     </select>
 
-                                    <input style="border-color: #458045" type="text" class="form-control my-3" placeholder="Marca" required="">
-                                    <input style="border-color: #458045" type="text" class="form-control my-3" placeholder="Modello" required="">
-                                    <input style="border-color: #458045" type="text" class="form-control my-3" placeholder="Colore" required="">
-                                    <input style="border-color: #458045" type="text" class="form-control my-3" placeholder="Prezzo" required="">
-                                    <input style="border-color: #458045" type="text" class="form-control my-3" placeholder="Condizione" required="">
-                                    <input style="border-color: #458045" type="text" class="form-control my-3" placeholder="Sito Web" required="">
+                                    <input style="border-color: #458045" type="text" class="form-control my-3" placeholder="Marca" name="marca" required="">
+                                    <input style="border-color: #458045" type="text" class="form-control my-3" placeholder="Modello" name="modello" required="">
+                                    <input style="border-color: #458045" type="text" class="form-control my-3" placeholder="Colore" name="colore" required="">
+                                    <input style="border-color: #458045" type="number" class="form-control my-3" placeholder="Prezzo" name="prezzo" required="">
+                                    <select style="border-color: #458045" class="browser-default custom-select my-3" name="condizione">
+                                        <option value="Nuovo">Nuovo</option>
+                                        <option value="Usato">Usato</option>
+                                    </select>
+                                    <input style="border-color: #458045" type="text" class="form-control my-3" placeholder="Sito Web" name="sitoweb" required="">
                                     <p style="color: #458045">
                                         Aggiungi foto: 
                                     </p>
-                                    <input style="border-color: #458045" type="file" name="upload1" id="upload1" class="upload" multiple="multiple" placeholder="Sito Web" required="">
+                                    <input style="border-color: #458045" type="file" name="path" id="upload1" class="upload" multiple="multiple" required="">
                                 </div>
                                 <div class="form-group">
                                     <label for="mySubmit" class="bottone bottone_wishlist bold mt-3"><i class="fa fa-save"></i> Inserisci il prodotto</label>

@@ -385,28 +385,33 @@ class GateController extends Controller {
         $dl = new DataLayer;
         $master = $dl->isMaster($_SESSION['loggedName']);
         $modello = $request->input('modello');
-        //$modelExisting = $dl->list($modello);
+        //print_r($request->input('categoria'));
+        $categoria_id = $request->input('categoria');
+        $categoria_name = $dl->getMacroCategoryNameById($categoria_id);
+        //print_r($categoria_name);
+        echo($categoria_name);
+        $sottocategoria_name=$request->input($categoria_name);
+        //print_r($sottocategoria_name);
+        $sottocategoria_id = $dl->getSpecificCategoryIdByName($sottocategoria_name);
+        
+        $modelExisting = $dl->modelExist($modello, $request->input('colore'), $request->input('condizione'));
         if (is_null($modelExisting)) {
-            if ($request->hasFile('path')) {
-                $file = $request->file('path');
-                $filename = $file->getClientOriginalName();
-                $fileext = $file->getClientOriginalExtension();
-                $modello=str_replace(":", "-",$modello);
-                $newfilename=$modello.".".$fileext;
-                $file->storeAs('pics/categoria/', $newfilename);
-            } else {
-                $newfilename = "image-na.jpg";
-            }
-            $dl->addMovie($request->input('categoria'), $request->input('sottocategoria'),
+            $file = $request->file('path');
+            $fileext = $file->getClientOriginalExtension();
+            $newfilename=$modello."-".$request->input("colore").".".$fileext;
+            $percorso='pics/'.$sottocategoria_name.'/';
+            $file->storeAs($percorso, $newfilename);
+            $path=$percorso.$newfilename;
+            
+            $dl->addProduct($categoria_name, $sottocategoria_name,
                     $request->input('marca'), $request->input('modello'),
                     $request->input('colore'), $request->input('prezzo'),
                     $request->input('condizione'), $request->input('sitoweb'),
-                    $newfilename);
+                    $path, $categoria_id, $sottocategoria_id);
             return Redirect::to(route('paginaGestione'))->with('logged', true)
                             ->with('loggedName', $_SESSION["loggedName"])
                             ->with('master', $master);
         }
-        return view('movie.errorPage')->with('logged', true)->with('loggedName', $_SESSION['loggedName'])
-                        ->with('privileges', $privileges);
+        return Redirect::to(route('home'));
     }
 }

@@ -63,4 +63,5 @@ Route::post('/wishlist/aggiungiSearch',['as' => 'wishlist.addPostSearch', 'uses'
 
 
 //Pagina del gestore
-Route::post('/paginaGestione',['as' => 'paginaGestione.add', 'uses' => 'GateController@store']);
+Route::post('/paginaGestione/add',['as' => 'paginaGestione.add', 'uses' => 'GateController@store']);
+Route::post('/paginaGestione',['as' => 'paginaGestione.edit', 'uses' => 'GateController@edit']);

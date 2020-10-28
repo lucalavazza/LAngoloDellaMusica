@@ -125,7 +125,7 @@ class DataLayer extends Model
     
     public function getMacroCategoryNameById($id) {
 
-        $cat = MacroCategory::where('id',$id)->get(['macro_cat']);
+        $cat = MacroCategory::where('id',$id)->get();
         return $cat[0]->macro_cat;
         
     }
@@ -141,6 +141,14 @@ class DataLayer extends Model
         
         $cat = SpecificCategory::where('specific_cat',$specific_cat)->get(['macro_categories_id']);
         return $cat[0]->macro_categories_id;
+    }
+    public function getMacroCategoryIdByName($categoria) {
+        $categoria_id = MacroCategory::where('macro_cat', $categoria)->get()->first();
+        return $categoria_id->id;
+    }
+    public function getSpecificCategoryIdByName($sottocategoria) {
+        $sottocategoria_id = SpecificCategory::where('specific_cat', $sottocategoria)->get()->first();
+        return $sottocategoria_id->id;
     }
     
     public function addToWishlist($user_id,$product_id) {
@@ -223,6 +231,29 @@ class DataLayer extends Model
         } else {
             return true;
         }
+    }
+    function modelExist($modello, $colore, $stato) {
+        $product = Product::where('model', $modello)->where('color', $colore)
+                ->where('status', $stato)->get()->first();
+        return $product;
+    }
+    
+    function addProduct($categoria, $sottocategoria, $marca, $modello,
+            $colore, $prezzo, $condizione, $sitoweb, $file, $categoria_id,
+            $sottocategoria_id) {
+        $product = new Product;
+        $product->brand = $marca;
+        $product->model = $modello;
+        $product->color = $colore;
+        $product->price = $prezzo;
+        $product->status = $condizione;
+        $product->pic = $file;
+        $product->info = $sitoweb;
+        $product->macro_categories_name = $categoria;
+        $product->specific_categories_name = $sottocategoria;
+        $product->macro_categories_id = $categoria_id;
+        $product->specific_categories_id = $sottocategoria_id;
+        $product->save();
     }
     
 }
