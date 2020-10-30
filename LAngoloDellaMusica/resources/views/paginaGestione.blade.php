@@ -2,22 +2,22 @@
 
 @section('bodyType')
 <body onload="document.getElementById('Chitarre').style.display = 'none';
-        document.getElementById('Bassi').style.display = 'none';
-        document.getElementById('Fiati').style.display = 'none';
-        document.getElementById('Batterie e Percussioni').style.display = 'none';
-        document.getElementById('Tastiere').style.display = 'none';
-        document.getElementById('Studio e Registrazione').style.display = 'none';
-        document.getElementById('Audio Pro e Luci').style.display = 'none';
-        document.getElementById('Strumenti Tradizionali').style.display = 'none';
-        document.getElementById('Tradizionali').style.display = 'none';
         document.getElementById('Chitarre-delete').style.display = 'none';
+        document.getElementById('Bassi').style.display = 'none';
         document.getElementById('Bassi-delete').style.display = 'none';
+        document.getElementById('Fiati').style.display = 'none';
         document.getElementById('Fiati-delete').style.display = 'none';
+        document.getElementById('Batterie e Percussioni').style.display = 'none';
         document.getElementById('Batterie e Percussioni-delete').style.display = 'none';
+        document.getElementById('Tastiere').style.display = 'none';
         document.getElementById('Tastiere-delete').style.display = 'none';
+        document.getElementById('Studio e Registrazione').style.display = 'none';
         document.getElementById('Studio e Registrazione-delete').style.display = 'none';
+        document.getElementById('Audio Pro e Luci').style.display = 'none';
         document.getElementById('Audio Pro e Luci-delete').style.display = 'none';
+        document.getElementById('Strumenti Tradizionali').style.display = 'none';
         document.getElementById('Strumenti Tradizionali-delete').style.display = 'none';
+        document.getElementById('Tradizionali').style.display = 'none';
         document.getElementById('Tradizionali-delete').style.display = 'none';">
     @stop
 
@@ -518,9 +518,9 @@
                                     </select>
                                     <select style="border-color: #c44835" class="browser-default custom-select my-3" name="product-delete" id="product-delete">
                                         @foreach($products_list as $product)
-                                            @if($product->macro_categories_id == 2)
-                                            <option value="{{$product->model}}">{{$product->model}}</option>
-                                            @endif
+                                        @if($product->macro_categories_id == 2)
+                                        <option value="{{$product->model}}">{{$product->model}}</option>
+                                        @endif
                                         @endforeach
                                     </select>
                                     <div class="form-group">
