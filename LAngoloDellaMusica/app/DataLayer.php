@@ -55,6 +55,15 @@ class DataLayer extends Model
         return $categories = SpecificCategory::where('macro_categories_id',$id)->orderBy('specific_cat','asc')->get();
     }
     
+    public function listBrands() {
+        $products = Product::select('brand')->distinct()->orderBy('brand','asc')->get();
+        return $products;
+    }
+    
+    public function listProductsByBrand($marca) {
+        return $products = Product::where('brand',$marca)->orderBy('brand','asc')->get();
+    }
+    
     public function listWishlist($user_id) {
         
         return $wishes = Wishlist::where('store_users_id',$user_id)->get();

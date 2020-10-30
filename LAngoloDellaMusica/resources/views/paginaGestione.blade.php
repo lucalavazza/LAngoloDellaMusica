@@ -9,7 +9,16 @@
         document.getElementById('Studio e Registrazione').style.display = 'none';
         document.getElementById('Audio Pro e Luci').style.display = 'none';
         document.getElementById('Strumenti Tradizionali').style.display = 'none';
-        document.getElementById('Tradizionali').style.display = 'none';">
+        document.getElementById('Tradizionali').style.display = 'none';
+        document.getElementById('Chitarre-delete').style.display = 'none';
+        document.getElementById('Bassi-delete').style.display = 'none';
+        document.getElementById('Fiati-delete').style.display = 'none';
+        document.getElementById('Batterie e Percussioni-delete').style.display = 'none';
+        document.getElementById('Tastiere-delete').style.display = 'none';
+        document.getElementById('Studio e Registrazione-delete').style.display = 'none';
+        document.getElementById('Audio Pro e Luci-delete').style.display = 'none';
+        document.getElementById('Strumenti Tradizionali-delete').style.display = 'none';
+        document.getElementById('Tradizionali-delete').style.display = 'none';">
     @stop
 
     @section('menu_nav')
@@ -178,6 +187,100 @@
             document.getElementById("Accessori").style.display = "block";
         }
     } //così salvo in valore il value che sarà già quello giusto
+    function CategoriaDelete() {
+        document.getElementById("seleziona-categoria-esistente-delete");
+        if (valore == 1) {
+            document.getElementById("Chitarre-delete").style.display = "block";
+            document.getElementById("Bassi-delete").style.display = "none";
+            document.getElementById("Fiati-delete").style.display = "none";
+            document.getElementById("Batterie e Percussioni-delete").style.display = "none";
+            document.getElementById("Tastiere-delete").style.display = "none";
+            document.getElementById("Studio e Registrazione-delete").style.display = "none";
+            document.getElementById("Audio Pro e Luci-delete").style.display = "none";
+            document.getElementById("Strumenti Tradizionali-delete").style.display = "none";
+            document.getElementById("Accessori-delete").style.display = "none";
+        } else if (valore == 2) {
+            document.getElementById("Chitarre-delete").style.display = "none";
+            document.getElementById("Bassi-delete").style.display = "block";
+            document.getElementById("Fiati-delete").style.display = "none";
+            document.getElementById("Batterie e Percussioni-delete").style.display = "none";
+            document.getElementById("Tastiere-delete").style.display = "none";
+            document.getElementById("Studio e Registrazione-delete").style.display = "none";
+            document.getElementById("Audio Pro e Luci-delete").style.display = "none";
+            document.getElementById("Strumenti Tradizionali-delete").style.display = "none";
+            document.getElementById("Accessori-delete").style.display = "none";
+        } else if (valore == 5) {
+            document.getElementById("Chitarre-delete").style.display = "none";
+            document.getElementById("Bassi-delete").style.display = "none";
+            document.getElementById("Fiati-delete").style.display = "block";
+            document.getElementById("Batterie e Percussioni-delete").style.display = "none";
+            document.getElementById("Tastiere-delete").style.display = "none";
+            document.getElementById("Studio e Registrazione-delete").style.display = "none";
+            document.getElementById("Audio Pro e Luci-delete").style.display = "none";
+            document.getElementById("Strumenti Tradizionali-delete").style.display = "none";
+            document.getElementById("Accessori-delete").style.display = "none";
+        } else if (valore == 6) {
+            document.getElementById("Chitarre-delete").style.display = "none";
+            document.getElementById("Bassi-delete").style.display = "none";
+            document.getElementById("Fiati-delete").style.display = "none";
+            document.getElementById("Batterie e Percussioni-delete").style.display = "block";
+            document.getElementById("Tastiere-delete").style.display = "none";
+            document.getElementById("Studio e Registrazione-delete").style.display = "none";
+            document.getElementById("Audio Pro e Luci-delete").style.display = "none";
+            document.getElementById("Strumenti Tradizionali-delete").style.display = "none";
+            document.getElementById("Accessori-delete").style.display = "none";
+        } else if (valore == 7) {
+            document.getElementById("Chitarre-delete").style.display = "none";
+            document.getElementById("Bassi-delete").style.display = "none";
+            document.getElementById("Fiati-delete").style.display = "none";
+            document.getElementById("Batterie e Percussioni-delete").style.display = "none";
+            document.getElementById("Tastiere-delete").style.display = "block";
+            document.getElementById("Studio e Registrazione-delete").style.display = "none";
+            document.getElementById("Audio Pro e Luci-delete").style.display = "none";
+            document.getElementById("Strumenti Tradizionali-delete").style.display = "none";
+            document.getElementById("Accessori-delete").style.display = "none";
+        } else if (valore == 8) {
+            document.getElementById("Chitarre-delete").style.display = "none";
+            document.getElementById("Bassi-delete").style.display = "none";
+            document.getElementById("Fiati-delete").style.display = "none";
+            document.getElementById("Batterie e Percussioni-delete").style.display = "none";
+            document.getElementById("Tastiere-delete").style.display = "none";
+            document.getElementById("Studio e Registrazione-delete").style.display = "block";
+            document.getElementById("Audio Pro e Luci-delete").style.display = "none";
+            document.getElementById("Strumenti Tradizionali-delete").style.display = "none";
+            document.getElementById("Accessori-delete").style.display = "none";
+        } else if (valore == 9) {
+            document.getElementById("Chitarre-delete").style.display = "none";
+            document.getElementById("Bassi-delete").style.display = "none";
+            document.getElementById("Fiati-delete").style.display = "none";
+            document.getElementById("Batterie e Percussioni-delete").style.display = "none";
+            document.getElementById("Tastiere-delete").style.display = "none";
+            document.getElementById("Studio e Registrazione-delete").style.display = "none";
+            document.getElementById("Audio Pro e Luci-delete").style.display = "block";
+            document.getElementById("Strumenti Tradizionali-delete").style.display = "none";
+            document.getElementById("Accessori-delete").style.display = "none";
+        } else if (valore == 10) {
+            document.getElementById("Chitarre-delete").style.display = "none";
+            document.getElementById("Bassi-delete").style.display = "none";
+            document.getElementById("Fiati-delete").style.display = "none";
+            document.getElementById("Batterie e Percussioni-delete").style.display = "none";
+            document.getElementById("Tastiere-delete").style.display = "none";
+            document.getElementById("Studio e Registrazione-delete").style.display = "none";
+            document.getElementById("Audio Pro e Luci-delete").style.display = "none";
+            document.getElementById("Strumenti Tradizionali-delete").style.display = "block";
+            document.getElementById("Accessori-delete").style.display = "none";
+        } else if (valore == 11) {
+            document.getElementById("Chitarre-delete").style.display = "none";
+            document.getElementById("Bassi-delete").style.display = "none";
+            document.getElementById("Fiati-delete").style.display = "none";
+            document.getElementById("Batterie e Percussioni-delete").style.display = "none";
+            document.getElementById("Tastiere-delete").style.display = "none";
+            document.getElementById("Studio e Registrazione-delete").style.display = "none";
+            document.getElementById("Audio Pro e Luci-delete").style.display = "none";
+            document.getElementById("Strumenti Tradizionali-delete").style.display = "none";
+            document.getElementById("Accessori-delete").style.display = "block";
+        }
+    }
 </script>
 <div class="container">
     <div class="row centra">
@@ -240,7 +343,7 @@
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #458045" class="browser-default custom-select my-3" name="sottocategoria" id="Audio Pro e Luci">
+                                    <select style="border-color: #458045" class="browser-default custom-select my-3" name="Audio Pro e Luci" id="Audio Pro e Luci">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 9)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
@@ -336,34 +439,94 @@
                     <div class="card my-3" style="border-color: #c44835">
                         <div class="container">
                             <h3 class="my-3" style="font-weight: bold; color: #c44835"> Elimina un prodotto </h3>
-                            <form>
+                            <form enctype="multipart/form-data" class="form-cgroup" id="form-eliminazione" action="{{route('paginaGestione.delete')}}" method="post" name="delete">
                                 @csrf
                                 <div class="form-group">
-                                    <select style="border-color: #c44835" class="browser-default custom-select my-3">
-                                        <option selected>Chitarre</option>
-                                        <option value="1">Poi</option>
-                                        <option value="2">Qui</option>
-                                        <option value="3">Sistemo</option>
+                                    <select style="border-color: #c44835" class="browser-default custom-select my-3" id="seleziona-categoria-esistente-delete" name="categoria-delete" onChange="CategoriaDelete();">
+                                        @foreach($macro_categories_list as $macro_category)
+                                        <option value="{{$macro_category->id}}">{{$macro_category->macro_cat}}</option>
+                                        @endforeach
                                     </select>
-                                    <select style="border-color: #c44835" class="browser-default custom-select my-3">
-                                        <option selected>Chitarre elettriche</option>
-                                        <option value="1">Poi</option>
-                                        <option value="2">Qui</option>
-                                        <option value="3">Sistemo</option>
+                                    <!--SOTTOCATEGORIE-->
+                                    <select style="border-color: #c44835" class="browser-default custom-select my-3" name="Chitarre-delete" id="Chitarre-delete">
+                                        @foreach($categories_list as $category)
+                                        @if($category->macro_categories_id == 1)
+                                        <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
+                                        @endif
+                                        @endforeach
                                     </select>
-                                    <select style="border-color: #c44835" class="browser-default custom-select my-3">
-                                        <option selected>Fender</option>
-                                        <option value="1">Poi</option>
-                                        <option value="2">Qui</option>
-                                        <option value="3">Sistemo</option>
+                                    <select style="border-color: #c44835" class="browser-default custom-select my-3" name="Bassi-delete" id="Bassi-delete">
+                                        @foreach($categories_list as $category)
+                                        @if($category->macro_categories_id == 2)
+                                        <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
+                                        @endif
+                                        @endforeach
                                     </select>
-                                    <select style="border-color: #c44835" class="browser-default custom-select my-3">
-                                        <option selected>Telecaster American Ultra Blue</option>
-                                        <option value="1">Poi</option>
-                                        <option value="2">Qui</option>
-                                        <option value="3">Sistemo</option>
+                                    <select style="border-color: #c44835" class="browser-default custom-select my-3" name="Fiati-delete" id="Fiati-delete">
+                                        @foreach($categories_list as $category)
+                                        @if($category->macro_categories_id == 5)
+                                        <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
+                                        @endif
+                                        @endforeach
                                     </select>
-                                    <input class="bottone bottone_elimina bold mt-3" type="submit" name="login-submit" value="Procedi all'eliminazione">
+                                    <select style="border-color: #c44835" class="browser-default custom-select my-3" name="Batterie e Percussioni-delete" id="Batterie e Percussioni-delete">
+                                        @foreach($categories_list as $category)
+                                        @if($category->macro_categories_id == 6)
+                                        <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                    <select style="border-color: #c44835" class="browser-default custom-select my-3" name="Tastiere-delete" id="Tastiere-delete">
+                                        @foreach($categories_list as $category)
+                                        @if($category->macro_categories_id == 7)
+                                        <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                    <select style="border-color: #c44835" class="browser-default custom-select my-3" name="Studio e Registrazione-delete" id="Studio e Registrazione-delete">
+                                        @foreach($categories_list as $category)
+                                        @if($category->macro_categories_id == 8)
+                                        <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                    <select style="border-color: #c44835" class="browser-default custom-select my-3" name="Audio Pro e Luci-delete" id="Audio Pro e Luci-delete">
+                                        @foreach($categories_list as $category)
+                                        @if($category->macro_categories_id == 9)
+                                        <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                    <select style="border-color: #c44835" class="browser-default custom-select my-3" name="Strumenti Tradizionali-delete" id="Strumenti Tradizionali-delete">
+                                        @foreach($categories_list as $category)
+                                        @if($category->macro_categories_id == 10)
+                                        <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                    <select style="border-color: #c44835" class="browser-default custom-select my-3" name="Accessori-delete" id="Accessori-delete">
+                                        @foreach($categories_list as $category)
+                                        @if($category->macro_categories_id == 11)
+                                        <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                    <select style="border-color: #c44835" class="browser-default custom-select my-3" name="brand-delete" id="brand-delete">
+                                        @foreach($brands_list as $brand)
+                                        <option value="{{$brand->brand}}">{{$brand->brand}}</option>
+                                        @endforeach
+                                    </select>
+                                    <select style="border-color: #c44835" class="browser-default custom-select my-3" name="product-delete" id="product-delete">
+                                        @foreach($products_list as $product)
+                                            @if($product->macro_categories_id == 2)
+                                            <option value="{{$product->model}}">{{$product->model}}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                    <div class="form-group">
+                                        <label for="mySubmit-delete" class="bottone bottone_elimina bold mt-3"><i class="fa fa-trash"></i> Procedi all'eliminazione</label>
+                                        <input type="submit" id="mySubmit-delete" value="delete" class="invisible"/>
+                                    </div>
                                 </div>
                             </form>
                         </div>

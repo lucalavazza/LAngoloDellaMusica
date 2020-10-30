@@ -196,7 +196,11 @@ class GateController extends Controller {
             $dl = new DataLayer;
             $macro_categories_list = $dl->listMacroCategories();
             $categories_list = $dl->listSpecificCategories();
-            return view('paginaGestione')->with('logged', true)->with('loggedName', $_SESSION['loggedName'])->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list);
+            $brands_list = $dl->listBrands();
+            $products_list = $dl->listAllProducts();
+            return view('paginaGestione')->with('logged', true)->with('loggedName', $_SESSION['loggedName'])
+                    ->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list)
+                    ->with('brands_list', $brands_list)->with('products_list',$products_list);
         } else {
             $dl = new DataLayer;
             $macro_categories_list = $dl->listMacroCategories();
@@ -414,4 +418,9 @@ class GateController extends Controller {
         }
         return Redirect::to(route('home'));
     }
+    
+    public function deleteProduct() {
+        
+    }
+    
 }
