@@ -323,9 +323,7 @@
                                     </select>
                                     <select style="border-color: #c44835" class="browser-default custom-select my-3" name="product-delete" id="product-delete">
                                         @foreach($products_list as $product)
-                                        @if($product->macro_categories_id == 2)
                                         <option value="{{$product->model}}">{{$product->model}}</option>
-                                        @endif
                                         @endforeach
                                     </select>
                                     <div class="form-group">
