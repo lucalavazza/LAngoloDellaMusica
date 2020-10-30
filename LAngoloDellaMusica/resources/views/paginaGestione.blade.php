@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
-@section('bodyType')
+
+@section('menu_nav')
 <body onload="document.getElementById('Chitarre').style.display = 'none';
         document.getElementById('Chitarre-delete').style.display = 'none';
         document.getElementById('Bassi').style.display = 'none';
@@ -16,12 +17,7 @@
         document.getElementById('Audio Pro e Luci').style.display = 'none';
         document.getElementById('Audio Pro e Luci-delete').style.display = 'none';
         document.getElementById('Strumenti Tradizionali').style.display = 'none';
-        document.getElementById('Strumenti Tradizionali-delete').style.display = 'none';
-        document.getElementById('Tradizionali').style.display = 'none';
-        document.getElementById('Tradizionali-delete').style.display = 'none';">
-    @stop
-
-    @section('menu_nav')
+        document.getElementById('Strumenti Tradizionali-delete').style.display = 'none';">
 <li class="nav-item">
     <a class="nav-link" href="{{ route('home') }}">Home</a>
 </li>
@@ -91,197 +87,6 @@
 @stop
 
 @section('corpo')
-<script>
-    function Categoria() {
-        document.getElementById("seleziona-categoria-esistente");
-        var valore = document.getElementById("seleziona-categoria-esistente").value;
-        if (valore == 1) {
-            document.getElementById("Chitarre").style.display = "block";
-            document.getElementById("Bassi").style.display = "none";
-            document.getElementById("Fiati").style.display = "none";
-            document.getElementById("Batterie e Percussioni").style.display = "none";
-            document.getElementById("Tastiere").style.display = "none";
-            document.getElementById("Studio e Registrazione").style.display = "none";
-            document.getElementById("Audio Pro e Luci").style.display = "none";
-            document.getElementById("Strumenti Tradizionali").style.display = "none";
-            document.getElementById("Accessori").style.display = "none";
-        } else if (valore == 2) {
-            document.getElementById("Chitarre").style.display = "none";
-            document.getElementById("Bassi").style.display = "block";
-            document.getElementById("Fiati").style.display = "none";
-            document.getElementById("Batterie e Percussioni").style.display = "none";
-            document.getElementById("Tastiere").style.display = "none";
-            document.getElementById("Studio e Registrazione").style.display = "none";
-            document.getElementById("Audio Pro e Luci").style.display = "none";
-            document.getElementById("Strumenti Tradizionali").style.display = "none";
-            document.getElementById("Accessori").style.display = "none";
-        } else if (valore == 5) {
-            document.getElementById("Chitarre").style.display = "none";
-            document.getElementById("Bassi").style.display = "none";
-            document.getElementById("Fiati").style.display = "block";
-            document.getElementById("Batterie e Percussioni").style.display = "none";
-            document.getElementById("Tastiere").style.display = "none";
-            document.getElementById("Studio e Registrazione").style.display = "none";
-            document.getElementById("Audio Pro e Luci").style.display = "none";
-            document.getElementById("Strumenti Tradizionali").style.display = "none";
-            document.getElementById("Accessori").style.display = "none";
-        } else if (valore == 6) {
-            document.getElementById("Chitarre").style.display = "none";
-            document.getElementById("Bassi").style.display = "none";
-            document.getElementById("Fiati").style.display = "none";
-            document.getElementById("Batterie e Percussioni").style.display = "block";
-            document.getElementById("Tastiere").style.display = "none";
-            document.getElementById("Studio e Registrazione").style.display = "none";
-            document.getElementById("Audio Pro e Luci").style.display = "none";
-            document.getElementById("Strumenti Tradizionali").style.display = "none";
-            document.getElementById("Accessori").style.display = "none";
-        } else if (valore == 7) {
-            document.getElementById("Chitarre").style.display = "none";
-            document.getElementById("Bassi").style.display = "none";
-            document.getElementById("Fiati").style.display = "none";
-            document.getElementById("Batterie e Percussioni").style.display = "none";
-            document.getElementById("Tastiere").style.display = "block";
-            document.getElementById("Studio e Registrazione").style.display = "none";
-            document.getElementById("Audio Pro e Luci").style.display = "none";
-            document.getElementById("Strumenti Tradizionali").style.display = "none";
-            document.getElementById("Accessori").style.display = "none";
-        } else if (valore == 8) {
-            document.getElementById("Chitarre").style.display = "none";
-            document.getElementById("Bassi").style.display = "none";
-            document.getElementById("Fiati").style.display = "none";
-            document.getElementById("Batterie e Percussioni").style.display = "none";
-            document.getElementById("Tastiere").style.display = "none";
-            document.getElementById("Studio e Registrazione").style.display = "block";
-            document.getElementById("Audio Pro e Luci").style.display = "none";
-            document.getElementById("Strumenti Tradizionali").style.display = "none";
-            document.getElementById("Accessori").style.display = "none";
-        } else if (valore == 9) {
-            document.getElementById("Chitarre").style.display = "none";
-            document.getElementById("Bassi").style.display = "none";
-            document.getElementById("Fiati").style.display = "none";
-            document.getElementById("Batterie e Percussioni").style.display = "none";
-            document.getElementById("Tastiere").style.display = "none";
-            document.getElementById("Studio e Registrazione").style.display = "none";
-            document.getElementById("Audio Pro e Luci").style.display = "block";
-            document.getElementById("Strumenti Tradizionali").style.display = "none";
-            document.getElementById("Accessori").style.display = "none";
-        } else if (valore == 10) {
-            document.getElementById("Chitarre").style.display = "none";
-            document.getElementById("Bassi").style.display = "none";
-            document.getElementById("Fiati").style.display = "none";
-            document.getElementById("Batterie e Percussioni").style.display = "none";
-            document.getElementById("Tastiere").style.display = "none";
-            document.getElementById("Studio e Registrazione").style.display = "none";
-            document.getElementById("Audio Pro e Luci").style.display = "none";
-            document.getElementById("Strumenti Tradizionali").style.display = "block";
-            document.getElementById("Accessori").style.display = "none";
-        } else if (valore == 11) {
-            document.getElementById("Chitarre").style.display = "none";
-            document.getElementById("Bassi").style.display = "none";
-            document.getElementById("Fiati").style.display = "none";
-            document.getElementById("Batterie e Percussioni").style.display = "none";
-            document.getElementById("Tastiere").style.display = "none";
-            document.getElementById("Studio e Registrazione").style.display = "none";
-            document.getElementById("Audio Pro e Luci").style.display = "none";
-            document.getElementById("Strumenti Tradizionali").style.display = "none";
-            document.getElementById("Accessori").style.display = "block";
-        }
-    } //così salvo in valore il value che sarà già quello giusto
-    function CategoriaDelete() {
-        document.getElementById("seleziona-categoria-esistente-delete");
-        if (valore == 1) {
-            document.getElementById("Chitarre-delete").style.display = "block";
-            document.getElementById("Bassi-delete").style.display = "none";
-            document.getElementById("Fiati-delete").style.display = "none";
-            document.getElementById("Batterie e Percussioni-delete").style.display = "none";
-            document.getElementById("Tastiere-delete").style.display = "none";
-            document.getElementById("Studio e Registrazione-delete").style.display = "none";
-            document.getElementById("Audio Pro e Luci-delete").style.display = "none";
-            document.getElementById("Strumenti Tradizionali-delete").style.display = "none";
-            document.getElementById("Accessori-delete").style.display = "none";
-        } else if (valore == 2) {
-            document.getElementById("Chitarre-delete").style.display = "none";
-            document.getElementById("Bassi-delete").style.display = "block";
-            document.getElementById("Fiati-delete").style.display = "none";
-            document.getElementById("Batterie e Percussioni-delete").style.display = "none";
-            document.getElementById("Tastiere-delete").style.display = "none";
-            document.getElementById("Studio e Registrazione-delete").style.display = "none";
-            document.getElementById("Audio Pro e Luci-delete").style.display = "none";
-            document.getElementById("Strumenti Tradizionali-delete").style.display = "none";
-            document.getElementById("Accessori-delete").style.display = "none";
-        } else if (valore == 5) {
-            document.getElementById("Chitarre-delete").style.display = "none";
-            document.getElementById("Bassi-delete").style.display = "none";
-            document.getElementById("Fiati-delete").style.display = "block";
-            document.getElementById("Batterie e Percussioni-delete").style.display = "none";
-            document.getElementById("Tastiere-delete").style.display = "none";
-            document.getElementById("Studio e Registrazione-delete").style.display = "none";
-            document.getElementById("Audio Pro e Luci-delete").style.display = "none";
-            document.getElementById("Strumenti Tradizionali-delete").style.display = "none";
-            document.getElementById("Accessori-delete").style.display = "none";
-        } else if (valore == 6) {
-            document.getElementById("Chitarre-delete").style.display = "none";
-            document.getElementById("Bassi-delete").style.display = "none";
-            document.getElementById("Fiati-delete").style.display = "none";
-            document.getElementById("Batterie e Percussioni-delete").style.display = "block";
-            document.getElementById("Tastiere-delete").style.display = "none";
-            document.getElementById("Studio e Registrazione-delete").style.display = "none";
-            document.getElementById("Audio Pro e Luci-delete").style.display = "none";
-            document.getElementById("Strumenti Tradizionali-delete").style.display = "none";
-            document.getElementById("Accessori-delete").style.display = "none";
-        } else if (valore == 7) {
-            document.getElementById("Chitarre-delete").style.display = "none";
-            document.getElementById("Bassi-delete").style.display = "none";
-            document.getElementById("Fiati-delete").style.display = "none";
-            document.getElementById("Batterie e Percussioni-delete").style.display = "none";
-            document.getElementById("Tastiere-delete").style.display = "block";
-            document.getElementById("Studio e Registrazione-delete").style.display = "none";
-            document.getElementById("Audio Pro e Luci-delete").style.display = "none";
-            document.getElementById("Strumenti Tradizionali-delete").style.display = "none";
-            document.getElementById("Accessori-delete").style.display = "none";
-        } else if (valore == 8) {
-            document.getElementById("Chitarre-delete").style.display = "none";
-            document.getElementById("Bassi-delete").style.display = "none";
-            document.getElementById("Fiati-delete").style.display = "none";
-            document.getElementById("Batterie e Percussioni-delete").style.display = "none";
-            document.getElementById("Tastiere-delete").style.display = "none";
-            document.getElementById("Studio e Registrazione-delete").style.display = "block";
-            document.getElementById("Audio Pro e Luci-delete").style.display = "none";
-            document.getElementById("Strumenti Tradizionali-delete").style.display = "none";
-            document.getElementById("Accessori-delete").style.display = "none";
-        } else if (valore == 9) {
-            document.getElementById("Chitarre-delete").style.display = "none";
-            document.getElementById("Bassi-delete").style.display = "none";
-            document.getElementById("Fiati-delete").style.display = "none";
-            document.getElementById("Batterie e Percussioni-delete").style.display = "none";
-            document.getElementById("Tastiere-delete").style.display = "none";
-            document.getElementById("Studio e Registrazione-delete").style.display = "none";
-            document.getElementById("Audio Pro e Luci-delete").style.display = "block";
-            document.getElementById("Strumenti Tradizionali-delete").style.display = "none";
-            document.getElementById("Accessori-delete").style.display = "none";
-        } else if (valore == 10) {
-            document.getElementById("Chitarre-delete").style.display = "none";
-            document.getElementById("Bassi-delete").style.display = "none";
-            document.getElementById("Fiati-delete").style.display = "none";
-            document.getElementById("Batterie e Percussioni-delete").style.display = "none";
-            document.getElementById("Tastiere-delete").style.display = "none";
-            document.getElementById("Studio e Registrazione-delete").style.display = "none";
-            document.getElementById("Audio Pro e Luci-delete").style.display = "none";
-            document.getElementById("Strumenti Tradizionali-delete").style.display = "block";
-            document.getElementById("Accessori-delete").style.display = "none";
-        } else if (valore == 11) {
-            document.getElementById("Chitarre-delete").style.display = "none";
-            document.getElementById("Bassi-delete").style.display = "none";
-            document.getElementById("Fiati-delete").style.display = "none";
-            document.getElementById("Batterie e Percussioni-delete").style.display = "none";
-            document.getElementById("Tastiere-delete").style.display = "none";
-            document.getElementById("Studio e Registrazione-delete").style.display = "none";
-            document.getElementById("Audio Pro e Luci-delete").style.display = "none";
-            document.getElementById("Strumenti Tradizionali-delete").style.display = "none";
-            document.getElementById("Accessori-delete").style.display = "block";
-        }
-    }
-</script>
 <div class="container">
     <div class="row centra">
         <div class="col-sm-12">
@@ -537,4 +342,196 @@
         </div>
     </div>
 </div>
+
+<script>
+    function Categoria() {
+        //document.getElementById("seleziona-categoria-esistente");
+        var valore = document.getElementById("seleziona-categoria-esistente").value;
+        if (valore == 1) {
+            document.getElementById("Chitarre").style.display = "block";
+            document.getElementById("Bassi").style.display = "none";
+            document.getElementById("Fiati").style.display = "none";
+            document.getElementById("Batterie e Percussioni").style.display = "none";
+            document.getElementById("Tastiere").style.display = "none";
+            document.getElementById("Studio e Registrazione").style.display = "none";
+            document.getElementById("Audio Pro e Luci").style.display = "none";
+            document.getElementById("Strumenti Tradizionali").style.display = "none";
+            document.getElementById("Accessori").style.display = "none";
+        } else if (valore == 2) {
+            document.getElementById("Chitarre").style.display = "none";
+            document.getElementById("Bassi").style.display = "block";
+            document.getElementById("Fiati").style.display = "none";
+            document.getElementById("Batterie e Percussioni").style.display = "none";
+            document.getElementById("Tastiere").style.display = "none";
+            document.getElementById("Studio e Registrazione").style.display = "none";
+            document.getElementById("Audio Pro e Luci").style.display = "none";
+            document.getElementById("Strumenti Tradizionali").style.display = "none";
+            document.getElementById("Accessori").style.display = "none";
+        } else if (valore == 5) {
+            document.getElementById("Chitarre").style.display = "none";
+            document.getElementById("Bassi").style.display = "none";
+            document.getElementById("Fiati").style.display = "block";
+            document.getElementById("Batterie e Percussioni").style.display = "none";
+            document.getElementById("Tastiere").style.display = "none";
+            document.getElementById("Studio e Registrazione").style.display = "none";
+            document.getElementById("Audio Pro e Luci").style.display = "none";
+            document.getElementById("Strumenti Tradizionali").style.display = "none";
+            document.getElementById("Accessori").style.display = "none";
+        } else if (valore == 6) {
+            document.getElementById("Chitarre").style.display = "none";
+            document.getElementById("Bassi").style.display = "none";
+            document.getElementById("Fiati").style.display = "none";
+            document.getElementById("Batterie e Percussioni").style.display = "block";
+            document.getElementById("Tastiere").style.display = "none";
+            document.getElementById("Studio e Registrazione").style.display = "none";
+            document.getElementById("Audio Pro e Luci").style.display = "none";
+            document.getElementById("Strumenti Tradizionali").style.display = "none";
+            document.getElementById("Accessori").style.display = "none";
+        } else if (valore == 7) {
+            document.getElementById("Chitarre").style.display = "none";
+            document.getElementById("Bassi").style.display = "none";
+            document.getElementById("Fiati").style.display = "none";
+            document.getElementById("Batterie e Percussioni").style.display = "none";
+            document.getElementById("Tastiere").style.display = "block";
+            document.getElementById("Studio e Registrazione").style.display = "none";
+            document.getElementById("Audio Pro e Luci").style.display = "none";
+            document.getElementById("Strumenti Tradizionali").style.display = "none";
+            document.getElementById("Accessori").style.display = "none";
+        } else if (valore == 8) {
+            document.getElementById("Chitarre").style.display = "none";
+            document.getElementById("Bassi").style.display = "none";
+            document.getElementById("Fiati").style.display = "none";
+            document.getElementById("Batterie e Percussioni").style.display = "none";
+            document.getElementById("Tastiere").style.display = "none";
+            document.getElementById("Studio e Registrazione").style.display = "block";
+            document.getElementById("Audio Pro e Luci").style.display = "none";
+            document.getElementById("Strumenti Tradizionali").style.display = "none";
+            document.getElementById("Accessori").style.display = "none";
+        } else if (valore == 9) {
+            document.getElementById("Chitarre").style.display = "none";
+            document.getElementById("Bassi").style.display = "none";
+            document.getElementById("Fiati").style.display = "none";
+            document.getElementById("Batterie e Percussioni").style.display = "none";
+            document.getElementById("Tastiere").style.display = "none";
+            document.getElementById("Studio e Registrazione").style.display = "none";
+            document.getElementById("Audio Pro e Luci").style.display = "block";
+            document.getElementById("Strumenti Tradizionali").style.display = "none";
+            document.getElementById("Accessori").style.display = "none";
+        } else if (valore == 10) {
+            document.getElementById("Chitarre").style.display = "none";
+            document.getElementById("Bassi").style.display = "none";
+            document.getElementById("Fiati").style.display = "none";
+            document.getElementById("Batterie e Percussioni").style.display = "none";
+            document.getElementById("Tastiere").style.display = "none";
+            document.getElementById("Studio e Registrazione").style.display = "none";
+            document.getElementById("Audio Pro e Luci").style.display = "none";
+            document.getElementById("Strumenti Tradizionali").style.display = "block";
+            document.getElementById("Accessori").style.display = "none";
+        } else if (valore == 11) {
+            document.getElementById("Chitarre").style.display = "none";
+            document.getElementById("Bassi").style.display = "none";
+            document.getElementById("Fiati").style.display = "none";
+            document.getElementById("Batterie e Percussioni").style.display = "none";
+            document.getElementById("Tastiere").style.display = "none";
+            document.getElementById("Studio e Registrazione").style.display = "none";
+            document.getElementById("Audio Pro e Luci").style.display = "none";
+            document.getElementById("Strumenti Tradizionali").style.display = "none";
+            document.getElementById("Accessori").style.display = "block";
+        }
+    } //così salvo in valore il value che sarà già quello giusto
+    function CategoriaDelete() {
+        var valoreDelete = document.getElementById("seleziona-categoria-esistente-delete").value;
+        if (valoreDelete == 1) {
+            document.getElementById("Chitarre-delete").style.display = "block";
+            document.getElementById("Bassi-delete").style.display = "none";
+            document.getElementById("Fiati-delete").style.display = "none";
+            document.getElementById("Batterie e Percussioni-delete").style.display = "none";
+            document.getElementById("Tastiere-delete").style.display = "none";
+            document.getElementById("Studio e Registrazione-delete").style.display = "none";
+            document.getElementById("Audio Pro e Luci-delete").style.display = "none";
+            document.getElementById("Strumenti Tradizionali-delete").style.display = "none";
+            document.getElementById("Accessori-delete").style.display = "none";
+        } else if (valoreDelete == 2) {
+            document.getElementById("Chitarre-delete").style.display = "none";
+            document.getElementById("Bassi-delete").style.display = "block";
+            document.getElementById("Fiati-delete").style.display = "none";
+            document.getElementById("Batterie e Percussioni-delete").style.display = "none";
+            document.getElementById("Tastiere-delete").style.display = "none";
+            document.getElementById("Studio e Registrazione-delete").style.display = "none";
+            document.getElementById("Audio Pro e Luci-delete").style.display = "none";
+            document.getElementById("Strumenti Tradizionali-delete").style.display = "none";
+            document.getElementById("Accessori-delete").style.display = "none";
+        } else if (valoreDelete == 5) {
+            document.getElementById("Chitarre-delete").style.display = "none";
+            document.getElementById("Bassi-delete").style.display = "none";
+            document.getElementById("Fiati-delete").style.display = "block";
+            document.getElementById("Batterie e Percussioni-delete").style.display = "none";
+            document.getElementById("Tastiere-delete").style.display = "none";
+            document.getElementById("Studio e Registrazione-delete").style.display = "none";
+            document.getElementById("Audio Pro e Luci-delete").style.display = "none";
+            document.getElementById("Strumenti Tradizionali-delete").style.display = "none";
+            document.getElementById("Accessori-delete").style.display = "none";
+        } else if (valoreDelete == 6) {
+            document.getElementById("Chitarre-delete").style.display = "none";
+            document.getElementById("Bassi-delete").style.display = "none";
+            document.getElementById("Fiati-delete").style.display = "none";
+            document.getElementById("Batterie e Percussioni-delete").style.display = "block";
+            document.getElementById("Tastiere-delete").style.display = "none";
+            document.getElementById("Studio e Registrazione-delete").style.display = "none";
+            document.getElementById("Audio Pro e Luci-delete").style.display = "none";
+            document.getElementById("Strumenti Tradizionali-delete").style.display = "none";
+            document.getElementById("Accessori-delete").style.display = "none";
+        } else if (valoreDelete == 7) {
+            document.getElementById("Chitarre-delete").style.display = "none";
+            document.getElementById("Bassi-delete").style.display = "none";
+            document.getElementById("Fiati-delete").style.display = "none";
+            document.getElementById("Batterie e Percussioni-delete").style.display = "none";
+            document.getElementById("Tastiere-delete").style.display = "block";
+            document.getElementById("Studio e Registrazione-delete").style.display = "none";
+            document.getElementById("Audio Pro e Luci-delete").style.display = "none";
+            document.getElementById("Strumenti Tradizionali-delete").style.display = "none";
+            document.getElementById("Accessori-delete").style.display = "none";
+        } else if (valoreDelete == 8) {
+            document.getElementById("Chitarre-delete").style.display = "none";
+            document.getElementById("Bassi-delete").style.display = "none";
+            document.getElementById("Fiati-delete").style.display = "none";
+            document.getElementById("Batterie e Percussioni-delete").style.display = "none";
+            document.getElementById("Tastiere-delete").style.display = "none";
+            document.getElementById("Studio e Registrazione-delete").style.display = "block";
+            document.getElementById("Audio Pro e Luci-delete").style.display = "none";
+            document.getElementById("Strumenti Tradizionali-delete").style.display = "none";
+            document.getElementById("Accessori-delete").style.display = "none";
+        } else if (valoreDelete == 9) {
+            document.getElementById("Chitarre-delete").style.display = "none";
+            document.getElementById("Bassi-delete").style.display = "none";
+            document.getElementById("Fiati-delete").style.display = "none";
+            document.getElementById("Batterie e Percussioni-delete").style.display = "none";
+            document.getElementById("Tastiere-delete").style.display = "none";
+            document.getElementById("Studio e Registrazione-delete").style.display = "none";
+            document.getElementById("Audio Pro e Luci-delete").style.display = "block";
+            document.getElementById("Strumenti Tradizionali-delete").style.display = "none";
+            document.getElementById("Accessori-delete").style.display = "none";
+        } else if (valoreDelete == 10) {
+            document.getElementById("Chitarre-delete").style.display = "none";
+            document.getElementById("Bassi-delete").style.display = "none";
+            document.getElementById("Fiati-delete").style.display = "none";
+            document.getElementById("Batterie e Percussioni-delete").style.display = "none";
+            document.getElementById("Tastiere-delete").style.display = "none";
+            document.getElementById("Studio e Registrazione-delete").style.display = "none";
+            document.getElementById("Audio Pro e Luci-delete").style.display = "none";
+            document.getElementById("Strumenti Tradizionali-delete").style.display = "block";
+            document.getElementById("Accessori-delete").style.display = "none";
+        } else if (valoreDelete == 11) {
+            document.getElementById("Chitarre-delete").style.display = "none";
+            document.getElementById("Bassi-delete").style.display = "none";
+            document.getElementById("Fiati-delete").style.display = "none";
+            document.getElementById("Batterie e Percussioni-delete").style.display = "none";
+            document.getElementById("Tastiere-delete").style.display = "none";
+            document.getElementById("Studio e Registrazione-delete").style.display = "none";
+            document.getElementById("Audio Pro e Luci-delete").style.display = "none";
+            document.getElementById("Strumenti Tradizionali-delete").style.display = "none";
+            document.getElementById("Accessori-delete").style.display = "block";
+        }
+    }
+</script>
 @stop
