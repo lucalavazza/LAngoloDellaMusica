@@ -107,7 +107,9 @@
                     <tr>
                         <th class="foto-tab d-none d-lg-table-cell" scope="col"></th>
                         <th class="titolo-tab modello-tab" scope="col">Modello</th>
+                        <th class="titolo-tab d-none d-md-table-cell text-center" scope="col">Prezzo</th>
                         <th class="titolo-tab d-none d-md-table-cell text-center" scope="col">Condizione</th>
+                        <th class="bottone-tab" scope="col"></th>
                         <th class="bottone-tab" scope="col"></th>
                     </tr>
                 </thead>
@@ -121,18 +123,28 @@
                             {{$product->brand}} {{$product->model}}
                         </td>
                         <td class="d-none d-md-table-cell align-middle text-center">
+                            {{$product->price}}€
+                        </td>
+                        <td class="d-none d-md-table-cell align-middle text-center">
                             {{$product->status}}
                         </td>
                         <td class="align-middle text-center">
-                            
-                                <form id="elimina-prodotto-forever" class="formRemove" action="{{ route('deleteProduct') }}" method="post" name="prodotto-eliminato" >
-                                    @csrf
-                                    <div class="form-group">
-                                        <label style="vertical-align: middle;" for="myDelete" class="d-none d-md-block bottone bottone_elimina bold">Elimina <i class="fas fa-trash-alt"></i></label>
-                                        <label for="myDelete" class="bottone-tab-dettaglio d-md-none bottone bottone_elimina bold"><i class="fas fa-trash-alt"></i></label>
-                                        <input id="myDelete" type="submit" value="{{ $product->id }}" name="removeForever" class="invisible">
-                                    </div>
-                                </form>
+                            <a class="d-none d-md-block bottone bottone_entra bold" href="{{ route('dettaglio', ['id' => $product->id]) }}">Dettagli<i class="fas fa-info"></i></a>
+                            <a class="bottone-tab d-md-none bottone bottone_entra bold" href="{{ route('dettaglio', ['id' => $product->id]) }}"><i class="fas fa-info"></i></a>
+                        </td>
+                        <td class="align-middle text-center">
+                            <form id="elimina-prodotto-forever" class="formRemove" action="{{ route('deleteProduct') }}" method="post" name="prodotto-eliminato" >
+                                @csrf
+                                <div class="form-group">
+<!--                                    <label  for="myDelete" class="d-none d-md-block bottone bottone_elimina bold">Elimina <i class="fas fa-trash-alt"></i></label>
+                                    <label for="myDelete" class="bottone-tab-dettaglio d-md-none bottone bottone_elimina bold"><i class="fas fa-trash-alt"></i></label>
+                                    <input id="myDelete" type="submit" value="{{ $product->id }}" name="removeForever" class="invisible">-->
+
+                                    <input type="hidden" value="{{ $product->id }}" name="removeForever">
+                                    <button class="d-none d-md-block bottone bottone_elimina bold" type="submit">Elimina <i class="fas fa-trash-alt"></i></button>
+                                    <button class="bottone-tab-dettaglio d-md-none bottone bottone_elimina bold" type="submit"><i class="fas fa-trash-alt"></i></button>
+                                </div>
+                            </form>
                         </td>
                     </tr>
                     @endforeach

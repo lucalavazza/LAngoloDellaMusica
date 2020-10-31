@@ -416,7 +416,7 @@ class GateController extends Controller {
         
 //        modifico il campo con i dati del prodotto eliminato
         foreach ($listaIdUtenti as $id) {
-            $dl->changeDeletedField($prodotto_id, $marca, $modello, $colore, $stato);
+            $dl->changeDeletedField($id, $marca, $modello, $colore, $stato);
         }
         
         $dl->deleteProduct($prodotto_id);
