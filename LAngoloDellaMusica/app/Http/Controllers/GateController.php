@@ -418,9 +418,13 @@ class GateController extends Controller {
         
         $dl->deleteProduct($id);
         
-        return view('lists.delete')->with('logged', $logged)->with('loggedName', $loggedName)
-                        ->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list)->with('wish', $wish)
-                        ->with('products_list', $products_list)->with('userid', $userid);
+//        return view('lists.delete')->with('logged', $logged)->with('loggedName', $loggedName)
+//                        ->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list)->with('wish', $wish)
+//                        ->with('products_list', $products_list)->with('userid', $userid);
+        
+        //per ora rimandiamo alla pagina di gestione. Vedremo se migliorare.
+        
+        return Redirect::to(route('paginaGestione'));
     }
 
     public function store(Request $request) {

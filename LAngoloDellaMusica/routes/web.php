@@ -55,6 +55,7 @@ Route::get('/user/registrazione/erroreVecchiaPassword',['as' => 'erroreVecchiaPw
 
 //Gestisco la wishlist
 Route::get('/wishlist',['as' => 'wishlist.index', 'uses' => 'WishController@index']); // ---> FATTO
+Route::get('/capito',['as' => 'wishlist.capito', 'uses' => 'WishController@capito']); // ---> FATTO
 Route::get('/wishlist/{id}/elimina',['as' => 'wishlist.delete', 'uses' => 'WishController@delete']); // ---> FATTO
 Route::post('/wishlist/elimina',['as' => 'wishlist.deletePost', 'uses' => 'WishController@deletePost']); // ---> FATTO
 Route::post('/wishlist/eliminaSearch',['as' => 'wishlist.deletePostSearch', 'uses' => 'WishController@deletePostSearch']); // ---> FATTO

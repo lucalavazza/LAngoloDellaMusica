@@ -18,9 +18,37 @@ class WishController extends Controller
             $allprods=$dl->listAllProducts();
             $uid=$dl->getUserID($_SESSION['loggedName']);
             $wishl=$dl->listWishlist($uid);
+            $messaggio=$dl->getUsersMessage($_SESSION['loggedName']);
+            
             return view('lists.wish')->with('logged',true)->with('loggedName',$_SESSION['loggedName'])
                     ->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list)
-                    ->with('wishl',$wishl)->with('allprods',$allprods);
+                    ->with('wishl',$wishl)->with('allprods',$allprods)->with('messaggio',$messaggio);
+        } else {
+            $dl = new DataLayer;
+            $macro_categories_list = $dl->listMacroCategories();
+            $categories_list = $dl->listSpecificCategories();
+        
+            return view('auth.restrictedArea')->with('macro_categories_list', $macro_categories_list)
+                ->with('categories_list', $categories_list);
+        }
+    }
+    
+    public function capito() {
+        session_start();
+        
+        if(isset($_SESSION['logged'])) {
+            $dl = new DataLayer;
+            $macro_categories_list = $dl->listMacroCategories();
+            $categories_list = $dl->listSpecificCategories();
+            $allprods=$dl->listAllProducts();
+            $uid=$dl->getUserID($_SESSION['loggedName']);
+            $wishl=$dl->listWishlist($uid);
+            $dl->capitoDeletedField($_SESSION['loggedName']);
+            $messaggio=$dl->getUsersMessage($_SESSION['loggedName']);
+            
+            return view('lists.wish')->with('logged',true)->with('loggedName',$_SESSION['loggedName'])
+                    ->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list)
+                    ->with('wishl',$wishl)->with('allprods',$allprods)->with('messaggio',$messaggio);
         } else {
             $dl = new DataLayer;
             $macro_categories_list = $dl->listMacroCategories();

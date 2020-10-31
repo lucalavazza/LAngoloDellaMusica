@@ -133,9 +133,12 @@
                             <a class="bottone-tab d-md-none bottone bottone_entra bold" href="{{ route('dettaglio', ['id' => $product->id]) }}"><i class="fas fa-info"></i></a>
                         </td>
                         <td class="align-middle text-center">
-                            
-                            <a class="d-none d-md-block bottone bottone_elimina bold" href="{{ route('deleteProduct', ['id' => $product->id]) }}">Elimina <i class="fas fa-trash-alt"></i></a>
-                            <a class="bottone-tab d-md-none bottone bottone_elimina bold" href="{{ route('deleteProduct', ['id' => $product->id]) }}"><i class="fas fa-trash-alt"></i></a>
+                            <form id="formRemove{{$product->id}}" class="formRemove" >
+                                @csrf
+                                <a class="d-none d-md-block bottone bottone_elimina bold" href="{{ route('deleteProduct', ['id' => $product->id]) }}">Elimina <i class="fas fa-trash-alt"></i></a>
+                                <a class="bottone-tab d-md-none bottone bottone_elimina bold" href="{{ route('deleteProduct', ['id' => $product->id]) }}"><i class="fas fa-trash-alt"></i></a>
+                            </form>
+
                         </td>
                     </tr>
                     @endforeach
