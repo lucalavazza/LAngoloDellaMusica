@@ -384,7 +384,7 @@ class GateController extends Controller {
         return Redirect::to(route('home'));
     }
     
-    public function deleteProductController(Request $request) {
+    public function deleteProductController(Request $request, $id) {
         session_start();
 
         $dl = new DataLayer;
@@ -403,23 +403,21 @@ class GateController extends Controller {
         $dl = new DataLayer;
         $master = $dl->isMaster($_SESSION['loggedName']);
         
-        $prodotto_id = $request->input('prodotto-eliminato');
-        
 //        prelevo i dati del prodotto da inscrivere nella cella della tabella utente
-        $marca=$dl->getProductBrandByID($prodotto_id);
-        $modello=$dl->getProductModelByID($prodotto_id);
-        $colore=$dl->getProductColorByID($prodotto_id);
-        $stato=$dl->getProductStatusByID($prodotto_id);
+        $marca=$dl->getProductBrandByID($id);
+        $modello=$dl->getProductModelByID($id);
+        $colore=$dl->getProductColorByID($id);
+        $stato=$dl->getProductStatusByID($id);
         
 //        prelevo gli id degli utenti che hanno il prodotto nella propria wishlist
-        $listaIdUtenti=$dl->listUsersIdWithProductInWishlist($prodotto_id);
+        $listaIdUtenti=$dl->listUsersIdWithProductInWishlist($id);
         
 //        modifico il campo con i dati del prodotto eliminato
-        foreach ($listaIdUtenti as $id) {
-            $dl->changeDeletedField($id, $marca, $modello, $colore, $stato);
+        foreach ($listaIdUtenti as $idu) {
+            $dl->changeDeletedField($idu, $marca, $modello, $colore, $stato);
         }
         
-        $dl->deleteProduct($prodotto_id);
+        $dl->deleteProduct($id);
         
         return back();
     }

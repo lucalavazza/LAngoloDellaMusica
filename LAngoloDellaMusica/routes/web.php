@@ -15,7 +15,7 @@ Route::get('/paginaGestione',['as' => 'paginaGestione', 'uses' => 'GateControlle
 Route::get('/cambioPassword',['as' => 'cambioPassword', 'uses' => 'GateController@getCambio']); // ---> FATTO
 
 Route::get('/deleteUser',['as' => 'deleteUser', 'uses' => 'GateController@deleteUser']);
-Route::post('/deleteProduct',['as' => 'deleteProduct', 'uses' => 'GateController@deleteProduct']);
+Route::get('/deleteProduct/{id}',['as' => 'deleteProduct', 'uses' => 'GateController@deleteProductController']);
 
 //Gestisco la visualizzazione degli strumenti
 Route::get('/macro/{id}',['as' => 'macro', 'uses' => 'GateController@getMacro']); // ---> FATTO
