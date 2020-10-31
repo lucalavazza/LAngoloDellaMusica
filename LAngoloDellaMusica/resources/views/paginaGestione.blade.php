@@ -192,54 +192,6 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="container">
-                    <div class="card my-3" style="border-color: #b58d51">
-                        <div class="container">
-                            <h3 class="my-3" style="font-weight: bold; color: #b58d51"> Modifica un prodotto </h3>
-                            <form>
-                                @csrf
-                                <div class="form-group">
-                                    <select style="border-color: #b58d51" class="browser-default custom-select my-3">
-                                        <option selected>Chitarre</option>
-                                        <option value="1">Poi</option>
-                                        <option value="2">Qui</option>
-                                        <option value="3">Sistemo</option>
-                                    </select>
-                                    <select style="border-color: #b58d51" class="browser-default custom-select my-3">
-                                        <option selected>Chitarre elettriche</option>
-                                        <option value="1">Poi</option>
-                                        <option value="2">Qui</option>
-                                        <option value="3">Sistemo</option>
-                                    </select>
-                                    <select style="border-color: #b58d51" class="browser-default custom-select my-3">
-                                        <option selected>Fender</option>
-                                        <option value="1">Poi</option>
-                                        <option value="2">Qui</option>
-                                        <option value="3">Sistemo</option>
-                                    </select>
-                                    <select style="border-color: #b58d51" class="browser-default custom-select my-3">
-                                        <option selected>Telecaster American Ultra</option>
-                                        <option value="1">Poi</option>
-                                        <option value="2">Qui</option>
-                                        <option value="3">Sistemo</option>
-                                    </select>
-                                    <select style="border-color: #b58d51" class="browser-default custom-select my-3">
-                                        <option selected>Prezzo</option>
-                                        <option value="1">Poi</option>
-                                        <option value="2">Qui</option>
-                                        <option value="3">Sistemo</option>
-                                    </select>
-                                    <input style="border-color: #b58d51" type="text" class="form-control my-3" placeholder="Inserisci il nuovo valore" required="">
-                                </div>
-                                <div class="form-group">
-                                    <input class="bottone bottone_entra bold mt-3" type="submit" name="login-submit" value="Procedi alla modifica">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="container">
                     <div class="card my-3" style="border-color: #c44835">
                         <div class="container">

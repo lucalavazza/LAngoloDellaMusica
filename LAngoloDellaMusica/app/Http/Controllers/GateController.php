@@ -479,7 +479,6 @@ class GateController extends Controller {
             $wish = "";
         }
 
-        $dl = new DataLayer;
         $master = $dl->isMaster($_SESSION['loggedName']);
         
         $categoria_id = $request->input('categoria-delete');
@@ -495,4 +494,32 @@ class GateController extends Controller {
                         ->with('products_list', $products_list)->with('userid', $userid);
     }
 
+    public function edit(Request $request) {
+        
+        session_start();
+        $dl=new DataLayer;
+        if (isset($_SESSION['logged'])) {
+            $logged = true;
+            $loggedName = $_SESSION['loggedName'];
+            $userid = $dl->getUserID($loggedName);
+            $wish = $dl->listWishlist($userid);
+        } else {
+            $logged = false;
+            $loggedName = "";
+            $userid = "";
+            $wish = "";
+        }
+        $categoria_id = $request->input('categoria-edit');
+        $categoria_name = $dl->getMacroCategoryNameById($categoria_id);
+        $sottocategoria_name = $request->input($categoria_name.'-edit');
+        $products_list=$dl->listProductsByCat($sottocategoria_name);
+        
+        $macro_categories_list = $dl->listMacroCategories();
+        $categories_list = $dl->listSpecificCategories();
+        
+        return view('edit')->with('logged', $logged)->with('loggedName', $loggedName)
+                ->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list)
+                ->with('wish', $wish)->with('products_list', $products_list)->with('userid', $userid)
+                ->with('macro_cat', $categoria_name)->with('specific_cat', $sottocategoria_name);
+    }
 }

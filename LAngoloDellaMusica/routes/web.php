@@ -68,3 +68,5 @@ Route::post('/wishlist/aggiungiSearch',['as' => 'wishlist.addPostSearch', 'uses'
 Route::post('/paginaGestione/add',['as' => 'paginaGestione.add', 'uses' => 'GateController@store']);
 Route::post('/paginaGestione',['as' => 'paginaGestione.edit', 'uses' => 'GateController@edit']);
 Route::post('/paginaGestione/delete',['as' => 'paginaGestione.delete', 'uses' => 'GateController@delete']);
+Route::post('/paginaGestione/edit',['as' => 'paginaGestione.edit', 'uses' => 'GateController@edit']);
+Route::post('/paginaGestione/confirmEdit',['as' => 'paginaGestione.confirmEdit', 'uses' => 'GateController@confirmEdit']);
