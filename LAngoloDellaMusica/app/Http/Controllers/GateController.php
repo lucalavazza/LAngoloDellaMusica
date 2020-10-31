@@ -199,8 +199,8 @@ class GateController extends Controller {
             $brands_list = $dl->listBrands();
             $products_list = $dl->listAllProducts();
             return view('paginaGestione')->with('logged', true)->with('loggedName', $_SESSION['loggedName'])
-                    ->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list)
-                    ->with('brands_list', $brands_list)->with('products_list',$products_list);
+                            ->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list)
+                            ->with('brands_list', $brands_list)->with('products_list', $products_list);
         } else {
             $dl = new DataLayer;
             $macro_categories_list = $dl->listMacroCategories();
@@ -239,17 +239,17 @@ class GateController extends Controller {
 //        } else {
 //            $vuoto = false;
 //        }
-        
+
         if (empty($anyproducts)) {
             $vuoto = true;
         } else {
             $vuoto = false;
         }
-        
+
         return view('lists.macro')->with('logged', $logged)->with('loggedName', $loggedName)
                         ->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list)
                         ->with('iden', $id)->with('products', $products_list)->with('macro_name', $macro_name)
-                        ->with('macrosspec', $macrosspec)->with('wish', $wish)->with('userid', $userid)->with('anyproducts',$anyproducts);
+                        ->with('macrosspec', $macrosspec)->with('wish', $wish)->with('userid', $userid)->with('anyproducts', $anyproducts);
     }
 
     public function getSpec(Request $request, $id) {
@@ -378,12 +378,52 @@ class GateController extends Controller {
     public function deleteUser() {
         session_start();
         $dl = new DataLayer;
-        $uid=$dl->getUserID($_SESSION['loggedName']);
+        $uid = $dl->getUserID($_SESSION['loggedName']);
         $dl->deleteUser($_SESSION['loggedName'], $uid);
         session_destroy();
         return Redirect::to(route('home'));
     }
     
+    public function deleteProductController(Request $request) {
+        session_start();
+
+        $dl = new DataLayer;
+        if (isset($_SESSION['logged'])) {
+            $logged = true;
+            $loggedName = $_SESSION['loggedName'];
+            $userid = $dl->getUserID($loggedName);
+            $wish = $dl->listWishlist($userid);
+        } else {
+            $logged = false;
+            $loggedName = "";
+            $userid = "";
+            $wish = "";
+        }
+
+        $dl = new DataLayer;
+        $master = $dl->isMaster($_SESSION['loggedName']);
+        
+        $prodotto_id = $request->input('prodotto-eliminato');
+        
+//        prelevo i dati del prodotto da inscrivere nella cella della tabella utente
+        $marca=$dl->getProductBrandByID($prodotto_id);
+        $modello=$dl->getProductModelByID($prodotto_id);
+        $colore=$dl->getProductColorByID($prodotto_id);
+        $stato=$dl->getProductStatusByID($prodotto_id);
+        
+//        prelevo gli id degli utenti che hanno il prodotto nella propria wishlist
+        $listaIdUtenti=$dl->listUsersIdWithProductInWishlist($prodotto_id);
+        
+//        modifico il campo con i dati del prodotto eliminato
+        foreach ($listaIdUtenti as $id) {
+            $dl->changeDeletedField($prodotto_id, $marca, $modello, $colore, $stato);
+        }
+        
+        $dl->deleteProduct($prodotto_id);
+        
+        return back();
+    }
+
     public function store(Request $request) {
         session_start();
         $dl = new DataLayer;
@@ -394,19 +434,19 @@ class GateController extends Controller {
         $categoria_name = $dl->getMacroCategoryNameById($categoria_id);
         //print_r($categoria_name);
         echo($categoria_name);
-        $sottocategoria_name=$request->input($categoria_name);
+        $sottocategoria_name = $request->input($categoria_name);
         //print_r($sottocategoria_name);
         $sottocategoria_id = $dl->getSpecificCategoryIdByName($sottocategoria_name);
-        
+
         $modelExisting = $dl->modelExist($modello, $request->input('colore'), $request->input('condizione'));
         if (is_null($modelExisting)) {
             $file = $request->file('path');
             $fileext = $file->getClientOriginalExtension();
-            $newfilename=$modello."-".$request->input("colore").".".$fileext;
-            $percorso='pics/'.$sottocategoria_name.'/';
+            $newfilename = $modello . "-" . $request->input("colore") . "." . $fileext;
+            $percorso = 'pics/' . $sottocategoria_name . '/';
             $file->storeAs($percorso, $newfilename);
-            $path=$percorso.$newfilename;
-            
+            $path = $percorso . $newfilename;
+
             $dl->addProduct($categoria_name, $sottocategoria_name,
                     $request->input('marca'), $request->input('modello'),
                     $request->input('colore'), $request->input('prezzo'),
@@ -418,9 +458,38 @@ class GateController extends Controller {
         }
         return Redirect::to(route('home'));
     }
-    
-    public function deleteProduct() {
+
+    public function delete(Request $request) {
+
+        session_start();
+
+        $dl = new DataLayer;
+        if (isset($_SESSION['logged'])) {
+            $logged = true;
+            $loggedName = $_SESSION['loggedName'];
+            $userid = $dl->getUserID($loggedName);
+            $wish = $dl->listWishlist($userid);
+        } else {
+            $logged = false;
+            $loggedName = "";
+            $userid = "";
+            $wish = "";
+        }
+
+        $dl = new DataLayer;
+        $master = $dl->isMaster($_SESSION['loggedName']);
         
+        $categoria_id = $request->input('categoria-delete');
+        $categoria_name = $dl->getMacroCategoryNameById($categoria_id);
+        $sottocategoria_name = $request->input($categoria_name.'-delete');
+        $products_list=$dl->listProductsByCat($sottocategoria_name);
+        
+        $macro_categories_list = $dl->listMacroCategories();
+        $categories_list = $dl->listSpecificCategories();
+
+        return view('lists.delete')->with('logged', $logged)->with('loggedName', $loggedName)
+                        ->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list)->with('wish', $wish)
+                        ->with('products_list', $products_list)->with('userid', $userid);
     }
-    
+
 }

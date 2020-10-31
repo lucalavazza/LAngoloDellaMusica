@@ -36,6 +36,7 @@ class DataLayer extends Model
         return $products = Product::where('id',$id)->orderBy('brand','asc')->orderBy('model','asc')->get();
     }
     
+    
     public function listAllProducts() {
         return $products = Product::orderBy('model','asc')->get();
     }
@@ -98,7 +99,31 @@ class DataLayer extends Model
             return true;
         }
     }
-
+    
+    public function getProductBrandByID($id_prod) {
+        $product = Product::where('id',$id_prod)->get(['brand']);
+        return $product[0]->brand;
+    }
+    
+    public function getProductModelByID($id_prod) {
+        $product = Product::where('id',$id_prod)->get(['model']);
+        return $product[0]->model;
+    }
+    
+    public function getProductColorByID($id_prod) {
+        $product = Product::where('id',$id_prod)->get(['color']);
+        return $product[0]->color;
+    }
+    
+    public function getProductStatusByID($id_prod) {
+        $product = Product::where('id',$id_prod)->get(['status']);
+        return $product[0]->status;
+    }
+    
+    public function listUsersIdWithProductInWishlist($id_prod) {
+        return $UserId_lists = Wishlist::where('products_id',$id_prod)->get(['store_users_id']);
+    }
+    
     public function getUserID($username) {
         
         $users = StoreUser::where('username',$username)->get(['id']);
@@ -181,6 +206,12 @@ class DataLayer extends Model
         Wishlist::where('store_users_id', $user_id)->delete();
         $user->delete();
     }
+    
+    function deleteProduct($product_id) {
+        $product = Product::where('id',$product_id);
+        Wishlist::where('products_id', $product_id)->delete();
+        $product->delete();
+    }
 
     public function validUser($username, $password) {
         
@@ -210,6 +241,12 @@ class DataLayer extends Model
         
         $user = StoreUser::where('username',$username)->get()->first();
         $user->password = md5($password);
+        $user->save();
+    }
+    
+    public function changeDeletedField ($id, $brand, $model, $color, $status) {
+        $user = StoreUser::where('id',$id)->get()->first();
+        $user->deleted_products = "Il prodotto ".$brand." ".$model." di colore ".$color." nello stato ".$status." non è più disponibile!  -  ";
         $user->save();
     }
     
@@ -264,5 +301,7 @@ class DataLayer extends Model
         $product->specific_categories_id = $sottocategoria_id;
         $product->save();
     }
+    
+    
     
 }

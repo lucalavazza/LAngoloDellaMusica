@@ -15,6 +15,7 @@ Route::get('/paginaGestione',['as' => 'paginaGestione', 'uses' => 'GateControlle
 Route::get('/cambioPassword',['as' => 'cambioPassword', 'uses' => 'GateController@getCambio']); // ---> FATTO
 
 Route::get('/deleteUser',['as' => 'deleteUser', 'uses' => 'GateController@deleteUser']);
+Route::post('/deleteProduct',['as' => 'deleteProduct', 'uses' => 'GateController@deleteProduct']);
 
 //Gestisco la visualizzazione degli strumenti
 Route::get('/macro/{id}',['as' => 'macro', 'uses' => 'GateController@getMacro']); // ---> FATTO
@@ -65,4 +66,4 @@ Route::post('/wishlist/aggiungiSearch',['as' => 'wishlist.addPostSearch', 'uses'
 //Pagina del gestore
 Route::post('/paginaGestione/add',['as' => 'paginaGestione.add', 'uses' => 'GateController@store']);
 Route::post('/paginaGestione',['as' => 'paginaGestione.edit', 'uses' => 'GateController@edit']);
-Route::post('/paginaGestione',['as' => 'paginaGestione.delete', 'uses' => 'GateController@delete']);
+Route::post('/paginaGestione/delete',['as' => 'paginaGestione.delete', 'uses' => 'GateController@delete']);

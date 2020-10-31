@@ -316,7 +316,7 @@
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #c44835" class="browser-default custom-select my-3" name="brand-delete" id="brand-delete">
+<!--                                    <select style="border-color: #c44835" class="browser-default custom-select my-3" name="brand-delete" id="brand-delete">
                                         @foreach($brands_list as $brand)
                                         <option value="{{$brand->brand}}">{{$brand->brand}}</option>
                                         @endforeach
@@ -325,9 +325,9 @@
                                         @foreach($products_list as $product)
                                         <option value="{{$product->model}}">{{$product->model}}</option>
                                         @endforeach
-                                    </select>
+                                    </select>-->
                                     <div class="form-group">
-                                        <label for="mySubmit-delete" class="bottone bottone_elimina bold mt-3"><i class="fa fa-trash"></i> Procedi all'eliminazione</label>
+                                        <label for="mySubmit-delete" class="bottone bottone_elimina bold mt-3"><i class="fa fa-trash"></i> Prosegui alla pagina di eliminazione</label>
                                         <input type="submit" id="mySubmit-delete" value="delete" class="invisible"/>
                                     </div>
                                 </div>

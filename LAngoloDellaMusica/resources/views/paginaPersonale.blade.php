@@ -131,7 +131,6 @@
                                     <form id="delete" action="{{ route('deleteUser') }}" method="get">
                                         @csrf
                                         <input class="d-none d-md-block bottone bottone_elimina bold" style="width: 100%; clear: both; float: left;" type="submit" value="Elimina il tuo account" name="Change-submit" onclick="return confirmDelete()"> <!--devo mandare ad una route che mi invoca un controller, che mi invoca un metodo di DL che mi elimina l'account-->
-
                                     </form>
                                 </td>
                             </tr>
