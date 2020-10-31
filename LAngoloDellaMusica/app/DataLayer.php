@@ -247,7 +247,8 @@ class DataLayer extends Model
     public function changeDeletedField ($id, $brand, $model, $color, $status) {
         $user = StoreUser::where('id',$id)->get()->first();
         $messaggio = "Il prodotto ".$brand." ".$model." di colore ".$color." nello stato ".$status." non è più disponibile!  -  ";
-        $user->deleted_products = $messaggio;
+        $deleted_products = $user->deleted_products;
+        $user->deleted_products = $deleted_products."\n".$messaggio;
         $user->save();
     }
     

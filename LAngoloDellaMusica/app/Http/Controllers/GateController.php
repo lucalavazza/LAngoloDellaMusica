@@ -411,15 +411,16 @@ class GateController extends Controller {
         
 //        prelevo gli id degli utenti che hanno il prodotto nella propria wishlist
         $listaIdUtenti=$dl->listUsersIdWithProductInWishlist($id);
-        
 //        modifico il campo con i dati del prodotto eliminato
-        foreach ($listaIdUtenti as $idu) {
-            $dl->changeDeletedField($idu, $marca, $modello, $colore, $stato);
+        for($i = 0; $i < count($listaIdUtenti); $i++) {
+            $dl->changeDeletedField($listaIdUtenti[$i]->store_users_id, $marca, $modello, $colore, $stato);
         }
         
         $dl->deleteProduct($id);
         
-        return back();
+        return view('lists.delete')->with('logged', $logged)->with('loggedName', $loggedName)
+                        ->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list)->with('wish', $wish)
+                        ->with('products_list', $products_list)->with('userid', $userid);
     }
 
     public function store(Request $request) {
