@@ -17,7 +17,7 @@
     </a>
     <ul class="dropdown-menu multi-level" aria-labelledby="navbarDropdown">
         @foreach($macro_categories_list as $macro_category)
-            @if(hasSubCats($macro_category->id))
+        @if(hasSubCats($macro_category->id))
         <li class="dropdown-submenu">
             <a class="dropdown-item" href="{{ route('macro', ['id' => $macro_category->id]) }}">{{ $macro_category->macro_cat }}</a>
             <ul class="dropdown-menu">
@@ -126,6 +126,7 @@
                                     <a class="d-none d-md-block bottone bottone_entra bold" href="{{ route('cambioPassword') }}">Modifica la tua password</a>
                                 </td>
                             </tr>
+                            @if (!(isThisMaster($loggedName)))
                             <tr class="table-light">
                                 <td class="align-middle" style="font-weight: bold">
                                     <form id="delete" action="{{ route('deleteUser') }}" method="get">
@@ -134,6 +135,7 @@
                                     </form>
                                 </td>
                             </tr>
+                            @endif
                         </tbody>
                     </table>
                 </div>
