@@ -62,19 +62,23 @@
                 <div>
                     <a class="nav-link loghi" onclick="leavePhone()"><i class="fas fa-phone loghino"></i></a>
                 </div>
-
+                <div style="border-left: 1px solid; height: 40px; color: #b58d51">                    
+                </div>
                 <div>
                     <a class="nav-link loghi" onclick="leaveWA()"><i class="fab fa-whatsapp loghino"></i></a>
                 </div>
-
+                <div style="border-left: 1px solid; height: 40px; color: #b58d51">                    
+                </div>
                 <div>
                     <a class="nav-link loghi" onclick="leaveMail()"><i class="far fa-envelope loghino"></i></a>
                 </div>
-
+                <div style="border-left: 1px solid; height: 40px; color: #b58d51">                    
+                </div>
                 <div>
                     <a class="nav-link loghi" onclick="leaveFB()"><i class="fab fa-facebook loghino"></i></a>
                 </div>
-
+                <div style="border-left: 1px solid; height: 40px; color: #b58d51">                    
+                </div>
                 <div>
                     <a class="nav-link loghi" onclick="leaveIG()"><i class="fab fa-instagram loghino"></i></a>
                 </div>

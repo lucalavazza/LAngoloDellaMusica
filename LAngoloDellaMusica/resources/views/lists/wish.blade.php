@@ -44,9 +44,11 @@
         <a class="dropdown-item" href="{{ route('corsi') }}">Corsi di Musica</a>
     </div>
 </li>
-<li class="nav-item">
-    <a class="nav-link active" href="{{ route('wishlist.index') }}">Wishlist <i class="far fa-star"></i></a>
-</li>
+@if($logged)
+    <li class="nav-item">
+        <a class="nav-link active" href="{{ route('wishlist.index') }}">Wishlist <i class="far fa-star"></i></a>
+    </li>
+@endif
 @stop
 
 @section('login_tab')
@@ -63,7 +65,9 @@
     </div>
 </li>
 @else
-<a class="nav-link" href="{{ route('user.login') }}">Login/Registrati <i class="fas fa-sign-in-alt"></i></a>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('user.login') }}">Login/Registrati <i class="fas fa-sign-in-alt"></i></a>
+    </li>
 @endif
 @stop
 

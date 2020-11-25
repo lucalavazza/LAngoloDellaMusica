@@ -40,12 +40,12 @@ ol.breadcrumb {
 
 
 ol.breadcrumb > li > a {
-    color: black;
+    color: #b58d51;
     text-decoration: none;
 }
 
 ol.breadcrumb > li.active > a {
-    color: #b58d51;
+    color: black;
 }
 
 .map-container{
@@ -326,4 +326,8 @@ header {
 
 .card-errore-header {
     background-color: #c44835 !important;
+}
+
+a.loghi {
+    cursor: pointer;
 }
