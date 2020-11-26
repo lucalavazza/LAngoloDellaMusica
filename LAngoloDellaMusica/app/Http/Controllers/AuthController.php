@@ -13,7 +13,7 @@ class AuthController extends Controller
         $macro_categories_list = $dl->listMacroCategories();
         $categories_list = $dl->listSpecificCategories();
         
-        return view('auth.login')->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list);
+        return view('auth.login')->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list)->with('logged', false);
     }
     
     public function registration(Request $request) {
@@ -89,7 +89,7 @@ class AuthController extends Controller
         $macro_categories_list = $dl->listMacroCategories();
         $categories_list = $dl->listSpecificCategories();
 
-        return view('auth.loginError')->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list);
+        return view('auth.loginError')->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list)->with('logged', false);
     }
     
     public function logout() {

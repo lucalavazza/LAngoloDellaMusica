@@ -59,39 +59,50 @@
                 @yield('login_tab')
             </ul>
             <div class="row mr-1">
+                @if($logged)
+                <div>
+                    <a class="dropdown-item" href="{{ route('user.logout') }}">Logout <i class="fas fa-sign-out-alt"></i></a>
+                </div>
+                @endif
                 <div>
                     <a class="nav-link loghi" onclick="leavePhone()"><i class="fas fa-phone loghino"></i></a>
                 </div>
-                <div style="border-left: 1px solid; height: 40px; color: #b58d51">                    
+                <div style="border-left: 1px solid; height: 40px; color: #b58d51;">                    
                 </div>
                 <div>
                     <a class="nav-link loghi" onclick="leaveWA()"><i class="fab fa-whatsapp loghino"></i></a>
                 </div>
-                <div style="border-left: 1px solid; height: 40px; color: #b58d51">                    
+                <div style="border-left: 1px solid; height: 40px; color: #b58d51;">                    
                 </div>
                 <div>
                     <a class="nav-link loghi" onclick="leaveMail()"><i class="far fa-envelope loghino"></i></a>
                 </div>
-                <div style="border-left: 1px solid; height: 40px; color: #b58d51">                    
+                <div style="border-left: 1px solid; height: 40px; color: #b58d51;">                    
                 </div>
                 <div>
                     <a class="nav-link loghi" onclick="leaveFB()"><i class="fab fa-facebook loghino"></i></a>
                 </div>
-                <div style="border-left: 1px solid; height: 40px; color: #b58d51">                    
+                <div style="border-left: 1px solid; height: 40px; color: #b58d51;">                    
                 </div>
                 <div>
                     <a class="nav-link loghi" onclick="leaveIG()"><i class="fab fa-instagram loghino"></i></a>
                 </div>
+                <div style="border-left: 2px solid; height: 40px; color: #b58d51;"></div>
+                <div class="nav-link" data-tooltip='È possibile ricercare prodotti o categorie degli stessi. Scrivere "Chitarre" e non "Chitarra" se si cerca la categoria, oppure cercare uno strumento per nome, scrivendo anche solo parte di esso.'>
+                        <i class="fa fa-info loghino"></i>
+                </div>
             </div>
-
+            
             <form class="form-inline" action="{{ route('search') }}" method="post">
                 @csrf
-                <input class="form-control form-control-sm w-75" type="text" name="search_param" minlength="3" placeholder="Cerca un prodotto" aria-label="Search" required="" pattern="^\b[a-zA-Z0-9_']+\b$" oninvalid="this.setCustomValidity('Una sola parola alla volta, almeno 3 caratteri e attenzione ai caratteri non alfanumerici.')" oninput="this.setCustomValidity('')">
+                <input class="form-control form-control-sm w-75" type="text" name="search_param" minlength="3" placeholder="Cerca nel sito" aria-label="Search" required="" pattern="^\b[a-zA-Z0-9_']+\b$" oninvalid="this.setCustomValidity('Una sola parola alla volta, almeno 3 caratteri e attenzione ai caratteri non alfanumerici.')" oninput="this.setCustomValidity('')">
                 <button class="btn my-2 my-sm-0" type="submit"><i class="fas fa-search form-control-feedback loghino" aria-hidden="true"></i></button>
-            </form>  
+            </form>
+            
         </div>
     </nav>
-
+    
+    
     <div class="container">
         <div class="row">
             <div class="col-sm-12">

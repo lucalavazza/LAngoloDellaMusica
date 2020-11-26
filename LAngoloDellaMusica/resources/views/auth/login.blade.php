@@ -1,7 +1,20 @@
 @extends('layouts.master')
 
 @section('bodyType')
-<body>
+<script>
+    function checkPass() {
+        if (document.getElementById('inputPassword').value ===
+                document.getElementById('repeatPassword').value) {
+            document.getElementById('message').style.color = "green";
+            document.getElementById('message').innerHTML = '<i class="fa fa-thumbs-up"></i> Le password coincidono';
+            return true;
+        } else {
+            document.getElementById('message').style.color = "red";
+            document.getElementById('message').innerHTML = '<i class="fa fa-thumbs-down"></i> Le password non coincidono';
+            return false;
+        }
+    }
+</script>
 @stop
 
 @section('menu_nav')
@@ -83,6 +96,9 @@
                             </form>
                         </div>
                         <div class="tab-pane" id="register-form">
+                            <div>
+                                Registrandoti potrai avere accesso alla funzione "Lista dei desideri" e marcare con un'etichetta tutti i prodotti che ti interessano del catalogo.
+                            </div>
                             <form class="text-center form-signin" id="register-form" action="{{ route('user.registration') }}" method="post">
                                 @csrf
                                 <img src="{{ url('/') }}/pics/logoHD.png" width="100" height="100">
@@ -98,12 +114,16 @@
                                 <div class="form-group">
                                     <input type="text" name="inputCognome" class="form-control my-3" placeholder="Cognome" required="" value="" oninvalid="this.setCustomValidity('Inserire il cognome')" oninput="this.setCustomValidity('')">
                                 </div>
-                                <div class="form-group">
-                                    <input type="password" name="inputPassword" class="form-control my-3" placeholder="Password" required="" oninvalid="this.setCustomValidity('Inserire la password')" oninput="this.setCustomValidity('')">
+                                <div data-tooltip="Si consiglia l'uso di caratteri alfanumerici e speciali per una maggiore sicurezza.">
+                                    <i class="fa fa-info loghino"></i>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" name="repeatPassword" class="form-control my-3" placeholder="Ripeti la password" required="" oninvalid="this.setCustomValidity('Ripetere la password')" oninput="this.setCustomValidity('')">
+                                    <input type="password" id="inputPassword" name="inputPassword" class="form-control my-3" placeholder="Password" required="" oninvalid="this.setCustomValidity('Inserire la password')" oninput="this.setCustomValidity('')" onkeyup="return checkPass()">
                                 </div>
+                                <div class="form-group">
+                                    <input type="password" id="repeatPassword" name="repeatPassword" class="form-control my-3" placeholder="Ripeti la password" required="" oninvalid="this.setCustomValidity('Ripetere la password')" oninput="this.setCustomValidity('')" onkeyup="return checkPass()">
+                                </div>
+                                <span id="message"></span>
                                 <div class="form-group">
                                     <input class="btn btn-lg btn-block btn-entra my-3" type="submit" name="register-submit" value="Registrati">
                                 </div>

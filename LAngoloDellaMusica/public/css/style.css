@@ -331,3 +331,32 @@ header {
 a.loghi {
     cursor: pointer;
 }
+
+[data-tooltip]:before {
+    /* needed - do not touch */
+    content: attr(data-tooltip);
+    position: absolute;
+    opacity: 0;
+    
+    /* customizable */
+    transition: all 0.15s ease;
+    padding: 10px;
+    color: black;
+    border-radius: 10px;
+    box-shadow: 2px 2px 1px silver;    
+}
+
+[data-tooltip]:hover:before {
+    /* needed - do not touch */
+    opacity: 1;
+    z-index: 100;
+    
+    /* customizable */
+    background: #b58d51;
+    margin-top: 40px;
+    margin-left: -75px;    
+}
+
+[data-tooltip]:not([data-tooltip-persistent]):before {
+    pointer-events: none;
+}

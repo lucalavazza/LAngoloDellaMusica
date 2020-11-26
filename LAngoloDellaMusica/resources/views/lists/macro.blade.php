@@ -69,7 +69,6 @@
         @if (isThisMaster($loggedName))
         <a class="dropdown-item" href="{{ route('paginaGestione') }}">Pagina Gestione Master</a>
         @endif
-        <a class="dropdown-item" href="{{ route('user.logout') }}">Logout <i class="fas fa-sign-out-alt"></i></a>
     </div>
 </li>
 @else
