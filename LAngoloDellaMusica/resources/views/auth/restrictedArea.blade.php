@@ -43,10 +43,12 @@
             <a class="dropdown-item" href="{{ route('riparazioni') }}">Riparazioni</a>
         </div>
     </li>
-    <li class="nav-item">
-        <!--gestire i GET e le route-->
-        <a class="nav-link" href="{{ route('wishlist.index') }}">Wishlist <i class="far fa-star"></i></a>
-    </li>
+    @if($logged)
+        <li class="nav-item">
+            <!--gestire i GET e le route-->
+            <a class="nav-link" href="{{ route('wishlist.index') }}">Wishlist <i class="far fa-star"></i></a>
+        </li>
+    @endif
 @stop
 
 @section('login_tab')

@@ -56,10 +56,12 @@
             <a class="dropdown-item" href="{{ route('riparazioni') }}">Riparazioni</a>
         </div>
     </li>
-    <li class="nav-item">
-        <!--gestire i GET e le route-->
-        <a class="nav-link" href="{{ route('wishlist.index') }}">Wishlist <i class="far fa-star"></i></a>
-    </li>
+    @if($logged)
+        <li class="nav-item">
+            <!--gestire i GET e le route-->
+            <a class="nav-link" href="{{ route('wishlist.index') }}">Wishlist <i class="far fa-star"></i></a>
+        </li>
+    @endif
 @stop
 
 @section('login_tab')
@@ -84,7 +86,7 @@
                         <div class="tab-pane active" id="login-form">
                             <form id="login-form" action="{{ route('user.login') }}" class="text-center form-signin" method="post">
                                 @csrf
-                                <img src="{{ url('/') }}/pics/logoHD.png" width="100" height="100">
+                                <a href="{{ route('home') }}"><img src="{{ url('/') }}/pics/logoHD.png" width="100" height="100"></a>
                                 <div class="form-group">
                                     <input type="text" name="inputUsername" class="form-control my-3" placeholder="Username" required="" oninvalid="this.setCustomValidity('Inserire lo username')" oninput="this.setCustomValidity('')">
                                     <input type="password" name="inputPassword" class="form-control my-3" placeholder="Password" value="" required="" oninvalid="this.setCustomValidity('Inserire la password')" oninput="this.setCustomValidity('')">
@@ -96,12 +98,12 @@
                             </form>
                         </div>
                         <div class="tab-pane" id="register-form">
-                            <div>
-                                Registrandoti potrai avere accesso alla funzione "Lista dei desideri" e marcare con un'etichetta tutti i prodotti che ti interessano del catalogo.
-                            </div>
                             <form class="text-center form-signin" id="register-form" action="{{ route('user.registration') }}" method="post">
                                 @csrf
-                                <img src="{{ url('/') }}/pics/logoHD.png" width="100" height="100">
+                                <a href="{{ route('home') }}"><img src="{{ url('/') }}/pics/logoHD.png" width="100" height="100"></a>
+                                <div>
+                                    Registrandoti potrai avere accesso alla funzione "Lista dei Desideri" e marcare con un'etichetta tutti i prodotti che ti interessano del catalogo.
+                                </div>
                                 <div class="form-group">
                                     <input type="text" name="inputUsername" class="form-control my-3" placeholder="Username" required="" value="" oninvalid="this.setCustomValidity('Inserire lo username')" oninput="this.setCustomValidity('')">
                                 </div>
