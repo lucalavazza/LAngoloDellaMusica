@@ -17,6 +17,14 @@
 </script>
 @stop
 
+@section('logoutOption')
+    @if($logged)
+    <div>
+        <a class="dropdown-item my-1" href="{{ route('user.logout') }}">Logout <i class="fas fa-sign-out-alt"></i></a>
+    </div>
+    @endif
+@stop
+
 @section('menu_nav')
     <li class="nav-item">
         <a class="nav-link" href="{{ route('home') }}">Home</a>
@@ -86,7 +94,7 @@
 
 @section('breadcrumb')
     <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-    <li class="breadcrumb-item active"><a>Pagina Personale</a></li>
+    <li class="breadcrumb-item active"><a>Modifica Password</a></li>
 @stop
 
 @section('corpo')
@@ -108,16 +116,16 @@
                                 @csrf
                                 <div class="form-group">
                                     Inserisci la tua password corrente:
-                                    <input type="password" id="oldPassword" name="oldPassword" class="form-control my-3" placeholder="Vecchia password" value="" required oninvalid="this.setCustomValidity('Inserire la password')" oninput="this.setCustomValidity('')">
+                                    <input type="password" id="oldPassword" name="oldPassword" required="" class="form-control my-3" placeholder="Vecchia password" value="" required oninvalid="this.setCustomValidity('Inserire la password')" oninput="this.setCustomValidity('')">
                                     Scegli la tua nuova password:
-                                    <input type="password" id="newPassword" name="newPassword" class="form-control my-3" placeholder="Nuova password" required oninvalid="this.setCustomValidity('Inserire la nuova password')" oninput="this.setCustomValidity('')" onkeyup="return checkPass();">
+                                    <input type="password" id="newPassword" name="newPassword" required="" class="form-control my-3" placeholder="Nuova password" required oninvalid="this.setCustomValidity('Inserire la nuova password')" oninput="this.setCustomValidity('')" onkeyup="return checkPass();">
                                     Ripeti la tua nuova password:
-                                    <input type="password" id="repeatPassword" name="repeatPassword" class="form-control my-3" placeholder="Ripeti la nuova password" required oninvalid="this.setCustomValidity('Ripetere la password')" oninput="this.setCustomValidity('')" onkeyup="return checkPass();">
+                                    <input type="password" id="repeatPassword" name="repeatPassword" required="" class="form-control my-3" placeholder="Ripeti la nuova password" required oninvalid="this.setCustomValidity('Ripetere la password')" oninput="this.setCustomValidity('')" onkeyup="return checkPass();">
                                     <span id="message"></span>
                                 </div>
                                 
                                 <div class="form-group">
-                                    <input class="btn btn-lg btn-block btn-entra my-3" type="submit" value="Cambia Password" name="Change-submit" onclick="return confirm('Vuoi davvero cambiare la tua password?');">
+                                    <input class="btn btn-lg btn-block btn-entra my-3" type="submit" value="Cambia Password" name="Change-submit" onsubmit="return confirm('Vuoi davvero cambiare la tua password?');">
                                 </div>
                             </form>
                             

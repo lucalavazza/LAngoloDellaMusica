@@ -4,6 +4,14 @@
 <body>
     @stop
 
+@section('logoutOption')
+    @if($logged)
+    <div>
+        <a class="dropdown-item my-1" href="{{ route('user.logout') }}">Logout <i class="fas fa-sign-out-alt"></i></a>
+    </div>
+    @endif
+@stop
+
     @section('menu_nav')
 <li class="nav-item">
     <a class="nav-link" href="{{ route('home') }}">Home</a>
@@ -72,7 +80,7 @@
 
 @section('breadcrumb')
 <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-<li class="breadcrumb-item active"><a href="{{ route('wishlist.index') }}">Wishlist</a></li>
+<li class="breadcrumb-item active"><a>Wishlist</a></li>
 @stop
 
 @section('corpo')

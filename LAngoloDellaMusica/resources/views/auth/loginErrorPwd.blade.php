@@ -1,8 +1,12 @@
 @extends('layouts.master')
 
 @section('bodyType')
-<body onload="loginWrongAlert()">
+<body onload="loginWrongAlertPwd()">
 @stop
+
+@section('logoutOption')
+@stop
+
 
 @section('menu_nav')
     <li class="nav-item">
@@ -43,12 +47,7 @@
             <a class="dropdown-item" href="{{ route('riparazioni') }}">Riparazioni</a>
         </div>
     </li>
-    @if($logged)
-        <li class="nav-item">
-            <!--gestire i GET e le route-->
-            <a class="nav-link" href="{{ route('wishlist.index') }}">Wishlist <i class="far fa-star"></i></a>
-        </li>
-    @endif
+    
 @stop
 
 @section('login_tab')
@@ -88,12 +87,15 @@
                         <div class="tab-pane" id="register-form">
                             <form class="text-center form-signin" id="register-form" action="{{ route('user.registration') }}" method="post">
                                 @csrf
-                                <img src="{{ url('/') }}/pics/logoHD.png" width="100" height="100">
+                                <a href="{{ route('home') }}"><img src="{{ url('/') }}/pics/logoHD.png" width="100" height="100"></a>
+                                <div>
+                                    Registrandoti potrai avere accesso alla funzione "Lista dei Desideri" e marcare con un'etichetta tutti i prodotti che ti interessano del catalogo.
+                                </div>
                                 <div class="form-group">
                                     <input type="text" name="inputUsername" class="form-control my-3" placeholder="Username" required="" value="" oninvalid="this.setCustomValidity('Inserire lo username')" oninput="this.setCustomValidity('')">
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" name="inputEmail" class="form-control my-3" placeholder="Indirizzo e-mail" required="" value="" oninvalid="this.setCustomValidity('Inserire l\'indirizzo e-mail')" oninput="this.setCustomValidity('')">
+                                    <input type="email" pattern=".+@[a-zA-Z0-9_.-]*[.][a-z]*" name="inputEmail" class="form-control my-3" placeholder="Indirizzo e-mail" required="" value="" oninvalid="this.setCustomValidity('Inserire l\'indirizzo e-mail')" oninput="this.setCustomValidity('')">
                                 </div>
                                 <div class="form-group">
                                     <input type="text" name="inputNome" class="form-control my-3" placeholder="Nome" required="" value="" oninvalid="this.setCustomValidity('Inserire il nome')" oninput="this.setCustomValidity('')">
@@ -101,12 +103,16 @@
                                 <div class="form-group">
                                     <input type="text" name="inputCognome" class="form-control my-3" placeholder="Cognome" required="" value="" oninvalid="this.setCustomValidity('Inserire il cognome')" oninput="this.setCustomValidity('')">
                                 </div>
-                                <div class="form-group">
-                                    <input type="password" name="inputPassword" class="form-control my-3" placeholder="Password" required="" oninvalid="this.setCustomValidity('Inserire la password')" oninput="this.setCustomValidity('')">
+                                <div data-tooltip="Si consiglia l'uso di caratteri alfanumerici e speciali per una maggiore sicurezza.">
+                                    <i class="fa fa-info loghino"></i>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" name="repeatPassword" class="form-control my-3" placeholder="Ripeti la password" required="" oninvalid="this.setCustomValidity('Ripetere la password')" oninput="this.setCustomValidity('')">
+                                    <input type="password" id="inputPassword" name="inputPassword" class="form-control my-3" placeholder="Password" required="" oninvalid="this.setCustomValidity('Inserire la password')" oninput="this.setCustomValidity('')" onkeyup="return checkPass()">
                                 </div>
+                                <div class="form-group">
+                                    <input type="password" id="repeatPassword" name="repeatPassword" class="form-control my-3" placeholder="Ripeti la password" required="" oninvalid="this.setCustomValidity('Ripetere la password')" oninput="this.setCustomValidity('')" onkeyup="return checkPass()">
+                                </div>
+                                <span id="message"></span>
                                 <div class="form-group">
                                     <input class="btn btn-lg btn-block btn-entra my-3" type="submit" name="register-submit" value="Registrati">
                                 </div>

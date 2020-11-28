@@ -216,7 +216,8 @@ class DataLayer extends Model {
         Wishlist::where('products_id', $product_id)->delete();
         $product->delete();
     }
-
+    
+    
     public function validUser($username, $password) {
 
         $users = StoreUser::where('username', $username)->get(['password']);
@@ -237,6 +238,7 @@ class DataLayer extends Model {
         $user->name = $name;
         $user->surname = $surname;
         $user->master = 0;
+        $user->deleted_products="";
         $user->save();
     }
 

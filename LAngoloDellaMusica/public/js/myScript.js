@@ -50,8 +50,11 @@ function confirmDelete() {
 function loginAlert() {
     alert("Per aggiungere prodotti alla Wishlist e per accedervi è necessario aver effettuato il login!");
 }
-function loginWrongAlert() {
-    alert("Attenzione, si è verificato un errore durante l\'accesso! Per cortesia controllare di inserire i dati correttamente.");
+function loginWrongAlertUser() {
+    alert("Attenzione, si è verificato un errore durante l\'accesso! Per cortesia controllare di inserire lo username correttamente.");
+}
+function loginWrongAlertPwd() {
+    alert("Attenzione, si è verificato un errore durante l\'accesso! Per cortesia controllare di inserire la password correttamente.");
 }
 function wishlistAlert() {
     alert("Per accedere alla pagina è necessario avere effettuato l\'accesso!");
@@ -59,8 +62,12 @@ function wishlistAlert() {
 function registrationAlert() {
     alert("Attenzione, si è verificato un errore durante la registrazione. Le password inserite sono differenti!");
 }
-function registrationDoubleAlert() {
-    alert("Attenzione, si è verificato un errore durante la registrazione. Lo username o la mail risultano già presi!");
+function registrationDoubleAlertUser() {
+    alert("Attenzione, si è verificato un errore durante la registrazione. Lo username risulta già preso!");
+}
+
+function registrationDoubleAlertMail() {
+    alert("Attenzione, si è verificato un errore durante la registrazione. La mail risulta già in uso!");
 }
 
 function wrongOldPwd() {

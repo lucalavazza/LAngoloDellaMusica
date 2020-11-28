@@ -31,15 +31,28 @@
                 $('#myTabella').DataTable({
                     "searching": false,
                     "columns": [
-                    {"orderable": false},
-                    null,
-                    null,
-                    null,
-                    {"orderable": false},
-                    {"orderable": false}
+                        {"orderable": false},
+                        null,
+                        null,
+                        null,
+                        {"orderable": false},
+                        {"orderable": false}
                     ],
                     "order": [1, 'asc'],
-                    "pagingType": "full_numbers"
+                    "pagingType": "full_numbers",
+                    "language": {
+                        "lengthMenu": "Mostra _MENU_ elementi per pagina",
+                        "zeroRecords": "Nessun elemento trovato",
+                        "info": "Pagina _PAGE_ di _PAGES_",
+                        "infoEmpty": "Nessun elemento trovato",
+                        "infoFiltered": "(filtrato da _MAX_ elementi in totale)",
+                        "paginate": {
+                            "first": "Prima",
+                            "last": "Ultima",
+                            "next": "Prossima",
+                            "previous": "Precedente"
+                        }
+                    }
                 });
             });
         </script>
@@ -59,11 +72,8 @@
                 @yield('login_tab')
             </ul>
             <div class="row mr-1">
-                @if($logged)
-                <div>
-                    <a class="dropdown-item" href="{{ route('user.logout') }}">Logout <i class="fas fa-sign-out-alt"></i></a>
-                </div>
-                @endif
+                @yield('logoutOption')
+                
                 <div>
                     <a class="nav-link loghi" onclick="leavePhone()"><i class="fas fa-phone loghino"></i></a>
                 </div>
@@ -89,20 +99,20 @@
                 </div>
                 <div style="border-left: 2px solid; height: 40px; color: #b58d51;"></div>
                 <div class="nav-link" data-tooltip='È possibile ricercare prodotti o categorie degli stessi. Scrivere "Chitarre" e non "Chitarra" se si cerca la categoria, oppure cercare uno strumento per nome, scrivendo anche solo parte di esso.'>
-                        <i class="fa fa-info loghino"></i>
+                    <i class="fa fa-info loghino"></i>
                 </div>
             </div>
-            
+
             <form class="form-inline" action="{{ route('search') }}" method="post">
                 @csrf
                 <input class="form-control form-control-sm w-75" type="text" name="search_param" minlength="3" placeholder="Cerca nel sito" aria-label="Search" required="" pattern="^\b[a-zA-Z0-9_']+\b$" oninvalid="this.setCustomValidity('Una sola parola alla volta, almeno 3 caratteri e attenzione ai caratteri non alfanumerici.')" oninput="this.setCustomValidity('')">
                 <button class="btn my-2 my-sm-0" type="submit"><i class="fas fa-search form-control-feedback loghino" aria-hidden="true"></i></button>
             </form>
-            
+
         </div>
     </nav>
-    
-    
+
+
     <div class="container">
         <div class="row">
             <div class="col-sm-12">

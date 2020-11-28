@@ -39,11 +39,13 @@ Route::get('/user/logout',['as' => 'user.logout', 'uses' => 'AuthController@logo
 //cerco di accedere alla wishlist da non loggato
 Route::get('/user/login/areaRiservata',['as' => 'user.login.reservedArea', 'uses' => 'AuthController@restricted']);
 //sbaglio il login
-Route::get('/user/login/errore',['as' => 'user.login.error', 'uses' => 'AuthController@retryLogin']); // ---> FATTO
+Route::get('/user/login/erroreUtente',['as' => 'user.login.errorUser', 'uses' => 'AuthController@retryLoginUser']); // ---> FATTO
+Route::get('/user/login/errorePwd',['as' => 'user.login.errorPwd', 'uses' => 'AuthController@retryLoginPwd']); // ---> FATTO
 //sbaglio la registrazione (password diverse)
 Route::get('/user/registrazione/errore/{user}/{mail}',['as' => 'user.registration.error', 'uses' => 'AuthController@retryRegistration']); // ---> FATTO
 //sbaglio la registrazione (username o password già esistenti)
-Route::get('/user/registrazione/errore2',['as' => 'user.registration.double', 'uses' => 'AuthController@retryDoubleRegistration']); // ---> FATTO
+Route::get('/user/registrazione/erroreUser',['as' => 'user.registration.doubleUser', 'uses' => 'AuthController@retryDoubleRegistrationUser']); // ---> FATTO
+Route::get('/user/registrazione/erroreMail',['as' => 'user.registration.doubleMail', 'uses' => 'AuthController@retryDoubleRegistrationMail']); // ---> FATTO
 ////Reset password
 //Route::get('/user/forgotPassword',['as' => 'user.forgotPassword', 'uses' => 'AuthController@redirectForgot']);
 //Route::post('reset_password_without_token', 'AuthController@validatePasswordRequest');

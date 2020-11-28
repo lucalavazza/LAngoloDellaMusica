@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
 @section('bodyType')
-<body onload="wishlistAlert()">
+<body onload="registrationDoubleAlertMail()">
 @stop
-
 
 @section('logoutOption')
 @stop
+
 
 @section('menu_nav')
     <li class="nav-item">
@@ -47,7 +47,7 @@
             <a class="dropdown-item" href="{{ route('riparazioni') }}">Riparazioni</a>
         </div>
     </li>
-
+    
 @stop
 
 @section('login_tab')
@@ -65,11 +65,11 @@
             <div class="col-md-6 offset-md-3">
                 <div>
                     <ul class="nav nav-tabs">
-                        <li class="nav-item"><a class="nav-link active" href="#login-form" data-toggle="tab">Login</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#register-form" data-toggle="tab">Registrazione</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#login-form" data-toggle="tab">Login</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="#register-form" data-toggle="tab">Registrazione</a></li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane active" id="login-form">
+                        <div class="tab-pane" id="login-form">
                             <form id="login-form" action="{{ route('user.login') }}" class="text-center form-signin" method="post">
                                 @csrf
                                 <img src="{{ url('/') }}/pics/logoHD.png" width="100" height="100">
@@ -84,7 +84,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="tab-pane" id="register-form">
+                        <div class="tab-pane active" id="register-form">
                             <form class="text-center form-signin" id="register-form" action="{{ route('user.registration') }}" method="post">
                                 @csrf
                                 <a href="{{ route('home') }}"><img src="{{ url('/') }}/pics/logoHD.png" width="100" height="100"></a>

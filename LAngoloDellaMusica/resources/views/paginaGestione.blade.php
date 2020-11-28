@@ -1,6 +1,15 @@
 @extends('layouts.master')
 
 
+
+@section('logoutOption')
+    @if($logged)
+    <div>
+        <a class="dropdown-item my-1" href="{{ route('user.logout') }}">Logout <i class="fas fa-sign-out-alt"></i></a>
+    </div>
+    @endif
+@stop
+
 @section('menu_nav')
 <body onload="document.getElementById('Chitarre').style.display = 'none';
         document.getElementById('Chitarre-delete').style.display = 'none';

@@ -2,7 +2,15 @@
 
 @section('bodyType')
 <body>
-    @stop
+@stop
+
+@section('logoutOption')
+    @if($logged)
+    <div>
+        <a class="dropdown-item my-1" href="{{ route('user.logout') }}">Logout <i class="fas fa-sign-out-alt"></i></a>
+    </div>
+    @endif
+@stop
 
     @section('menu_nav')
 <li class="nav-item">
@@ -45,9 +53,9 @@
     </div>
 </li>
 @if($logged)
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('wishlist.index') }}">Wishlist <i class="far fa-star"></i></a>
-    </li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ route('wishlist.index') }}">Wishlist <i class="far fa-star"></i></a>
+</li>
 @endif
 @stop
 

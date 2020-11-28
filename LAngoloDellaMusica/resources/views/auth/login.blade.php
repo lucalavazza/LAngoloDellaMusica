@@ -17,6 +17,9 @@
 </script>
 @stop
 
+@section('logoutOption')
+@stop
+
 @section('menu_nav')
     <li class="nav-item">
         <a class="nav-link" href="{{ route('home') }}">Home</a>
@@ -56,12 +59,6 @@
             <a class="dropdown-item" href="{{ route('riparazioni') }}">Riparazioni</a>
         </div>
     </li>
-    @if($logged)
-        <li class="nav-item">
-            <!--gestire i GET e le route-->
-            <a class="nav-link" href="{{ route('wishlist.index') }}">Wishlist <i class="far fa-star"></i></a>
-        </li>
-    @endif
 @stop
 
 @section('login_tab')
@@ -108,7 +105,7 @@
                                     <input type="text" name="inputUsername" class="form-control my-3" placeholder="Username" required="" value="" oninvalid="this.setCustomValidity('Inserire lo username')" oninput="this.setCustomValidity('')">
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" name="inputEmail" class="form-control my-3" placeholder="Indirizzo e-mail" required="" value="" oninvalid="this.setCustomValidity('Inserire l\'indirizzo e-mail')" oninput="this.setCustomValidity('')">
+                                    <input type="email" pattern=".+@[a-zA-Z0-9_.-]*[.][a-z]*" name="inputEmail" class="form-control my-3" placeholder="Indirizzo e-mail" required="" value="" oninvalid="this.setCustomValidity('Inserire l\'indirizzo e-mail')" oninput="this.setCustomValidity('')">
                                 </div>
                                 <div class="form-group">
                                     <input type="text" name="inputNome" class="form-control my-3" placeholder="Nome" required="" value="" oninvalid="this.setCustomValidity('Inserire il nome')" oninput="this.setCustomValidity('')">
