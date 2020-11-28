@@ -1,7 +1,20 @@
 @extends('layouts.master')
 
 @section('bodyType')
-<body>
+<script>
+    function checkPass() {
+        if (document.getElementById('newPassword').value ===
+                document.getElementById('repeatPassword').value) {
+            document.getElementById('message').style.color = "green";
+            document.getElementById('message').innerHTML = '<i class="fa fa-thumbs-up"></i> Le password coincidono';
+            return true;
+        } else {
+            document.getElementById('message').style.color = "red";
+            document.getElementById('message').innerHTML = '<i class="fa fa-thumbs-down"></i> Le password non coincidono';
+            return false;
+        }
+    }
+</script>
 @stop
 
 @section('menu_nav')
@@ -97,9 +110,10 @@
                                     Inserisci la tua password corrente:
                                     <input type="password" id="oldPassword" name="oldPassword" class="form-control my-3" placeholder="Vecchia password" value="" required oninvalid="this.setCustomValidity('Inserire la password')" oninput="this.setCustomValidity('')">
                                     Scegli la tua nuova password:
-                                    <input type="password" id="newPassword" name="newPassword" class="form-control my-3" placeholder="Nuova password" required oninvalid="this.setCustomValidity('Inserire la nuova password')" oninput="this.setCustomValidity('')">
+                                    <input type="password" id="newPassword" name="newPassword" class="form-control my-3" placeholder="Nuova password" required oninvalid="this.setCustomValidity('Inserire la nuova password')" oninput="this.setCustomValidity('')" onkeyup="return checkPass();">
                                     Ripeti la tua nuova password:
-                                    <input type="password" id="repeatPassword" name="repeatPassword" class="form-control my-3" placeholder="Ripeti la nuova password" required oninvalid="this.setCustomValidity('Ripetere la password')" oninput="this.setCustomValidity('')">
+                                    <input type="password" id="repeatPassword" name="repeatPassword" class="form-control my-3" placeholder="Ripeti la nuova password" required oninvalid="this.setCustomValidity('Ripetere la password')" oninput="this.setCustomValidity('')" onkeyup="return checkPass();">
+                                    <span id="message"></span>
                                 </div>
                                 
                                 <div class="form-group">
