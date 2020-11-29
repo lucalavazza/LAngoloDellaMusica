@@ -55,7 +55,7 @@
     @if($logged)
     <li class="nav-item">
         <!--gestire i GET e le route-->
-        <a class="nav-link" href="{{ route('wishlist.index') }}">Wishlist <i class="far fa-star"></i></a>
+        <a class="nav-link" href="{{ route('wishlist.index') }}">Lista dei Desideri <i class="far fa-star"></i></a>
     </li>+
     @endif
 @stop

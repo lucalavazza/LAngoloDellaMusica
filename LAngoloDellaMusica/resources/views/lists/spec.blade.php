@@ -62,7 +62,7 @@
     </li>
     @if($logged)
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('wishlist.index') }}">Wishlist <i class="far fa-star"></i></a>
+            <a class="nav-link" href="{{ route('wishlist.index') }}">Lista dei Desideri <i class="far fa-star"></i></a>
         </li>
     @endif
 @stop
@@ -160,19 +160,19 @@
                                         <form id="formRemove{{$product->id}}" class="formRemove" action="{{ route('wishlist.deletePost') }}" method="post">
                                         @csrf
                                             <input type="hidden" value="{{ $product->id }}" name="removeWishlist">
-                                            <button class="d-none d-md-block bottone bottone_elimina bold" type="submit">Wishlist<i class="fas fa-trash-alt"></i></button>
+                                            <button class="d-none d-md-block bottone bottone_elimina bold" type="submit">Lista dei Desideri <i class="fas fa-trash-alt"></i></button>
                                             <button class="bottone-tab-dettaglio d-md-none bottone bottone_elimina bold" type="submit"><i class="fas fa-trash-alt"></i></button>
                                         </form>
                                     @else
                                         <form id="formAdd{{$product->id}}" class="formAdd" action="{{ route('wishlist.addPost') }}" method="post">
                                         @csrf
                                             <input type="hidden" value="{{ $product->id }}" name="addWishlist">
-                                            <button class="d-none d-md-block bottone bottone_wishlist bold" type="submit">Wishlist<i class="far fa-star"></i></button>
+                                            <button class="d-none d-md-block bottone bottone_wishlist bold" type="submit">Lista dei Desideri <i class="far fa-star"></i></button>
                                             <button class="bottone-tab-dettaglio d-md-none bottone bottone_wishlist bold" type="submit"><i class="far fa-star"></i></button>
                                         </form>
                                     @endif
                                 @else
-                                    <a class="d-none d-md-block bottone bottone_wishlist_disabled bold" onclick="loginAlert()">Wishlist<i class="fas fa-minus-circle"></i></a>
+                                    <a class="d-none d-md-block bottone bottone_wishlist_disabled bold" onclick="loginAlert()">Lista dei Desideri <i class="fas fa-minus-circle"></i></a>
                                     <a class="bottone-tab_disabled d-md-none bottone bottone_wishlist bold_disabled" onclick="loginAlert()"><i class="fas fa-minus-circle"></i></a>
                                 @endif
                                 </td>

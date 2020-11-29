@@ -62,7 +62,7 @@
 </li>
 @if($logged)
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('wishlist.index') }}">Wishlist <i class="far fa-star"></i></a>
+        <a class="nav-link" href="{{ route('wishlist.index') }}">Lista dei Desideri <i class="far fa-star"></i></a>
     </li>
 @endif
 @stop
@@ -149,7 +149,7 @@
                             {{$product->status}}
                         </td>
                         <td class="align-middle text-center">
-                            <a class="d-none d-md-block bottone bottone_entra bold" href="{{ route('dettaglio', ['id' => $product->id]) }}">Dettagli<i class="fas fa-info"></i></a>
+                            <a class="d-none d-md-block bottone bottone_entra bold" href="{{ route('dettaglio', ['id' => $product->id]) }}">Dettagli <i class="fas fa-info"></i></a>
                             <a class="bottone-tab d-md-none bottone bottone_entra bold" href="{{ route('dettaglio', ['id' => $product->id]) }}"><i class="fas fa-info"></i></a>
                         </td>
                         <td class="align-middle text-center">
@@ -158,19 +158,19 @@
                             <form id="formRemove{{$product->id}}" class="formRemove" action="{{ route('wishlist.deletePost')}}" method="post">
                                 @csrf
                                 <input type="hidden" value="{{ $product->id }}" name="removeWishlist">
-                                <button id="buttonRemove" class="d-none d-md-block bottone bottone_elimina bold" type="submit">Wishlist<i class="fas fa-trash-alt"></i></button>
+                                <button id="buttonRemove" class="d-none d-md-block bottone bottone_elimina bold" type="submit">Lista dei Desideri <i class="fas fa-trash-alt"></i></button>
                                 <button id="buttonRemove"class="bottone-tab-dettaglio d-md-none bottone bottone_elimina bold" type="submit"><i class="fas fa-trash-alt"></i></button>
                             </form>
                             @else
                             <form id="formAdd{{$product->id}}" class="formAdd" action="{{ route('wishlist.addPost') }}" method="post">
                                 @csrf
                                 <input type="hidden" value="{{ $product->id }}" name="addWishlist">
-                                <button id="buttonAdd" class="d-none d-md-block bottone bottone_wishlist bold" type="submit">Wishlist<i class="far fa-star"></i></button>
+                                <button id="buttonAdd" class="d-none d-md-block bottone bottone_wishlist bold" type="submit">Lista dei Desideri <i class="far fa-star"></i></button>
                                 <button id="buttonAdd" class="bottone-tab-dettaglio d-md-none bottone bottone_wishlist bold" type="submit"><i class="far fa-star"></i></button>
                             </form>
                             @endif
                             @else
-                            <a class="d-none d-md-block bottone bottone_wishlist_disabled bold" onclick="loginAlert()">Wishlist<i class="fas fa-minus-circle"></i></a>
+                            <a class="d-none d-md-block bottone bottone_wishlist_disabled bold" onclick="loginAlert()">Lista dei Desideri <i class="fas fa-minus-circle"></i></a>
                             <a class="bottone-tab_disabled d-md-none bottone bottone_wishlist bold_disabled" onclick="loginAlert()"><i class="fas fa-minus-circle"></i></a>
                             @endif
                         </td>

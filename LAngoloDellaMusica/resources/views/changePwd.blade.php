@@ -68,7 +68,7 @@
     @if($logged)
     <li class="nav-item">
         <!--gestire i GET e le route-->
-        <a class="nav-link" href="{{ route('wishlist.index') }}">Wishlist <i class="far fa-star"></i></a>
+        <a class="nav-link" href="{{ route('wishlist.index') }}">Lista dei Desideri <i class="far fa-star"></i></a>
     </li>
     @endif
 @stop
@@ -125,7 +125,7 @@
                                 </div>
                                 
                                 <div class="form-group">
-                                    <input class="btn btn-lg btn-block btn-entra my-3" type="submit" value="Cambia Password" name="Change-submit" onsubmit="return confirm('Vuoi davvero cambiare la tua password?');">
+                                    <input class="btn btn-lg btn-block btn-entra my-3" type="submit" value="Cambia Password" name="Change-submit" onclick="return confirm('Vuoi davvero cambiare la tua password?');">
                                 </div>
                             </form>
                             

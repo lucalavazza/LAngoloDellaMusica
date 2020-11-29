@@ -54,7 +54,7 @@
 </li>
 @if($logged)
     <li class="nav-item">
-        <a class="nav-link active" href="{{ route('wishlist.index') }}">Wishlist <i class="far fa-star"></i></a>
+        <a class="nav-link active" href="{{ route('wishlist.index') }}">Lista dei Desideri <i class="far fa-star"></i></a>
     </li>
 @endif
 @stop
@@ -80,7 +80,7 @@
 
 @section('breadcrumb')
 <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-<li class="breadcrumb-item active"><a>Wishlist</a></li>
+<li class="breadcrumb-item active"><a>Lista dei Desideri</a></li>
 @stop
 
 @section('corpo')
@@ -88,7 +88,7 @@
 <div class="container">
     <header>
         <h1>
-            Wishlist
+            Lista dei Desideri
         </h1>
     </header>
 </div>
@@ -118,7 +118,7 @@
                                 Attenzione!
                             </div>
                             <div class="card-body">
-                                <p class="card-text my-4">Non ci sono ancora prodotti nella tua Wishlist!</p>
+                                <p class="card-text my-4">Non ci sono ancora prodotti nella tua Lista dei Desideri!</p>
                             </div>
                         </div>
                     </div>
@@ -161,7 +161,7 @@
                             <form id="formRemove{{$product->id}}" class="formRemove" action="{{ route('wishlist.deletePost') }}" method="post">
                                 @csrf
                                 <input type="hidden" value="{{ $product->id }}" name="removeWishlist">
-                                <button class="d-none d-md-block bottone bottone_elimina bold" type="submit">Wishlist<i class="fas fa-trash-alt"></i></button>
+                                <button class="d-none d-md-block bottone bottone_elimina bold" type="submit">Lista dei Desideri <i class="fas fa-trash-alt"></i></button>
                                 <button class="bottone-tab-dettaglio d-md-none bottone bottone_elimina bold" type="submit"><i class="fas fa-trash-alt"></i></button>
                             </form>
                         </td>

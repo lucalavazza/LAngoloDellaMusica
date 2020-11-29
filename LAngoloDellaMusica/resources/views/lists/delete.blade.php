@@ -2,15 +2,15 @@
 
 @section('bodyType')
 <body>
-@stop
+    @stop
 
-@section('logoutOption')
+    @section('logoutOption')
     @if($logged)
     <div>
         <a class="dropdown-item my-1" href="{{ route('user.logout') }}">Logout <i class="fas fa-sign-out-alt"></i></a>
     </div>
     @endif
-@stop
+    @stop
 
     @section('menu_nav')
 <li class="nav-item">
@@ -54,7 +54,7 @@
 </li>
 @if($logged)
 <li class="nav-item">
-    <a class="nav-link" href="{{ route('wishlist.index') }}">Wishlist <i class="far fa-star"></i></a>
+    <a class="nav-link" href="{{ route('wishlist.index') }}">Lista dei Desideri <i class="far fa-star"></i></a>
 </li>
 @endif
 @stop
@@ -140,16 +140,19 @@
                             {{$product->status}}
                         </td>
                         <td class="align-middle text-center">
-                            <a class="d-none d-md-block bottone bottone_entra bold" href="{{ route('dettaglio', ['id' => $product->id]) }}">Dettagli<i class="fas fa-info"></i></a>
+                            <a class="d-none d-md-block bottone bottone_entra bold" href="{{ route('dettaglio', ['id' => $product->id]) }}">Dettagli <i class="fas fa-info"></i></a>
                             <a class="bottone-tab d-md-none bottone bottone_entra bold" href="{{ route('dettaglio', ['id' => $product->id]) }}"><i class="fas fa-info"></i></a>
                         </td>
                         <td class="align-middle text-center">
-                            <form id="formRemove{{$product->id}}" class="formRemove" >
+<!--                            <form id="formRemove{{$product->id}}" class="formRemove" >
                                 @csrf
                                 <a class="d-none d-md-block bottone bottone_elimina bold" href="{{ route('deleteProduct', ['id' => $product->id]) }}">Elimina <i class="fas fa-trash-alt"></i></a>
                                 <a class="bottone-tab d-md-none bottone bottone_elimina bold" href="{{ route('deleteProduct', ['id' => $product->id]) }}"><i class="fas fa-trash-alt"></i></a>
+                            </form>-->
+                            <form id="formRemove{{$product->id}}" class="formRemove" action="{{ route('deleteProduct', ['id' => $product->id]) }}" method="get">
+                                @csrf
+                                <input class="d-none d-md-block bottone bottone_elimina bold Field" style="width: 100%; clear: both; float: left;" type="submit" value="Elimina" name="Change-submit" onclick="confirmDeleteProduct()"> <!--devo mandare ad una route che mi invoca un controller, che mi invoca un metodo di DL che mi elimina l'account-->
                             </form>
-
                         </td>
                     </tr>
                     @endforeach

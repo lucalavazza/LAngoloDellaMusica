@@ -368,11 +368,11 @@ class GateController extends Controller {
 
         $prod = $dl->findProductById($id);
 
-
+        $master = $dl->isMaster($_SESSION['loggedName']);
 
         return view('lists.detail')->with('logged', $logged)->with('loggedName', $loggedName)
                         ->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list)
-                        ->with('iden', $id)->with('wish', $wish)->with('prod', $prod)->with('siono', $siono);
+                        ->with('iden', $id)->with('wish', $wish)->with('prod', $prod)->with('siono', $siono)->with('master', $master);
     }
 
     public function deleteUser() {

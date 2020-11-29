@@ -47,8 +47,12 @@ function confirmDelete() {
     return confirm('Vuoi davvero eliminare il tuo account?');
 }
 
+function confirmDeleteProduct() {
+    return confirm('Vuoi davvero eliminare questo prodotto?');
+}
+
 function loginAlert() {
-    alert("Per aggiungere prodotti alla Wishlist e per accedervi è necessario aver effettuato il login!");
+    alert("Per aggiungere prodotti alla Lista dei Desideri e per accedervi è necessario aver effettuato il login!");
 }
 function loginWrongAlertUser() {
     alert("Attenzione, si è verificato un errore durante l\'accesso! Per cortesia controllare di inserire lo username correttamente.");

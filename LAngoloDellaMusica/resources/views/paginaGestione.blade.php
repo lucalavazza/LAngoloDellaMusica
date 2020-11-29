@@ -69,7 +69,7 @@
 @if($logged)
     <li class="nav-item">
         <!--gestire i GET e le route-->
-        <a class="nav-link" href="{{ route('wishlist.index') }}">Wishlist <i class="far fa-star"></i></a>
+        <a class="nav-link" href="{{ route('wishlist.index') }}">Lista dei Desideri <i class="far fa-star"></i></a>
     </li>
 @endif
 @stop
@@ -105,97 +105,130 @@
             <div class="row centra">
 
                 <div class="container">
-                    <div class="card my-3" style="border-color: #458045">
+                    <div class="card" style="border-color: #458045">
                         <div class="container">
 
                             <h3 class="my-3" style="font-weight: bold; color: #458045"> Aggiungi un nuovo prodotto </h3>
                             <form enctype="multipart/form-data" class="form-cgroup" id="form-aggiunta" action="{{route('paginaGestione.add')}}" method="post" name="add">
                                 @csrf
                                 <div class="form-group">
-                                    <select style="border-color: #458045" class="browser-default custom-select my-3" id="seleziona-categoria-esistente" name="categoria" onChange="Categoria();">
+                                    <hr>
+                                    <label style="color: #458045">
+                                    Categoria:
+                                    </label>
+                                    <select style="border-color: #458045" class="browser-default custom-select" id="seleziona-categoria-esistente" name="categoria" onChange="Categoria();">
                                         @foreach($macro_categories_list as $macro_category)
                                         <option value="{{$macro_category->id}}">{{$macro_category->macro_cat}}</option>
                                         @endforeach
                                     </select>
                                     <!--SOTTOCATEGORIE-->
-                                    <select style="border-color: #458045" class="browser-default custom-select my-3" name="Chitarre" id="Chitarre">
+                                    <hr> 
+                                    <label style="color: #458045">
+                                    Sottocategoria:
+                                    </label>
+                                    <select style="border-color: #458045" class="browser-default custom-select" name="Chitarre" id="Chitarre">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 1)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #458045" class="browser-default custom-select my-3" name="Bassi" id="Bassi">
+                                    <select style="border-color: #458045" class="browser-default custom-select" name="Bassi" id="Bassi">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 2)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #458045" class="browser-default custom-select my-3" name="Fiati" id="Fiati">
+                                    <select style="border-color: #458045" class="browser-default custom-select" name="Fiati" id="Fiati">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 5)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #458045" class="browser-default custom-select my-3" name="Batterie e Percussioni" id="Batterie e Percussioni">
+                                    <select style="border-color: #458045" class="browser-default custom-select" name="Batterie e Percussioni" id="Batterie e Percussioni">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 6)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #458045" class="browser-default custom-select my-3" name="Tastiere" id="Tastiere">
+                                    <select style="border-color: #458045" class="browser-default custom-select" name="Tastiere" id="Tastiere">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 7)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #458045" class="browser-default custom-select my-3" name="Studio e Registrazione" id="Studio e Registrazione">
+                                    <select style="border-color: #458045" class="browser-default custom-select" name="Studio e Registrazione" id="Studio e Registrazione">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 8)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #458045" class="browser-default custom-select my-3" name="Audio Pro e Luci" id="Audio Pro e Luci">
+                                    <select style="border-color: #458045" class="browser-default custom-select" name="Audio Pro e Luci" id="Audio Pro e Luci">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 9)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #458045" class="browser-default custom-select my-3" name="Strumenti Tradizionali" id="Strumenti Tradizionali">
+                                    <select style="border-color: #458045" class="browser-default custom-select" name="Strumenti Tradizionali" id="Strumenti Tradizionali">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 10)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #458045" class="browser-default custom-select my-3" name="Accessori" id="Accessori">
+                                    <select style="border-color: #458045" class="browser-default custom-select" name="Accessori" id="Accessori">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 11)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-
-                                    <input style="border-color: #458045" type="text" class="form-control my-3" placeholder="Marca" name="marca" required="">
-                                    <input style="border-color: #458045" type="text" class="form-control my-3" placeholder="Modello" name="modello" required="">
-                                    <input style="border-color: #458045" type="text" class="form-control my-3" placeholder="Colore" name="colore" required="">
-                                    <input style="border-color: #458045" type="number" class="form-control my-3" placeholder="Prezzo" name="prezzo" required="">
-                                    <select style="border-color: #458045" class="browser-default custom-select my-3" name="condizione">
+                                    <hr>
+                                    <label style="color: #458045">
+                                    Marca:
+                                    </label>
+                                    <input style="border-color: #458045" type="text" class="form-control" placeholder="Marca" name="marca" required="">
+                                    <hr>
+                                    <label style="color: #458045">
+                                    Modello:
+                                    </label>
+                                    <input style="border-color: #458045" type="text" class="form-control" placeholder="Modello" name="modello" required="">
+                                    <hr>
+                                    <label style="color: #458045">
+                                    Colore:
+                                    </label>
+                                    <input style="border-color: #458045" type="text" class="form-control" placeholder="Colore" name="colore" required="">
+                                    <hr>
+                                    <label style="color: #458045">
+                                    Prezzo:
+                                    </label>
+                                    <input style="border-color: #458045" type="number" min="1" class="form-control" placeholder="Prezzo" name="prezzo" required="">
+                                    <hr>
+                                    <label style="color: #458045">
+                                    Condizione:
+                                    </label>
+                                    <select style="border-color: #458045" class="browser-default custom-select" name="condizione">
                                         <option value="Nuovo">Nuovo</option>
                                         <option value="Usato">Usato</option>
                                     </select>
-                                    <input style="border-color: #458045" type="text" class="form-control my-3" placeholder="Sito Web" name="sitoweb" required="">
-                                    <p style="color: #458045">
-                                        Aggiungi foto: 
-                                    </p>
-                                    <input style="border-color: #458045" type="file" name="path" id="upload1" class="upload" multiple="multiple" required="">
+                                    <hr>
+                                    <label style="color: #458045">
+                                    Sito Web:
+                                    </label>
+                                    <input style="border-color: #458045" type="url" class="form-control" placeholder="Sito Web" name="sitoweb" required="">
+                                    <hr>
+                                    <label style="color: #458045">
+                                        Aggiungi foto (in formato JPG o PNG, di dimensione inferiore a 10MB):  
+                                    </label>
+                                    <input style="border-color: #458045" type="file" name="path" id="upload1" class="upload" required="" accept="image/png, image/jpeg">
                                 </div>
+                                <hr>
                                 <div class="form-group">
                                     <label for="mySubmit" class="bottone bottone_wishlist bold mt-3"><i class="fa fa-save"></i> Inserisci il prodotto</label>
                                     <input type="submit" id="mySubmit" value="save" class="invisible"/>
@@ -205,93 +238,105 @@
                     </div>
                 </div>
                 <div class="container">
-                    <div class="card my-3" style="border-color: #c44835">
+                    <div class="card" style="border-color: #c44835">
                         <div class="container">
                             <h3 class="my-3" style="font-weight: bold; color: #c44835"> Elimina un prodotto </h3>
                             <form enctype="multipart/form-data" class="form-cgroup" id="form-eliminazione" action="{{route('paginaGestione.delete')}}" method="post" name="delete">
                                 @csrf
                                 <div class="form-group">
-                                    <select style="border-color: #c44835" class="browser-default custom-select my-3" id="seleziona-categoria-esistente-delete" name="categoria-delete" onChange="CategoriaDelete();">
+                                    <hr> 
+                                    <label style="color: #c44835">
+                                    Categoria:
+                                    </label>
+                                    <select style="border-color: #c44835" class="browser-default custom-select" id="seleziona-categoria-esistente-delete" name="categoria-delete" onChange="CategoriaDelete();">
                                         @foreach($macro_categories_list as $macro_category)
                                         <option value="{{$macro_category->id}}">{{$macro_category->macro_cat}}</option>
                                         @endforeach
                                     </select>
                                     <!--SOTTOCATEGORIE-->
-                                    <select style="border-color: #c44835" class="browser-default custom-select my-3" name="Chitarre-delete" id="Chitarre-delete">
+                                    <hr> 
+                                    <label style="color: #c44835">
+                                    Sottocategoria:
+                                    </label>
+                                    <select style="border-color: #c44835" class="browser-default custom-select" name="Chitarre-delete" id="Chitarre-delete">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 1)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #c44835" class="browser-default custom-select my-3" name="Bassi-delete" id="Bassi-delete">
+                                    <select style="border-color: #c44835" class="browser-default custom-select" name="Bassi-delete" id="Bassi-delete">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 2)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #c44835" class="browser-default custom-select my-3" name="Fiati-delete" id="Fiati-delete">
+                                    <select style="border-color: #c44835" class="browser-default custom-select" name="Fiati-delete" id="Fiati-delete">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 5)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #c44835" class="browser-default custom-select my-3" name="Batterie e Percussioni-delete" id="Batterie e Percussioni-delete">
+                                    <select style="border-color: #c44835" class="browser-default custom-select" name="Batterie e Percussioni-delete" id="Batterie e Percussioni-delete">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 6)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #c44835" class="browser-default custom-select my-3" name="Tastiere-delete" id="Tastiere-delete">
+                                    <select style="border-color: #c44835" class="browser-default custom-select" name="Tastiere-delete" id="Tastiere-delete">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 7)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #c44835" class="browser-default custom-select my-3" name="Studio e Registrazione-delete" id="Studio e Registrazione-delete">
+                                    <select style="border-color: #c44835" class="browser-default custom-select" name="Studio e Registrazione-delete" id="Studio e Registrazione-delete">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 8)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #c44835" class="browser-default custom-select my-3" name="Audio Pro e Luci-delete" id="Audio Pro e Luci-delete">
+                                    <select style="border-color: #c44835" class="browser-default custom-select" name="Audio Pro e Luci-delete" id="Audio Pro e Luci-delete">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 9)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #c44835" class="browser-default custom-select my-3" name="Strumenti Tradizionali-delete" id="Strumenti Tradizionali-delete">
+                                    <select style="border-color: #c44835" class="browser-default custom-select" name="Strumenti Tradizionali-delete" id="Strumenti Tradizionali-delete">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 10)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #c44835" class="browser-default custom-select my-3" name="Accessori-delete" id="Accessori-delete">
+                                    <select style="border-color: #c44835" class="browser-default custom-select" name="Accessori-delete" id="Accessori-delete">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 11)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-<!--                                    <select style="border-color: #c44835" class="browser-default custom-select my-3" name="brand-delete" id="brand-delete">
+<!--                                    <select style="border-color: #c44835" class="browser-default custom-select" name="brand-delete" id="brand-delete">
                                         @foreach($brands_list as $brand)
                                         <option value="{{$brand->brand}}">{{$brand->brand}}</option>
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #c44835" class="browser-default custom-select my-3" name="product-delete" id="product-delete">
+                                    <select style="border-color: #c44835" class="browser-default custom-select" name="product-delete" id="product-delete">
                                         @foreach($products_list as $product)
                                         <option value="{{$product->model}}">{{$product->model}}</option>
                                         @endforeach
                                     </select>-->
+                                    <hr>
+                                    <label style="color: #c44835">
+                                    Premi il seguente bottone per passare alla scelta del prodotto da eliminare:
+                                    </label>
                                     <div class="form-group">
-                                        <label for="mySubmit-delete" class="bottone bottone_elimina bold mt-3"><i class="fa fa-trash"></i> Prosegui alla pagina di eliminazione</label>
+                                        <label for="mySubmit-delete" class="bottone bottone_elimina bold mt-1"><i class="fa fa-trash"></i> Prosegui alla pagina di eliminazione</label>
                                         <input type="submit" id="mySubmit-delete" value="delete" class="invisible"/>
                                     </div>
                                 </div>
