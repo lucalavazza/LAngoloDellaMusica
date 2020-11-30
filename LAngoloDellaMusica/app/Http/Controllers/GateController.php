@@ -403,28 +403,23 @@ class GateController extends Controller {
         $dl = new DataLayer;
         $master = $dl->isMaster($_SESSION['loggedName']);
         
-//        prelevo i dati del prodotto da inscrivere nella cella della tabella utente
+//      prelevo i dati del prodotto da inscrivere nella cella della tabella utente
         $marca=$dl->getProductBrandByID($id);
         $modello=$dl->getProductModelByID($id);
         $colore=$dl->getProductColorByID($id);
         $stato=$dl->getProductStatusByID($id);
         
-//        prelevo gli id degli utenti che hanno il prodotto nella propria wishlist
+//      prelevo gli id degli utenti che hanno il prodotto nella propria wishlist
         $listaIdUtenti=$dl->listUsersIdWithProductInWishlist($id);
-//        modifico il campo con i dati del prodotto eliminato
+//      modifico il campo con i dati del prodotto eliminato
         for($i = 0; $i < count($listaIdUtenti); $i++) {
             $dl->changeDeletedField($listaIdUtenti[$i]->store_users_id, $marca, $modello, $colore, $stato);
         }
         
         $dl->deleteProduct($id);
         
-//        return view('lists.delete')->with('logged', $logged)->with('loggedName', $loggedName)
-//                        ->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list)->with('wish', $wish)
-//                        ->with('products_list', $products_list)->with('userid', $userid);
-        
-        //per ora rimandiamo alla pagina di gestione. Vedremo se migliorare.
-        
         return Redirect::to(route('paginaGestione'));
+        
     }
 
     public function store(Request $request) {
@@ -491,7 +486,7 @@ class GateController extends Controller {
 
         return view('lists.delete')->with('logged', $logged)->with('loggedName', $loggedName)
                         ->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list)->with('wish', $wish)
-                        ->with('products_list', $products_list)->with('userid', $userid);
+                        ->with('products_list', $products_list)->with('userid', $userid)->with('categoria_name',$categoria_name)->with('sottocategoria_name',$sottocategoria_name);
     }
 
     public function edit(Request $request) {

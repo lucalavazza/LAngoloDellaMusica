@@ -130,9 +130,10 @@
                 <div class="col-md-12 centra">
                 @if($logged)
                     @if($master)
-                    <form id="formRemove{{$prod->id}}" class="formRemove" action="{{ route('deleteProduct', ['id' => $prod->id]) }}" method="get">
-                        @csrf
-                        <input class="d-none d-md-block bottone bottone_elimina bold Field" style="width: 100%; clear: both; float: left;" type="submit" value="Elimina" name="Change-submit" onclick="confirmDeleteProduct()"> <!--devo mandare ad una route che mi invoca un controller, che mi invoca un metodo di DL che mi elimina l'account-->
+                    <form id="formRemove{{$prod->id}}" class="formRemove" >
+                                @csrf
+                                <a class="d-none d-md-block bottone bottone_elimina bold" href="{{ route('deleteProduct', ['id' => $prod->id]) }}" onclick="confirmDeleteProduct()">Elimina <i class="fas fa-trash-alt"></i></a>
+                                <a class="bottone-tab d-md-none bottone bottone_elimina bold" href="{{ route('deleteProduct', ['id' => $prod->id]) }}" onclick="confirmDeleteProduct()"><i class="fas fa-trash-alt"></i></a>
                     </form>
                     @endif
                 @endif

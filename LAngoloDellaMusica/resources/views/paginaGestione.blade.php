@@ -1,13 +1,11 @@
 @extends('layouts.master')
 
-
-
 @section('logoutOption')
-    @if($logged)
-    <div>
-        <a class="dropdown-item my-1" href="{{ route('user.logout') }}">Logout <i class="fas fa-sign-out-alt"></i></a>
-    </div>
-    @endif
+@if($logged)
+<div>
+    <a class="dropdown-item my-1" href="{{ route('user.logout') }}">Logout <i class="fas fa-sign-out-alt"></i></a>
+</div>
+@endif
 @stop
 
 @section('menu_nav')
@@ -67,10 +65,10 @@
     </div>
 </li>
 @if($logged)
-    <li class="nav-item">
-        <!--gestire i GET e le route-->
-        <a class="nav-link" href="{{ route('wishlist.index') }}">Lista dei Desideri <i class="far fa-star"></i></a>
-    </li>
+<li class="nav-item">
+    <!--gestire i GET e le route-->
+    <a class="nav-link" href="{{ route('wishlist.index') }}">Lista dei Desideri <i class="far fa-star"></i></a>
+</li>
 @endif
 @stop
 
@@ -87,9 +85,9 @@
     </div>
 </li>
 @else
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('user.login') }}">Login/Registrati <i class="fas fa-sign-in-alt"></i></a>
-    </li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ route('user.login') }}">Login/Registrati <i class="fas fa-sign-in-alt"></i></a>
+</li>
 @endif
 @stop
 
@@ -105,7 +103,7 @@
             <div class="row centra">
 
                 <div class="container">
-                    <div class="card" style="border-color: #458045">
+                    <div class="card" style="border-color: #458045; margin-bottom: 3em">
                         <div class="container">
 
                             <h3 class="my-3" style="font-weight: bold; color: #458045"> Aggiungi un nuovo prodotto </h3>
@@ -114,7 +112,7 @@
                                 <div class="form-group">
                                     <hr>
                                     <label style="color: #458045">
-                                    Categoria:
+                                        Categoria:
                                     </label>
                                     <select style="border-color: #458045" class="browser-default custom-select" id="seleziona-categoria-esistente" name="categoria" onChange="Categoria();">
                                         @foreach($macro_categories_list as $macro_category)
@@ -124,7 +122,7 @@
                                     <!--SOTTOCATEGORIE-->
                                     <hr> 
                                     <label style="color: #458045">
-                                    Sottocategoria:
+                                        Sottocategoria:
                                     </label>
                                     <select style="border-color: #458045" class="browser-default custom-select" name="Chitarre" id="Chitarre">
                                         @foreach($categories_list as $category)
@@ -191,27 +189,27 @@
                                     </select>
                                     <hr>
                                     <label style="color: #458045">
-                                    Marca:
+                                        Marca:
                                     </label>
                                     <input style="border-color: #458045" type="text" class="form-control" placeholder="Marca" name="marca" required="">
                                     <hr>
                                     <label style="color: #458045">
-                                    Modello:
+                                        Modello:
                                     </label>
                                     <input style="border-color: #458045" type="text" class="form-control" placeholder="Modello" name="modello" required="">
                                     <hr>
                                     <label style="color: #458045">
-                                    Colore:
+                                        Colore:
                                     </label>
                                     <input style="border-color: #458045" type="text" class="form-control" placeholder="Colore" name="colore" required="">
                                     <hr>
                                     <label style="color: #458045">
-                                    Prezzo:
+                                        Prezzo:
                                     </label>
                                     <input style="border-color: #458045" type="number" min="1" class="form-control" placeholder="Prezzo" name="prezzo" required="">
                                     <hr>
                                     <label style="color: #458045">
-                                    Condizione:
+                                        Condizione:
                                     </label>
                                     <select style="border-color: #458045" class="browser-default custom-select" name="condizione">
                                         <option value="Nuovo">Nuovo</option>
@@ -219,14 +217,14 @@
                                     </select>
                                     <hr>
                                     <label style="color: #458045">
-                                    Sito Web:
+                                        Sito Web:
                                     </label>
                                     <input style="border-color: #458045" type="url" class="form-control" placeholder="Sito Web" name="sitoweb" required="">
                                     <hr>
                                     <label style="color: #458045">
-                                        Aggiungi foto (in formato JPG o PNG, di dimensione inferiore a 10MB):  
+                                        Aggiungi foto (in formato JPG o PNG, <b>di dimensione inferiore a 8MB</b>):  
                                     </label>
-                                    <input style="border-color: #458045" type="file" name="path" id="upload1" class="upload" required="" accept="image/png, image/jpeg">
+                                    <input style="border-color: #458045" type="file" name="path" id="file" class="upload" required="" accept="image/png, image/jpeg">
                                 </div>
                                 <hr>
                                 <div class="form-group">
@@ -237,6 +235,8 @@
                         </div>
                     </div>
                 </div>
+                
+                
                 <div class="container">
                     <div class="card" style="border-color: #c44835">
                         <div class="container">
@@ -246,7 +246,7 @@
                                 <div class="form-group">
                                     <hr> 
                                     <label style="color: #c44835">
-                                    Categoria:
+                                        Categoria:
                                     </label>
                                     <select style="border-color: #c44835" class="browser-default custom-select" id="seleziona-categoria-esistente-delete" name="categoria-delete" onChange="CategoriaDelete();">
                                         @foreach($macro_categories_list as $macro_category)
@@ -256,7 +256,7 @@
                                     <!--SOTTOCATEGORIE-->
                                     <hr> 
                                     <label style="color: #c44835">
-                                    Sottocategoria:
+                                        Sottocategoria:
                                     </label>
                                     <select style="border-color: #c44835" class="browser-default custom-select" name="Chitarre-delete" id="Chitarre-delete">
                                         @foreach($categories_list as $category)
@@ -333,7 +333,7 @@
                                     </select>-->
                                     <hr>
                                     <label style="color: #c44835">
-                                    Premi il seguente bottone per passare alla scelta del prodotto da eliminare:
+                                        Premi il seguente bottone per passare alla scelta del prodotto da eliminare:
                                     </label>
                                     <div class="form-group">
                                         <label for="mySubmit-delete" class="bottone bottone_elimina bold mt-1"><i class="fa fa-trash"></i> Prosegui alla pagina di eliminazione</label>

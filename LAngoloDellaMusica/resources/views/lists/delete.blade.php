@@ -89,7 +89,7 @@
 <div class="container">
     <header>
         <h1 style="color: #c44835">
-            Pagina di Eliminazione
+            Pagina di Eliminazione: {{$categoria_name}} - {{$sottocategoria_name}}
         </h1>
     </header>
 </div>
@@ -144,14 +144,10 @@
                             <a class="bottone-tab d-md-none bottone bottone_entra bold" href="{{ route('dettaglio', ['id' => $product->id]) }}"><i class="fas fa-info"></i></a>
                         </td>
                         <td class="align-middle text-center">
-<!--                            <form id="formRemove{{$product->id}}" class="formRemove" >
+                            <form id="formRemove{{$product->id}}" class="formRemove" >
                                 @csrf
-                                <a class="d-none d-md-block bottone bottone_elimina bold" href="{{ route('deleteProduct', ['id' => $product->id]) }}">Elimina <i class="fas fa-trash-alt"></i></a>
-                                <a class="bottone-tab d-md-none bottone bottone_elimina bold" href="{{ route('deleteProduct', ['id' => $product->id]) }}"><i class="fas fa-trash-alt"></i></a>
-                            </form>-->
-                            <form id="formRemove{{$product->id}}" class="formRemove" action="{{ route('deleteProduct', ['id' => $product->id]) }}" method="get">
-                                @csrf
-                                <input class="d-none d-md-block bottone bottone_elimina bold Field" style="width: 100%; clear: both; float: left;" type="submit" value="Elimina" name="Change-submit" onclick="confirmDeleteProduct()"> <!--devo mandare ad una route che mi invoca un controller, che mi invoca un metodo di DL che mi elimina l'account-->
+                                <a class="d-none d-md-block bottone bottone_elimina bold" href="{{ route('deleteProduct', ['id' => $product->id]) }}" onclick="confirmDeleteProduct()">Elimina <i class="fas fa-trash-alt"></i></a>
+                                <a class="bottone-tab d-md-none bottone bottone_elimina bold" href="{{ route('deleteProduct', ['id' => $product->id]) }}" onclick="confirmDeleteProduct()"><i class="fas fa-trash-alt"></i></a>
                             </form>
                         </td>
                     </tr>
