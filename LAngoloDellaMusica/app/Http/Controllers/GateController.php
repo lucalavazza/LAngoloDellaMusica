@@ -199,13 +199,15 @@ class GateController extends Controller {
             $brands_list = $dl->listBrands();
             $products_list = $dl->listAllProducts();
             return view('paginaGestione')->with('logged', true)->with('loggedName', $_SESSION['loggedName'])
-                            ->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list)
-                            ->with('brands_list', $brands_list)->with('products_list', $products_list);
+                    ->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list)
+                    ->with('brands_list', $brands_list)->with('products_list', $products_list)
+                    ->with('erroreFileGrande', false)->with('modificaSuccesso', false);
         } else {
             $dl = new DataLayer;
             $macro_categories_list = $dl->listMacroCategories();
             $categories_list = $dl->listSpecificCategories();
-            return view('paginaGestione')->with('logged', false)->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list);
+            return view('paginaGestione')->with('logged', false)->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list)
+                    ->with('erroreFileGrande', false)->with('modificaSuccesso', false);
         }
     }
 
@@ -431,28 +433,40 @@ class GateController extends Controller {
         $categoria_id = $request->input('categoria');
         $categoria_name = $dl->getMacroCategoryNameById($categoria_id);
         //print_r($categoria_name);
-        echo($categoria_name);
+        //echo($categoria_name);
         $sottocategoria_name = $request->input($categoria_name);
         //print_r($sottocategoria_name);
         $sottocategoria_id = $dl->getSpecificCategoryIdByName($sottocategoria_name);
+        
+        $macro_categories_list = $dl->listMacroCategories();
+        $categories_list = $dl->listSpecificCategories();
+        $brands_list = $dl->listBrands();
+        $products_list = $dl->listAllProducts();
 
         $modelExisting = $dl->modelExist($modello, $request->input('colore'), $request->input('condizione'));
         if (is_null($modelExisting)) {
             $file = $request->file('path');
             $fileext = $file->getClientOriginalExtension();
-            $newfilename = $modello . "-" . $request->input("colore") . "." . $fileext;
-            $percorso = 'pics/' . $sottocategoria_name . '/';
-            $file->storeAs($percorso, $newfilename);
-            $path = $percorso . $newfilename;
+            $fileSizeBytes = filesize($file);
+            $fileSizeMB = ($fileSizeBytes / 1024 / 1024);
+            if($fileSizeMB <= 8) {
+                $newfilename = $modello . "-" . $request->input("colore") . "." . $fileext;
+                $percorso = 'pics/' . $sottocategoria_name . '/';
+                $file->storeAs($percorso, $newfilename);
+                $path = $percorso . $newfilename;
 
-            $dl->addProduct($categoria_name, $sottocategoria_name,
+                $dl->addProduct($categoria_name, $sottocategoria_name,
                     $request->input('marca'), $request->input('modello'),
                     $request->input('colore'), $request->input('prezzo'),
                     $request->input('condizione'), $request->input('sitoweb'),
                     $path, $categoria_id, $sottocategoria_id);
-            return Redirect::to(route('paginaGestione'))->with('logged', true)
-                            ->with('loggedName', $_SESSION["loggedName"])
-                            ->with('master', $master);
+                return Redirect::to(route('paginaGestione'))->with('logged', true)
+                    ->with('loggedName', $_SESSION["loggedName"])
+                    ->with('master', $master)->with('erroreFileGrande', false)->with('modificaSuccesso', false);
+            }
+            return view('paginaGestione')->with('logged', true)->with('loggedName', $_SESSION['loggedName'])
+                ->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list)
+                ->with('brands_list', $brands_list)->with('products_list', $products_list)->with('erroreFileGrande', true);
         }
         return Redirect::to(route('home'));
     }
@@ -516,5 +530,46 @@ class GateController extends Controller {
                 ->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list)
                 ->with('wish', $wish)->with('products_list', $products_list)->with('userid', $userid)
                 ->with('macro_cat', $categoria_name)->with('specific_cat', $sottocategoria_name);
+    }
+    
+    public function confirmEdit(Request $request) {
+        
+        session_start();
+        $dl=new DataLayer;
+        if (isset($_SESSION['logged'])) {
+            $logged = true;
+            $loggedName = $_SESSION['loggedName'];
+            $userid = $dl->getUserID($loggedName);
+            $wish = $dl->listWishlist($userid);
+        } else {
+            $logged = false;
+            $loggedName = "";
+            $userid = "";
+            $wish = "";
+        }
+        
+        $macro_categories_list = $dl->listMacroCategories();
+        $categories_list = $dl->listSpecificCategories();
+        $brands_list = $dl->listBrands();
+        $products_list = $dl->listAllProducts();
+        
+        $stringa = $request->input('prodotto');
+        $price = $request->input('prezzo');
+        
+        $stringa = explode(";", $stringa);
+        $macro_cat=$stringa[0];
+        $specific_cat=$stringa[1];
+        $model=$stringa[2];
+        $color=$stringa[3];
+        $brand=$stringa[4];
+        $status=$stringa[5];
+        
+        $dl->editProduct($macro_cat, $specific_cat,
+                    $brand, $model, $color, $price, $status);
+        
+        return view('paginaGestione')->with('logged', $logged)->with('wish', $wish)->with('userid',$userid)
+                ->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list)
+                ->with('brands_list', $brands_list)->with('products_list', $products_list)
+                ->with('loggedName', $_SESSION["loggedName"])->with('erroreFileGrande', false)->with('modificaSuccesso', true);
     }
 }

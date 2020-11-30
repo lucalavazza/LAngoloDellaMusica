@@ -319,5 +319,11 @@ class DataLayer extends Model {
         $product->specific_categories_id = $sottocategoria_id;
         $product->save();
     }
-
+    
+    function editProduct($categoria, $sottocategoria, $marca, $modello, $colore,
+            $prezzo, $condizione) {
+        $product = Product::where('brand',$marca)->where('model',$modello)->where('color',$colore)->where('status',$condizione)->get()->first();
+        $product->price = $prezzo;
+        $product->save();
+    }
 }
