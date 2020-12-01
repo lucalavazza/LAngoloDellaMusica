@@ -111,14 +111,15 @@
             <div class="row centra">
 
                 <div class="container">
+                    
                     @if($erroreFileGrande)
                         <div class="card" style="border-color: #c44835; margin-bottom: 1em">
-                            <label class="bold" style="color: #c44835"> Errore di inserimento, file troppo grande! Non caricare file immagini che superino gli 8 MB.</label>
+                            <label class="bold" style="color: #c44835; margin: 1em"> Errore di inserimento, file troppo grande! Non caricare file immagini che superino gli 8 MB.</label>
                         </div>
                     @endif
                     @if($modificaSuccesso)
-                        <div class="card" style="border-color: #458045; margin-bottom: 1em">
-                            <label class="bold" style="color: #458045"> Modifica del prezzo eseguita con successo.</label>
+                        <div class="card" style="border-color: #b58d51; margin-bottom: 1em">
+                            <label class="bold" style="color: #b58d51; margin: 1em"> Modifica del prezzo eseguita con successo.</label>
                         </div>
                     @endif
                     @if($aggiuntaSuccesso)
@@ -266,84 +267,89 @@
                     </div>
                 </div>
                 
-                <div class="container" style="border-color: #458045; margin-bottom: 3em">
-                    <div class="card" style="border-color: #458045">
+                <div class="container" style="border-color: #b58d51; margin-bottom: 3em">
+                    <div class="card" style="border-color: #b58d51">
                         <div class="container">
-                            <h3 class="my-3" style="font-weight: bold; color: #458045"> Modifica il prezzo di un prodotto</h3>
-                            <label class="bold" style="font-weight: bold; color: #458045"> Seleziona categoria e sottocategoria per passare alla pagina di modifica</label>
+                            <h3 class="my-3" style="font-weight: bold; color: #b58d51"> Modifica il prezzo di un prodotto</h3>
+                            <label class="bold" style="font-weight: bold; color: #b58d51"> Seleziona categoria e sottocategoria per passare alla pagina di modifica</label>
                             <form enctype="multipart/form-data" class="form-cgroup" id="form-modifica" action="{{route('paginaGestione.edit')}}" method="post" name="edit">
                                 @csrf
                                 <div class="form-group">
                                     <hr> 
-                                    <label style="color: #458045">
+                                    <label style="color: #b58d51">
                                         Categoria:
                                     </label>
-                                    <select style="border-color: #458045" class="browser-default custom-select" id="seleziona-categoria-esistente-edit" name="categoria-edit" onChange="CategoriaEdit();">
+                                    <select style="border-color: #b58d51" class="browser-default custom-select" id="seleziona-categoria-esistente-edit" name="categoria-edit" onChange="CategoriaEdit();">
                                         @foreach($macro_categories_list as $macro_category)
                                         <option value="{{$macro_category->id}}">{{$macro_category->macro_cat}}</option>
                                         @endforeach
                                     </select>
                                     <!--SOTTOCATEGORIE-->
+<<<<<<< HEAD
                                     <label style="color: #458045">
+=======
+                                    <hr> 
+                                    <label style="color: #b58d51">
+>>>>>>> 8fc5cfe6c987b711a3fdb2bcc5f51c0eed464e16
                                         Sottocategoria:
                                     </label>
-                                    <select style="border-color: #458045" class="browser-default custom-select" name="Chitarre-edit" id="Chitarre-edit">
+                                    <select style="border-color: #b58d51" class="browser-default custom-select" name="Chitarre-edit" id="Chitarre-edit">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 1)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #458045" class="browser-default custom-select" name="Bassi-edit" id="Bassi-edit">
+                                    <select style="border-color: #b58d51" class="browser-default custom-select" name="Bassi-edit" id="Bassi-edit">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 2)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #458045" class="browser-default custom-select" name="Fiati-edit" id="Fiati-edit">
+                                    <select style="border-color: #b58d51" class="browser-default custom-select" name="Fiati-edit" id="Fiati-edit">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 5)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #458045" class="browser-default custom-select" name="Batterie e Percussioni-edit" id="Batterie e Percussioni-edit">
+                                    <select style="border-color: #b58d51" class="browser-default custom-select" name="Batterie e Percussioni-edit" id="Batterie e Percussioni-edit">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 6)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #458045" class="browser-default custom-select" name="Tastiere-edit" id="Tastiere-edit">
+                                    <select style="border-color: #b58d51" class="browser-default custom-select" name="Tastiere-edit" id="Tastiere-edit">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 7)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #458045" class="browser-default custom-select" name="Studio e Registrazione-edit" id="Studio e Registrazione-edit">
+                                    <select style="border-color: #b58d51" class="browser-default custom-select" name="Studio e Registrazione-edit" id="Studio e Registrazione-edit">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 8)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #458045" class="browser-default custom-select" name="Audio Pro e Luci-edit" id="Audio Pro e Luci-edit">
+                                    <select style="border-color: #b58d51" class="browser-default custom-select" name="Audio Pro e Luci-edit" id="Audio Pro e Luci-edit">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 9)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #458045" class="browser-default custom-select" name="Strumenti Tradizionali-edit" id="Strumenti Tradizionali-edit">
+                                    <select style="border-color: #b58d51" class="browser-default custom-select" name="Strumenti Tradizionali-edit" id="Strumenti Tradizionali-edit">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 10)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
                                         @endif
                                         @endforeach
                                     </select>
-                                    <select style="border-color: #458045" class="browser-default custom-select" name="Accessori-edit" id="Accessori-edit">
+                                    <select style="border-color: #b58d51" class="browser-default custom-select" name="Accessori-edit" id="Accessori-edit">
                                         @foreach($categories_list as $category)
                                         @if($category->macro_categories_id == 11)
                                         <option value="{{$category->specific_cat}}">{{$category->specific_cat}}</option>
@@ -351,11 +357,11 @@
                                         @endforeach
                                     </select>
                                     <hr>
-                                    <label style="color: #458045">
+                                    <label style="color: #b58d51">
                                         Premi il seguente bottone per passare alla schermata di modifica:
                                     </label>
                                     <div class="form-group">
-                                        <label for="mySubmit-edit" class="bottone bottone_wishlist bold mt-1"><i class="fa fa-pencil"></i> Prosegui alla pagina di modifica</label>
+                                        <label for="mySubmit-edit" class="bottone bottone_entra bold mt-1"><i class="fa fa-pencil"></i> Prosegui alla pagina di modifica</label>
                                         <input type="submit" id="mySubmit-edit" value="edit" class="invisible"/>
                                     </div>
                                 </div>

@@ -89,14 +89,14 @@
             <div class="row centra">
 
                 <div class="container">
-                    <div class="card my-3" style="border-color: #458045">
+                    <div class="card my-3" style="border-color: #b58d51">
                         <div class="container">
-                            <h3 class="my-3" style="font-weight: bold; color: #458045"> Modifica il prezzo di un prodotto </h3>
+                            <h3 class="my-3" style="font-weight: bold; color: #b58d51"> Modifica il prezzo di un prodotto </h3>
                             <form enctype="multipart/form-data" class="form-cgroup" id="form-modifica" action="{{route('paginaGestione.confirmEdit')}}" method="post" name="edit">
                                 @csrf
-                                <label class="bold" style="color: #458045">Seleziona un prodotto della categoria: {{$macro_cat}} - {{$specific_cat}}</label>
-                                <label style="color: #458045">I prodotti sono mostrati nel formato: Modello - Marca - Colore - Condizione - Prezzo Attuale</label>
-                                <select style="border-color: #458045" class="browser-default custom-select my-3" name="prodotto">
+                                <label class="bold" style="color: #b58d51">Seleziona un prodotto della categoria: {{$macro_cat}} - {{$specific_cat}}</label>
+                                <label style="color: #b58d51">I prodotti sono mostrati nel formato: Modello - Marca - Colore - Condizione - Prezzo Attuale</label>
+                                <select style="border-color: #b58d51" class="browser-default custom-select my-3" name="prodotto">
                                     @foreach($products_list as $product)
                                     <option value="{{$product->macro_cat}};{{$product->specific_cat}};{{$product->model}};{{$product->color}};{{$product->brand}};{{$product->status}}">
                                         {{$product->model}} - {{$product->brand}} - {{$product->color}} - {{$product->status}} - {{$product->price}} €
@@ -104,10 +104,10 @@
                                     @endforeach
                                 </select>
                                 <div class="form-group">
-                                    <input style="border-color: #458045" type="number" class="form-control my-3" placeholder="Prezzo" name="prezzo" required="" min="1">
+                                    <input style="border-color: #b58d51" type="number" class="form-control my-3" placeholder="Prezzo" name="prezzo" required="" min="1">
                                 </div>
                                 <div class="form-group">
-                                    <label for="mySubmit" class="bottone bottone_wishlist bold mt-3"><i class="fa fa-pencil"></i> Modifica il prezzo del prodotto</label>
+                                    <label for="mySubmit" class="bottone bottone_entra bold mt-3"><i class="fa fa-pencil"></i> Modifica il prezzo del prodotto</label>
                                     <input type="submit" id="mySubmit" value="save" class="invisible"/>
                                 </div>
                             </form>
