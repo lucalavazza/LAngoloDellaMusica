@@ -111,7 +111,6 @@
             <div class="row centra">
 
                 <div class="container">
-                    
                     @if($erroreFileGrande)
                         <div class="card" style="border-color: #c44835; margin-bottom: 1em">
                             <label class="bold" style="color: #c44835; margin: 1em"> Errore di inserimento, file troppo grande! Non caricare file immagini che superino gli 8 MB.</label>
@@ -285,12 +284,7 @@
                                         @endforeach
                                     </select>
                                     <!--SOTTOCATEGORIE-->
-<<<<<<< HEAD
-                                    <label style="color: #458045">
-=======
-                                    <hr> 
                                     <label style="color: #b58d51">
->>>>>>> 8fc5cfe6c987b711a3fdb2bcc5f51c0eed464e16
                                         Sottocategoria:
                                     </label>
                                     <select style="border-color: #b58d51" class="browser-default custom-select" name="Chitarre-edit" id="Chitarre-edit">
