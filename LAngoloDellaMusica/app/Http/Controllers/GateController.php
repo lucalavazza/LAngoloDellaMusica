@@ -390,8 +390,12 @@ class GateController extends Controller {
     
     public function deleteProductController(Request $request, $id) {
         session_start();
-
+        
         $dl = new DataLayer;
+        $macro_categories_list = $dl->listMacroCategories();
+        $categories_list = $dl->listSpecificCategories();
+        $brands_list = $dl->listBrands();
+        $products_list = $dl->listAllProducts();
         if (isset($_SESSION['logged'])) {
             $logged = true;
             $loggedName = $_SESSION['loggedName'];
