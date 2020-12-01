@@ -78,7 +78,8 @@
 
 @section('breadcrumb')
 <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-<li class="breadcrumb-item active"><a>Pagina di Gestione</a></li>
+<li class="breadcrumb-item "><a href="{{ route('paginaGestione') }}">Pagina di Gestione</a></li>
+<li class="breadcrumb-item active"><a>Pagina di Modifica</a></li>
 @stop
 
 @section('corpo')

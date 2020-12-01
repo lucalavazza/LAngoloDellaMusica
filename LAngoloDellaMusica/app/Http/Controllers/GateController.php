@@ -201,13 +201,15 @@ class GateController extends Controller {
             return view('paginaGestione')->with('logged', true)->with('loggedName', $_SESSION['loggedName'])
                     ->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list)
                     ->with('brands_list', $brands_list)->with('products_list', $products_list)
-                    ->with('erroreFileGrande', false)->with('modificaSuccesso', false);
+                    ->with('erroreFileGrande', false)->with('modificaSuccesso', false)->with('eliminaSuccesso', false)->with('aggiuntaSuccesso',false)
+                    ->with('aggiuntaDoppione', false);
         } else {
             $dl = new DataLayer;
             $macro_categories_list = $dl->listMacroCategories();
             $categories_list = $dl->listSpecificCategories();
             return view('paginaGestione')->with('logged', false)->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list)
-                    ->with('erroreFileGrande', false)->with('modificaSuccesso', false);
+                    ->with('erroreFileGrande', false)->with('modificaSuccesso', false)->with('eliminaSuccesso', false)->with('aggiuntaSuccesso',false)
+                    ->with('aggiuntaDoppione', false);
         }
     }
 
@@ -420,7 +422,11 @@ class GateController extends Controller {
         
         $dl->deleteProduct($id);
         
-        return Redirect::to(route('paginaGestione'));
+        return view('paginaGestione')->with('logged', $logged)->with('wish', $wish)->with('userid',$userid)
+            ->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list)
+            ->with('brands_list', $brands_list)->with('products_list', $products_list)
+            ->with('loggedName', $_SESSION["loggedName"])->with('erroreFileGrande', false)->with('modificaSuccesso', false)
+            ->with('eliminaSuccesso', true)->with('aggiuntaSuccesso',false)->with('aggiuntaDoppione', false);
         
     }
 
@@ -447,6 +453,7 @@ class GateController extends Controller {
         if (is_null($modelExisting)) {
             $file = $request->file('path');
             $fileext = $file->getClientOriginalExtension();
+            clearstatcache();
             $fileSizeBytes = filesize($file);
             $fileSizeMB = ($fileSizeBytes / 1024 / 1024);
             if($fileSizeMB <= 8) {
@@ -460,15 +467,23 @@ class GateController extends Controller {
                     $request->input('colore'), $request->input('prezzo'),
                     $request->input('condizione'), $request->input('sitoweb'),
                     $path, $categoria_id, $sottocategoria_id);
-                return Redirect::to(route('paginaGestione'))->with('logged', true)
-                    ->with('loggedName', $_SESSION["loggedName"])
-                    ->with('master', $master)->with('erroreFileGrande', false)->with('modificaSuccesso', false);
+                return view('paginaGestione')->with('logged', true)
+                    ->with('loggedName', $_SESSION["loggedName"])->with('master', $master)
+                    ->with('macro_categories_list', $macro_categories_list)
+                    ->with('categories_list', $categories_list)->with('brands_list', $brands_list)
+                    ->with('products_list', $products_list)->with('erroreFileGrande', false)
+                    ->with('modificaSuccesso', false)->with('eliminaSuccesso', false)
+                    ->with('aggiuntaSuccesso', true)->with('aggiuntaDoppione', false);
             }
             return view('paginaGestione')->with('logged', true)->with('loggedName', $_SESSION['loggedName'])
                 ->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list)
-                ->with('brands_list', $brands_list)->with('products_list', $products_list)->with('erroreFileGrande', true);
+                ->with('brands_list', $brands_list)->with('products_list', $products_list)->with('erroreFileGrande', true)->with('modificaSuccesso', false)
+                    ->with('eliminaSuccesso', false)->with('aggiuntaSuccesso',false)->with('aggiuntaDoppione', false);
         }
-        return Redirect::to(route('home'));
+        return view('paginaGestione')->with('logged', true)->with('loggedName', $_SESSION['loggedName'])
+                ->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list)
+                ->with('brands_list', $brands_list)->with('products_list', $products_list)->with('erroreFileGrande', false)->with('modificaSuccesso', false)
+                    ->with('eliminaSuccesso', false)->with('aggiuntaSuccesso',false)->with('aggiuntaDoppione', true);
     }
 
     public function delete(Request $request) {
@@ -570,6 +585,7 @@ class GateController extends Controller {
         return view('paginaGestione')->with('logged', $logged)->with('wish', $wish)->with('userid',$userid)
                 ->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list)
                 ->with('brands_list', $brands_list)->with('products_list', $products_list)
-                ->with('loggedName', $_SESSION["loggedName"])->with('erroreFileGrande', false)->with('modificaSuccesso', true);
+                ->with('loggedName', $_SESSION["loggedName"])->with('erroreFileGrande', false)->with('modificaSuccesso', true)
+                ->with('eliminaSuccesso', false)->with('aggiuntaSuccesso',false)->with('aggiuntaDoppione', false);
     }
 }

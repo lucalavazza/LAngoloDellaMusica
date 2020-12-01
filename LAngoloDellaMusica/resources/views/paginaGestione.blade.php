@@ -121,6 +121,21 @@
                             <label class="bold" style="color: #458045"> Modifica del prezzo eseguita con successo.</label>
                         </div>
                     @endif
+                    @if($aggiuntaSuccesso)
+                        <div class="card" style="border-color: #458045; margin-bottom: 1em">
+                            <label class="bold" style="color: #458045"> Elemento aggiunto con successo al catalogo.</label>
+                        </div>
+                    @endif
+                    @if($eliminaSuccesso)
+                        <div class="card" style="border-color: #c44835; margin-bottom: 1em">
+                            <label class="bold" style="color: #c44835"> Elemento eliminato con successo dal con successo.</label>
+                        </div>
+                    @endif
+                    @if($aggiuntaDoppione)
+                        <div class="card" style="border-color: #c44835; margin-bottom: 1em">
+                            <label class="bold" style="color: #c44835"> Elemento non aggiunto perché già presente un elemento con stesso nome modello, stato e marca.</label>
+                        </div>
+                    @endif
                     <div class="card" style="border-color: #458045; margin-bottom: 3em">
                         <div class="container">
 
@@ -138,7 +153,6 @@
                                         @endforeach
                                     </select>
                                     <!--SOTTOCATEGORIE-->
-                                    <hr> 
                                     <label style="color: #458045">
                                         Sottocategoria:
                                     </label>
@@ -215,7 +229,6 @@
                                         Modello:
                                     </label>
                                     <input style="border-color: #458045" type="text" class="form-control" placeholder="Modello" name="modello" required="">
-                                    <hr>
                                     <label style="color: #458045">
                                         Colore:
                                     </label>
@@ -225,7 +238,6 @@
                                         Prezzo:
                                     </label>
                                     <input style="border-color: #458045" type="number" min="1" class="form-control" placeholder="Prezzo" name="prezzo" required="">
-                                    <hr>
                                     <label style="color: #458045">
                                         Condizione:
                                     </label>
@@ -272,7 +284,6 @@
                                         @endforeach
                                     </select>
                                     <!--SOTTOCATEGORIE-->
-                                    <hr> 
                                     <label style="color: #458045">
                                         Sottocategoria:
                                     </label>
@@ -370,7 +381,6 @@
                                         @endforeach
                                     </select>
                                     <!--SOTTOCATEGORIE-->
-                                    <hr> 
                                     <label style="color: #c44835">
                                         Sottocategoria:
                                     </label>

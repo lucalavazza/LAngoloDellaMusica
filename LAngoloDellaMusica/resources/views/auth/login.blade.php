@@ -101,20 +101,24 @@
                                 <div>
                                     Registrandoti potrai avere accesso alla funzione "Lista dei Desideri" e marcare con un'etichetta tutti i prodotti che ti interessano del catalogo.
                                 </div>
+                                <label style="color: #b58d51; margin-top: 2em;">Nome Utente:</label>
                                 <div class="form-group">
-                                    <input type="text" name="inputUsername" class="form-control my-3" placeholder="Username" required="" value="" oninvalid="this.setCustomValidity('Inserire lo username')" oninput="this.setCustomValidity('')">
+                                    <input type="text" name="inputUsername" class="form-control my-3" placeholder="Nome Utente" required="" value="" oninvalid="this.setCustomValidity('Inserire lo username')" oninput="this.setCustomValidity('')">
                                 </div>
+                                <label style="color: #b58d51;">E-mail:</label>
                                 <div class="form-group">
-                                    <input type="email" pattern=".+@[a-zA-Z0-9_.-]*[.][a-z]*" name="inputEmail" class="form-control my-3" placeholder="Indirizzo e-mail" required="" value="" oninvalid="this.setCustomValidity('Inserire l\'indirizzo e-mail')" oninput="this.setCustomValidity('')">
+                                    <input type="email" pattern=".+@[a-zA-Z0-9_.-]*[.][a-z]*" name="inputEmail" class="form-control my-3" placeholder="mario.rossi@gmail.com" required="" value="" oninvalid="this.setCustomValidity('Inserire l\'indirizzo e-mail')" oninput="this.setCustomValidity('')">
                                 </div>
+                                <label style="color: #b58d51;">Nome:</label>
                                 <div class="form-group">
-                                    <input type="text" name="inputNome" class="form-control my-3" placeholder="Nome" required="" value="" oninvalid="this.setCustomValidity('Inserire il nome')" oninput="this.setCustomValidity('')">
+                                    <input type="text" name="inputNome" class="form-control my-3" placeholder="Mario" required="" value="" oninvalid="this.setCustomValidity('Inserire il nome')" oninput="this.setCustomValidity('')">
                                 </div>
+                                <label style="color: #b58d51;">Cognome:</label>
                                 <div class="form-group">
-                                    <input type="text" name="inputCognome" class="form-control my-3" placeholder="Cognome" required="" value="" oninvalid="this.setCustomValidity('Inserire il cognome')" oninput="this.setCustomValidity('')">
+                                    <input type="text" name="inputCognome" class="form-control my-3" placeholder="Rossi" required="" value="" oninvalid="this.setCustomValidity('Inserire il cognome')" oninput="this.setCustomValidity('')">
                                 </div>
                                 <div data-tooltip="Si consiglia l'uso di caratteri alfanumerici e speciali per una maggiore sicurezza.">
-                                    <i class="fa fa-info loghino"></i>
+                                    <label class="bold" style="color: #b58d51;">Password <i class="fa fa-info loghino"></i></label>
                                 </div>
                                 <div class="form-group">
                                     <input type="password" id="inputPassword" name="inputPassword" class="form-control my-3" placeholder="Password" required="" oninvalid="this.setCustomValidity('Inserire la password')" oninput="this.setCustomValidity('')" onkeyup="return checkPass()">

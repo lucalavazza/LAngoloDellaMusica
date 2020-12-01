@@ -142,7 +142,13 @@
                                 <td class="align-middle" style="font-weight: bold">
                                     <form id="delete" action="{{ route('deleteUser') }}" method="get">
                                         @csrf
-                                        <input class="d-none d-md-block bottone bottone_elimina bold" style="width: 100%; clear: both; float: left;" type="submit" value="Elimina il tuo account" name="Change-submit" onclick="return confirmDelete()"> <!--devo mandare ad una route che mi invoca un controller, che mi invoca un metodo di DL che mi elimina l'account-->
+                                        <div data-tooltip="L'operazione di eliminazione è immediata e non è reversibile. Una volta eseguita i propri dati saranno eliminati per sempre.">
+                                            <label class="bold" style="color: #b58d51;">Leggere prima di proseguire all'eliminazione <i class="fa fa-info loghino"></i></label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="mySubmit-delete" class="d-none d-md-block bottone bottone_elimina bold mt-1" style="width: 100%; clear: both; float: left;"><i class="fa fa-trash"></i> Elimina il tuo account</label>
+                                            <input type="submit" id="mySubmit-delete" value="delete" name="Change-submit" class="invisible" onclick="return confirmDelete();"/>
+                                        </div> <!--devo mandare ad una route che mi invoca un controller, che mi invoca un metodo di DL che mi elimina l'account-->
                                     </form>
                                 </td>
                             </tr>
