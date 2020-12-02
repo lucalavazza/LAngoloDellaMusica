@@ -123,17 +123,17 @@
                     @endif
                     @if($aggiuntaSuccesso)
                         <div class="card" style="border-color: #458045; margin-bottom: 1em">
-                            <label class="bold" style="color: #458045"> Elemento aggiunto con successo al catalogo.</label>
+                            <label class="bold" style="color: #458045; margin: 1em"> Elemento aggiunto con successo al catalogo.</label>
                         </div>
                     @endif
                     @if($eliminaSuccesso)
                         <div class="card" style="border-color: #c44835; margin-bottom: 1em">
-                            <label class="bold" style="color: #c44835"> Elemento eliminato con successo dal con successo.</label>
+                            <label class="bold" style="color: #c44835; margin: 1em"> Elemento eliminato con successo dal con successo.</label>
                         </div>
                     @endif
                     @if($aggiuntaDoppione)
                         <div class="card" style="border-color: #c44835; margin-bottom: 1em">
-                            <label class="bold" style="color: #c44835"> Elemento non aggiunto perché già presente un elemento con stesso nome modello, stato e marca.</label>
+                            <label class="bold" style="color: #c44835; margin: 1em"> Elemento non aggiunto perché già presente un elemento con stesso nome modello, stato e marca.</label>
                         </div>
                     @endif
                     <div class="card" style="border-color: #458045; margin-bottom: 3em">

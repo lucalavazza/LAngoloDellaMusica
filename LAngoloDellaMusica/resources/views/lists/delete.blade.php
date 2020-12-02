@@ -62,12 +62,12 @@
 @section('login_tab')
 @if($logged)
 <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" 
+    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" 
        aria-haspopup="true" aria-expanded="false">Ciao, {{ $loggedName }}!</a>
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">  
         <a class="dropdown-item" href="{{ route('paginaPersonale') }}">Pagina Personale</a>
         @if (isThisMaster($loggedName))
-        <a class="dropdown-item" href="{{ route('paginaGestione') }}">Pagina Gestione Master</a>
+        <a class="dropdown-item active" href="{{ route('paginaGestione') }}">Pagina Gestione Master</a>
         @endif
     </div>
 </li>

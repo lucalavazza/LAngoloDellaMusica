@@ -83,18 +83,44 @@
 @stop
 
 @section('corpo')
+
+<div class="container">
+    <header>
+        <h1 style="color: #b58d51">
+            Pagina di Modifica: {{$macro_cat}} - {{$specific_cat}}
+        </h1>
+    </header>
+</div>
+
 <div class="container">
     <div class="row centra">
         <div class="col-sm-12">
+            
+            @if (!($products_list->count()))
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <div class="card card-errore text-center mb-3">
+                            <div class="card-header card-errore-header text-white" >
+                                Attenzione!
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text my-4">Non ci sono prodotti per queste categorie.<br>Per favore, controllare di aver selezionato correttamente i parametri.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @else            
             <div class="row centra">
-
                 <div class="container">
                     <div class="card my-3" style="border-color: #b58d51">
                         <div class="container">
                             <h3 class="my-3" style="font-weight: bold; color: #b58d51"> Modifica il prezzo di un prodotto </h3>
                             <form enctype="multipart/form-data" class="form-cgroup" id="form-modifica" action="{{route('paginaGestione.confirmEdit')}}" method="post" name="edit">
                                 @csrf
-                                <label class="bold" style="color: #b58d51">Seleziona un prodotto della categoria: {{$macro_cat}} - {{$specific_cat}}</label>
+                                <label class="bold" style="color: #b58d51">Seleziona un prodotto e specifica il nuovo prezzo</label>
+                                <br>
                                 <label style="color: #b58d51">I prodotti sono mostrati nel formato: Modello - Marca - Colore - Condizione - Prezzo Attuale</label>
                                 <select style="border-color: #b58d51" class="browser-default custom-select my-3" name="prodotto">
                                     @foreach($products_list as $product)
@@ -115,6 +141,7 @@
                     </div>
                 </div>
             </div>
+            @endif
         </div>
     </div>
 </div>
