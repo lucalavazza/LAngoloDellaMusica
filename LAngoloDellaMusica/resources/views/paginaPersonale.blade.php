@@ -134,7 +134,7 @@
                             </tr>
                             <tr class="table-light">
                                 <td class="align-middle" style="font-weight: bold">
-                                    <a class="d-none d-md-block bottone bottone_entra bold" href="{{ route('cambioPassword') }}">Modifica la tua password</a>
+                                    <a class="d-none d-md-block bottone bottone_entra bold" style="text-align: center;" href="{{ route('cambioPassword') }}">Modifica la tua password</a>
                                 </td>
                             </tr>
                             @if (!(isThisMaster($loggedName)))
@@ -142,11 +142,11 @@
                                 <td class="align-middle" style="font-weight: bold">
                                     <form id="delete" action="{{ route('deleteUser') }}" method="get">
                                         @csrf
-                                        <div data-tooltip="L'operazione di eliminazione è immediata e non è reversibile. Una volta eseguita i propri dati saranno eliminati per sempre.">
-                                            <label class="bold" style="color: #b58d51;">Leggere prima di proseguire all'eliminazione <i class="fa fa-info loghino"></i></label>
+                                        <div data-tooltip="L'operazione di eliminazione è immediata e non è reversibile. Una volta eseguita i propri dati saranno eliminati per sempre." style="text-align: center;">
+                                            <label style="color: #c44835;"><i class="fa fa-info"></i> Attenzione</label>
                                         </div>
                                         <div class="form-group">
-                                            <label for="mySubmit-delete" class="d-none d-md-block bottone bottone_elimina bold mt-1" style="width: 100%; clear: both; float: left;"><i class="fa fa-trash"></i> Elimina il tuo account</label>
+                                            <label for="mySubmit-delete" class="d-none d-md-block bottone bottone_elimina bold mt-3" style="width: 100%; clear: both; float: left; text-align: center;"><i class="fa fa-trash"></i> Elimina il tuo account</label>
                                             <input type="submit" id="mySubmit-delete" value="delete" name="Change-submit" class="invisible" onclick="return confirmDelete();"/>
                                         </div> <!--devo mandare ad una route che mi invoca un controller, che mi invoca un metodo di DL che mi elimina l'account-->
                                     </form>
