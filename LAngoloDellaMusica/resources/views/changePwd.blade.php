@@ -15,6 +15,28 @@
         }
     }
 </script>
+<script>
+    function confirmChange() {
+        var oldPassword;
+        var newPassword;
+        var repeatPassword;
+        oldPassword = document.getElementById("oldPassword").value;
+        newPassword = document.getElementById("newPassword").value;
+        repeatPassword = document.getElementById("repeatPassword").value;
+        if (oldPassword == "" || newPassword == "" || repeatPassword == "") {
+            alert("Uno o più campi sono vuoti, compilali se intendi cambiare password!");
+            return false;
+        } else {
+            var risultato = checkPass();
+            if (risultato) {
+                return confirm("Confermi di voler cambiare password? L'operazione non è reversibile!");
+            } else {
+                alert("La password nuova inserita non corrisponde nei due campi!");
+                return false;
+            }
+        }
+    }
+</script>
 @stop
 
 @section('logoutOption')
@@ -125,7 +147,7 @@
                                 </div>
                                 
                                 <div class="form-group">
-                                    <input class="btn btn-lg btn-block btn-entra my-3" type="submit" value="Cambia Password" name="Change-submit" onclick="return confirm('Vuoi davvero cambiare la tua password?');">
+                                    <input class="btn btn-lg btn-block btn-entra my-3" type="submit" value="Cambia Password" name="Change-submit" onclick="return confirmChange();">
                                 </div>
                             </form>
                             

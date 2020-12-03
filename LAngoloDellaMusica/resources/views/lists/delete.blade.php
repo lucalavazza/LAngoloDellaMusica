@@ -1,8 +1,12 @@
 @extends('layouts.master')
 
 @section('bodyType')
-<body>
-    @stop
+<script>
+    function deleteProduct() {
+        return confirm("Sei sicuro di voler eliminare l'elemento? L'operazione non sarà reversibile!");
+    }
+</script>
+@stop
 
     @section('logoutOption')
     @if($logged)
@@ -140,14 +144,12 @@
                             {{$product->status}}
                         </td>
                         <td class="align-middle text-center">
-                            <a class="d-none d-md-block bottone bottone_entra bold" href="{{ route('dettaglio', ['id' => $product->id]) }}">Dettagli <i class="fas fa-info"></i></a>
-                            <a class="bottone-tab d-md-none bottone bottone_entra bold" href="{{ route('dettaglio', ['id' => $product->id]) }}"><i class="fas fa-info"></i></a>
+                            <a class="d-none d-md-block bottone bottone_entra bold" href="{{ route('dettaglio', ['id' => $product->id]) }}"><i class="fas fa-info"></i> Dettagli</a>
                         </td>
                         <td class="align-middle text-center">
                             <form id="formRemove{{$product->id}}" class="formRemove" >
                                 @csrf
-                                <a class="d-none d-md-block bottone bottone_elimina bold" href="{{ route('deleteProduct', ['id' => $product->id]) }}" onclick="confirmDeleteProduct()">Elimina <i class="fas fa-trash-alt"></i></a>
-                                <a class="bottone-tab d-md-none bottone bottone_elimina bold" href="{{ route('deleteProduct', ['id' => $product->id]) }}" onclick="confirmDeleteProduct()"><i class="fas fa-trash-alt"></i></a>
+                                <a class="d-none d-md-block bottone bottone_elimina bold" href="{{ route('deleteProduct', ['id' => $product->id]) }}" onclick='return deleteProduct()'><i class="fas fa-trash-alt"></i> Elimina</a>
                             </form>
                         </td>
                     </tr>
