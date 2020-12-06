@@ -358,6 +358,7 @@ class GateController extends Controller {
             $wish = $dl->listWishlist($userid);
             $uid = $dl->getUserID($loggedName);
             $siono = $dl->findInWish($uid, $id);
+            $master = $dl->isMaster($loggedName);
         } else {
             $logged = false;
             $loggedName = "";
@@ -365,14 +366,13 @@ class GateController extends Controller {
             $wish = "";
             $uid = "";
             $siono = "";
+            $master=false;
         }
 
         $macro_categories_list = $dl->listMacroCategories();
         $categories_list = $dl->listSpecificCategories();
 
         $prod = $dl->findProductById($id);
-
-        $master = $dl->isMaster($_SESSION['loggedName']);
 
         return view('lists.detail')->with('logged', $logged)->with('loggedName', $loggedName)
                         ->with('macro_categories_list', $macro_categories_list)->with('categories_list', $categories_list)
