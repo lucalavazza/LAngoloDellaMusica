@@ -475,6 +475,15 @@ class GateController extends Controller {
                 $percorso = 'pics/' . $sottocategoria_name . '/';
                 $file->storeAs($percorso, $newfilename);
                 $path = $percorso . $newfilename;
+                if($categoria_name == "Batterie_e_Percussioni") {
+                    $categoria_name = "Batterie e Percussioni";
+                } else if($categoria_name == "Audio_Pro_e_Luci") {
+                    $categoria_name = "Audio Pro e Luci";
+                } else if($categoria_name == "Strumenti_Tradizionali") {
+                    $categoria_name = "Strumenti Tradizionali";
+                } else if($categoria_name == "Studio_e_Registrazione") {
+                    $categoria_name = "Studio e Registrazione";
+                }
 
                 $dl->addProduct($categoria_name, $sottocategoria_name,
                     $request->input('marca'), $request->input('modello'),
