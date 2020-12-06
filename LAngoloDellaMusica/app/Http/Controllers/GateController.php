@@ -472,9 +472,15 @@ class GateController extends Controller {
             $fileSizeMB = ($fileSizeBytes / 1024 / 1024);
             if($fileSizeMB <= 8) {
                 $newfilename = $modello . "-" . $request->input("colore") . "." . $fileext;
+                $newfilename = str_replace(" ","_",$newfilename);
+                $newfilename = str_replace("/","",$newfilename);
                 $percorso = 'pics/' . $sottocategoria_name . '/';
                 $file->storeAs($percorso, $newfilename);
                 $path = $percorso . $newfilename;
+                
+                //Serve solo se la funzione di memorizzazione di laravel non va.
+                //move_uploaded_file($_FILES['path']['tmp_name'], $path);
+                
                 if($categoria_name == "Batterie_e_Percussioni") {
                     $categoria_name = "Batterie e Percussioni";
                 } else if($categoria_name == "Audio_Pro_e_Luci") {
