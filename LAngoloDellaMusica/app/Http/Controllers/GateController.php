@@ -444,8 +444,18 @@ class GateController extends Controller {
         $categoria_name = $dl->getMacroCategoryNameById($categoria_id);
         //print_r($categoria_name);
         //echo($categoria_name);
+        if($categoria_name == "Batterie e Percussioni") {
+            $categoria_name = "Batterie_e_Percussioni";
+        } else if($categoria_name == "Audio Pro e Luci") {
+            $categoria_name = "Audio_Pro_e_Luci";
+        } else if($categoria_name == "Strumenti Tradizionali") {
+            $categoria_name = "Strumenti_Tradizionali";
+        } else if($categoria_name == "Studio e Registrazione") {
+            $categoria_name = "Studio_e_Registrazione";
+        }
         $sottocategoria_name = $request->input($categoria_name);
-        //print_r($sottocategoria_name);
+        
+        
         $sottocategoria_id = $dl->getSpecificCategoryIdByName($sottocategoria_name);
         
         $macro_categories_list = $dl->listMacroCategories();
